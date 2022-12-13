@@ -13,10 +13,14 @@ function Card(props) {
                 <View
                     style={globalStyles.center}
                 >
-                    <Text>
+                    <Text
+                        style={styles.cardTitulo}
+                    >
                         {props.titulo}
                     </Text>
-                    <Text>
+                    <Text 
+                        style={styles.cardSubTitulo}
+                    >
                         {props.subTitulo}
                     </Text>
                 </View>
@@ -24,6 +28,7 @@ function Card(props) {
                     style={styles.detalhes}
                 >
                     <Text
+                    style={styles.detalhesText}
                     >
                         ?
                     </Text>
@@ -49,14 +54,30 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
     },
+
     detalhes:{
-        width: 20,
-        height:20,
+        width: 24,
+        height:24,
         alignItems:"center",
         justifyContent: "center",
         borderRadius: 20,
         backgroundColor: "#003E52",
-    }
+    },
+    detalhesText:{
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "#FFFFFF"
+    },
 
+    cardTitulo:{
+        fontSize: 16,
+        fontWeight: "bold",
+        color: "#003E52",
+    },
+    cardSubTitulo:{
+        fontSize: 8,
+        fontWeight: "600",
+        color: "#003E52",
+    },
 
 });

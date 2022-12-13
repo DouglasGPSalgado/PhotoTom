@@ -5,7 +5,7 @@ export const globalStyles = StyleSheet.create({
     linha:{
         flexDirection: "row",
         alignItems: "flex-start",
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
     },
 
     center: {
