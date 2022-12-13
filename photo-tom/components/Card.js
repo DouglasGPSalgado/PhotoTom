@@ -11,15 +11,15 @@ function Card(props) {
         >
             <View style={globalStyles.linha}>
                 <View
-                    style={globalStyles.center}
+                    style={styles.descricao}
                 >
                     <Text
-                        style={styles.cardTitulo}
+                        style={styles.titulo}
                     >
                         {props.titulo}
                     </Text>
                     <Text 
-                        style={styles.cardSubTitulo}
+                        style={styles.subTitulo}
                     >
                         {props.subTitulo}
                     </Text>
@@ -35,7 +35,9 @@ function Card(props) {
                 </TouchableOpacity>
             </View>
             <TouchableOpacity>
-                <Text>
+                <Text
+                    style={styles.continuar}
+                >
                     Continuar
                 </Text>
             </TouchableOpacity>
@@ -55,6 +57,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
 
+    descricao: {
+        width: "85%",
+        alignItems: "center",
+    },
+
     detalhes:{
         width: 24,
         height:24,
@@ -69,15 +76,21 @@ const styles = StyleSheet.create({
         color: "#FFFFFF"
     },
 
-    cardTitulo:{
+    titulo:{
         fontSize: 16,
         fontWeight: "bold",
         color: "#003E52",
     },
-    cardSubTitulo:{
+    subTitulo:{
         fontSize: 8,
         fontWeight: "600",
         color: "#003E52",
+    },
+
+    continuar:{
+        margin: 20,
+        fontSize: 20,
+        color: "#00B707"
     },
 
 });
