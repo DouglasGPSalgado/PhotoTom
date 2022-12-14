@@ -16,6 +16,7 @@ export default function Home({ navigation }) {
                 <Card
                     titulo={"JP corno"}
                     subTitulo={"JP muito corrno, vc não ta entendendo"}
+                    acaoPrimaria={"Continuar"}
                 />
             </View>
         </SafeAreaView>

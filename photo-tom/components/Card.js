@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity} from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { globalStyles } from "../GloblaStyles";
 import { StyleSheet } from "react-native";
 
@@ -18,27 +18,31 @@ function Card(props) {
                     >
                         {props.titulo}
                     </Text>
-                    <Text 
+                    <Text
                         style={styles.subTitulo}
                     >
                         {props.subTitulo}
                     </Text>
                 </View>
-                <TouchableOpacity
-                    style={styles.detalhes}
+                <View
+                    style={styles.botaoDescricao}
                 >
-                    <Text
-                    style={styles.detalhesText}
+                    <TouchableOpacity
+                        style={styles.detalhes}
                     >
-                        ?
-                    </Text>
-                </TouchableOpacity>
+                        <Text
+                            style={styles.detalhesText}
+                        >
+                            ?
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             <TouchableOpacity>
                 <Text
-                    style={styles.continuar}
+                    style={styles.nomeBotão}
                 >
-                    Continuar
+                    {props.acaoPrimaria}
                 </Text>
             </TouchableOpacity>
         </View>
@@ -61,33 +65,37 @@ const styles = StyleSheet.create({
         width: "85%",
         alignItems: "center",
     },
+    botaoDescricao: {
+        width: "15%",
+        alignItems: "center",
+    },
 
-    detalhes:{
+    detalhes: {
         width: 24,
-        height:24,
-        alignItems:"center",
+        height: 24,
+        alignItems: "center",
         justifyContent: "center",
         borderRadius: 20,
         backgroundColor: "#003E52",
     },
-    detalhesText:{
+    detalhesText: {
         fontSize: 18,
         fontWeight: "bold",
         color: "#FFFFFF"
     },
 
-    titulo:{
+    titulo: {
         fontSize: 16,
         fontWeight: "bold",
         color: "#003E52",
     },
-    subTitulo:{
+    subTitulo: {
         fontSize: 8,
         fontWeight: "600",
         color: "#003E52",
     },
 
-    continuar:{
+    nomeBotão: {
         margin: 20,
         fontSize: 20,
         color: "#00B707"
