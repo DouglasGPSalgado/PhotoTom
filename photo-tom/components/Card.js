@@ -1,10 +1,11 @@
-import React from "react";
+import { React, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { globalStyles } from "../GloblaStyles";
 import { StyleSheet } from "react-native";
 
 function Card(props) {
 
+    const [detalhes, setDetalhes] = useState(false);
     return (
         <View
             style={styles.card}
@@ -29,6 +30,7 @@ function Card(props) {
                 >
                     <TouchableOpacity
                         style={styles.detalhes}
+                        onPress={(detalhes) => setDetalhes(true)}
                     >
                         <Text
                             style={styles.detalhesText}
@@ -38,9 +40,19 @@ function Card(props) {
                     </TouchableOpacity>
                 </View>
             </View>
+            {
+                (detalhes == true) ?
+                    <Text
+                        style={styles.descricao}
+                    >
+                        {props.descricao}
+                    </Text>
+                    : <>
+                    </>
+            }
             <TouchableOpacity>
                 <Text
-                    style={styles.nomeBotão}
+                    style={styles.acaoPrimaria}
                 >
                     {props.acaoPrimaria}
                 </Text>
@@ -64,6 +76,7 @@ const styles = StyleSheet.create({
     descricao: {
         width: "85%",
         alignItems: "center",
+        paddingStart: "15%"
     },
     botaoDescricao: {
         width: "15%",
@@ -88,14 +101,22 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
         color: "#003E52",
+        textAlign: "center"
     },
     subTitulo: {
-        fontSize: 8,
-        fontWeight: "600",
+        fontSize: 10,
+        fontWeight: "400",
         color: "#003E52",
+        textAlign: "center"
     },
-
-    nomeBotão: {
+    descricao: {
+        fontSize: 14,
+        margin: 4,
+        fontWeight: "500",
+        color: "#003E52",
+        textAlign: "center"
+    },
+    acaoPrimaria: {
         margin: 20,
         fontSize: 20,
         color: "#00B707"
