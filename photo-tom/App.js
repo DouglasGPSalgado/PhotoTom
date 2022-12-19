@@ -11,18 +11,13 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#061A40',
+            backgroundColor: "#FFFFFF",
           },
-          headerTintColor: '#DCE9F6',
-          headerTitleStyle: {
-            fontWeight: '600',
-          },
+          headerTintColor: "#DCE9F6",
+          headerTitleStyle: { display: "none" },
         }}
       >
-        <Stack.Screen
-          name="Home"
-          component={Home}
-        />
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
