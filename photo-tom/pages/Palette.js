@@ -11,7 +11,6 @@ import {
 import React, { useState } from "react";
 import { ImageBackground, TouchableOpacity, Text } from "react-native";
 import GradientText from "../components/GradientText";
-import Color from "../components/Color";
 
 export function Palette() {
   const [currentIndex, setcurrentIndex] = useState();
@@ -139,7 +138,7 @@ export function Palette() {
                                 right={3}
                               ></View>
                             ) : (
-                              <View></View>
+                              <></>
                             )}
                           </HStack>
                         )}
