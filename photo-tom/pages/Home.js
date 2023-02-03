@@ -49,15 +49,6 @@ export default function Home({ navigation }) {
             px="5%" //px = paddingVertical
           >
 
-            <Form 
-              titulo={"Qual a cor da pele do paciente antes da exposição solar?"}
-              subTitulo={""}
-              A={"Branco Marfim"}
-              B={"Pele Clara ou Pálida"}
-              C={"Pele com Tom de Ouro"}
-              D={"Castanho Claro"}
-              E={"Castanho Escuro ou Preto"}
-            />
             <Card
               titulo={"Paleta de Cores"}
               subTitulo={"Comparação visual do técnico"}
