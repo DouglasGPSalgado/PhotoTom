@@ -1,20 +1,24 @@
 import {
-  ScrollView,
   VStack,
   Center,
   NativeBaseProvider,
   HStack,
   FlatList,
-  Button,
-  View,
+  Image,
 } from "native-base";
-import React, { useState } from "react";
-import { ImageBackground, TouchableOpacity, Text } from "react-native";
+import React, { useState, useContext } from "react";
+import {
+  ImageBackground,
+  TouchableOpacity,
+  Text,
+  Dimensions,
+} from "react-native";
 import GradientText from "../components/GradientText";
+import { ImageContext } from "../contexts/img";
+import { AntDesign } from '@expo/vector-icons';
 
 export function Palette() {
-  const [currentIndex, setcurrentIndex] = useState();
-  const [refFlatList, setrefFlatList] = useState();
+  const { img } = useContext(ImageContext);
   const [data, setData] = useState([
     { color: "#D3BCA0", id: 1 },
     { color: "#C7B297", id: 2 },
@@ -37,7 +41,6 @@ export function Palette() {
   ]);
 
   const onClickItem = (item, index) => {
-    setcurrentIndex(index);
     const newArrData = data.map((e, index) => {
       if (item.id == e.id) {
         return {
@@ -52,17 +55,16 @@ export function Palette() {
     });
     setData(newArrData);
   };
-  const onScrollToItemSelected = () => {
-    refFlatList.scrollToIndex({ animated: true, index: currentIndex });
-  };
   const getItemLayout = (item, index) => {
     return { length: 79, offset: 79 * index, index };
   };
 
+  const { height } = Dimensions.get("window");
+
   return (
     <NativeBaseProvider>
       <ImageBackground
-        source={require("../assets/Background.png")}
+        source={require("../../assets/Background.png")}
         style={{ flex: 1 }}
         resizeMode="cover"
       >
@@ -102,55 +104,50 @@ export function Palette() {
                   alignItems={"baseline"}
                 >
                   <HStack space={3} justifyContent="center">
-                    <VStack space={4} alignItems="center">
-                      <FlatList
-                      w={346}
+                    <FlatList
                       h={400}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item) => item.id}
-                        data={data}
-                        renderItem={({ item, index }) => (
-                          <HStack space={70}>
-                            <TouchableOpacity
-                              onPress={() => onClickItem(item, index)}
-                              style={{
-                                backgroundColor: item.color,
-                                width: 75,
-                                height: 75,
-                                borderRadius: 100,
-                                marginVertical: 4,
-                                marginHorizontal: 10,
-                                borderWidth: item.selected ? 3 : 0,
-                                borderColor: item.selected
-                                  ? "#003E52"
-                                  : "white",
-                              }}
-                            ></TouchableOpacity>
-
-                            {item.selected ? (
-                              <View
-                                w={138}
-                                h={150}
-                                bg={item.color}
-                                borderRadius={15}
-                                position={"absolute"}
-                                shadow={3}
-                                right={3}
-                              ></View>
-                            ) : (
-                              <></>
-                            )}
-                          </HStack>
-                        )}
-                        getItemLayout={getItemLayout}
-                        ref={(ref) => setrefFlatList(ref)}
-                      />
+                      showsVerticalScrollIndicator={false}
+                      keyExtractor={(item) => item.id}
+                      data={data}
+                      snapToAlignment={"center"}
+                      decelerationRate={"fast"}
+                      snapToOffsets={[...Array()].map(
+                        (x, i) => i * (height - 60)
+                      )}
+                      renderItem={({ item, index }) => (
+                        <TouchableOpacity
+                          onPress={() => onClickItem(item, index)}
+                          style={{
+                            backgroundColor: item.color,
+                            width: 75,
+                            height: 75,
+                            borderRadius: 100,
+                            marginVertical: 4,
+                            marginHorizontal: 10,
+                            borderWidth: item.selected ? 3 : 0,
+                            borderColor: item.selected ? "#003E52" : "white",
+                          }}
+                        ></TouchableOpacity>
+                      )}
+                      getItemLayout={getItemLayout}
+                    />
+                    <VStack justifyContent={"center"}><AntDesign name="caretleft" size={30} color="#003E52" /></VStack>
+                    
+                    <VStack space={3} justifyContent={"center"}>
+                      <Image
+                        w={180}
+                        h={180}
+                        borderRadius={15}
+                        marginRight={5}
+                        source={{ uri: img.image }}
+                        alt={"Image"}
+                      ></Image>
                     </VStack>
                   </HStack>
                 </Center>
               </HStack>
             </Center>
-            <TouchableOpacity onPress={onScrollToItemSelected}>
+            <TouchableOpacity >
               <Text style={{ fontSize: 32, color: "#00B707" }}>Continuar</Text>
             </TouchableOpacity>
           </VStack>

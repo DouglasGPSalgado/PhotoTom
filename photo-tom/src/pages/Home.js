@@ -11,14 +11,12 @@ import { NativeBaseProvider, Box } from "native-base";
 import Card from "../components/Card";
 import GradientText from "../components/GradientText";
 
-import Form from "../components/FormComponent";
-
 export default function Home({ navigation }) {
   return (
     <NativeBaseProvider>
       <ScrollView style={{ flex: 1, flexDirection: "column" }}>
         <ImageBackground
-          source={require("../assets/Background.png")}
+          source={require("../../assets/Background.png")}
           style={{ flex: 1 }}
           resizeMode="cover"
         >
@@ -32,7 +30,7 @@ export default function Home({ navigation }) {
             alignItems="center"
           >
             <Image
-              source={require("../assets/image_home.png")}
+              source={require("../../assets/image_home.png")}
               style={{ height: 200, width: 200, alignSelf: "center" }}
               resizeMode="contain"
             />

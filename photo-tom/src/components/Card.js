@@ -8,10 +8,12 @@ import {
     Text,
 } from "native-base";
 import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 function Card(props) {
 
     const [detalhes, setDetalhes] = useState(false);
+    const navigation = useNavigation();
     return (
 
         <NativeBaseProvider>
@@ -81,7 +83,13 @@ function Card(props) {
                         : <>
                         </>
                 }
-                <TouchableOpacity>
+                <TouchableOpacity
+                      onPress={() => {
+
+                        navigation.navigate("Photo");
+                
+                      }}
+                >
                     <Text
                         margin="2"
                         fontSize="20"
