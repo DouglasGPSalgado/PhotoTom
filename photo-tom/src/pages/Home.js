@@ -6,12 +6,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import {
-  NativeBaseProvider,
-  Box,
-  Pressable,
-  Text
-} from "native-base";
+import { NativeBaseProvider, Box, Pressable, Text } from "native-base";
 
 import Card from "../components/Card";
 import GradientText from "../components/GradientText";
@@ -51,7 +46,6 @@ export default function Home({ navigation }) {
           <Box
             px="5%" //px = paddingVertical
           >
-
             <Card
               titulo={"Paleta de Cores"}
               subTitulo={"Comparação visual do técnico"}
@@ -59,6 +53,7 @@ export default function Home({ navigation }) {
                 "Análise simples onde o técnico tira uma foto do cliente e compara visualmente com uma paleta de cores + Formulário para análise minuciosa"
               }
               acaoPrimaria={"Continuar"}
+              onPress={() => navigation.navigate("Photo")}
             />
             <Card
               titulo={"Reconhecimento de Imagem"}
@@ -70,13 +65,13 @@ export default function Home({ navigation }) {
             />
 
             {/* Botão de teste */}
-            <Pressable
+            {/* <Pressable
               onPress={() => navigation.navigate("Form")}
             >
               <Text>
                 Teste
               </Text>
-            </Pressable>
+            </Pressable> */}
             {/* Fim da area do botão de teste */}
           </Box>
         </ImageBackground>

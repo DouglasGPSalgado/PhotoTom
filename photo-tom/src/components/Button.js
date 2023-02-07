@@ -14,7 +14,14 @@ export default function Button({ title, onPress, color, icon }) {
       }}
     >
       <Entypo name={icon} size={28} color={color ? color : "#003E52"} />
-      <Text style={{fontWeight: "bold", fontSize:16, marginLeft:10, color:"#f1f1f1"}}>
+      <Text
+        style={{
+          fontWeight: "bold",
+          fontSize: 16,
+          marginLeft: 10,
+          color: "#f1f1f1",
+        }}
+      >
         {title}
       </Text>
     </TouchableOpacity>
