@@ -93,7 +93,7 @@ function Card(props) {
                     <Text
                         margin="2"
                         fontSize="20"
-                        color="#00B707"
+                        color="#19C8FF"
                     >
                         {props.acaoPrimaria}
                     </Text>

@@ -1,14 +1,11 @@
 import { React, useState } from "react";
 import {
+    NativeBaseProvider,
     Box,
     Text,
-    Pressable,
-    NativeBaseProvider
+    Pressable
 } from "native-base";
-import {
-    TouchableOpacity
-} from "react-native";
-function Form(props) {
+export default function FormComponent(props) {
 
     const [contador, setContador] = useState(null);
 
@@ -16,6 +13,7 @@ function Form(props) {
 
         <Box
             alignItems="center"
+            width="100%"
         >
             <Text
                 fontSize="20"
@@ -35,7 +33,7 @@ function Form(props) {
                 margin="2"
                 alignItems="center"
                 justifyContent="center"
-                width="90%"
+                width="85%"
                 height="16"
                 bg="#FFFFFF"
                 borderWidth="3"
@@ -46,9 +44,10 @@ function Form(props) {
                 <Box
                 >
                     <Text
-                        color={contador == 1 ? "#1EA1CA" : "##003E52"}
-                        fontSize="24"
+                        color={contador == 1 ? "#1EA1CA" : "#003E52"}
+                        fontSize="20"
                         fontWeight="bold"
+                        textAlign="center"
                     >
                         {props.A}
                     </Text>
@@ -56,25 +55,25 @@ function Form(props) {
             </Pressable>
 
             <Pressable
+                onPress={(contador) => setContador(2)}
                 margin="2"
                 alignItems="center"
                 justifyContent="center"
-                width="90%"
+                width="85%"
                 height="16"
                 bg="#FFFFFF"
+                borderWidth="3"
+                borderColor={contador == 2 ? "#1EA1CA" : "#FFFFFF"}
                 borderRadius={8}
                 shadow="7"
-                _focus={{
-                    borderWidth: 1,
-                    borderColor: "primary.300"
-                }}
             >
                 <Box
                 >
                     <Text
-                        color="#003E52"
-                        fontSize="24"
+                        color={contador == 2 ? "#1EA1CA" : "#003E52"}
+                        fontSize="20"
                         fontWeight="bold"
+                        textAlign="center"
                     >
                         {props.B}
                     </Text>
@@ -82,21 +81,25 @@ function Form(props) {
             </Pressable>
 
             <Pressable
+                onPress={(contador) => setContador(3)}
                 margin="2"
                 alignItems="center"
                 justifyContent="center"
-                width="90%"
+                width="85%"
                 height="16"
                 bg="#FFFFFF"
+                borderWidth="3"
+                borderColor={contador == 3 ? "#1EA1CA" : "#FFFFFF"}
                 borderRadius={8}
                 shadow="7"
             >
                 <Box
                 >
                     <Text
-                        color="#003E52"
-                        fontSize="24"
+                        color={contador == 3 ? "#1EA1CA" : "#003E52"}
+                        fontSize="20"
                         fontWeight="bold"
+                        textAlign="center"
                     >
                         {props.C}
                     </Text>
@@ -104,21 +107,25 @@ function Form(props) {
             </Pressable>
 
             <Pressable
+                onPress={(contador) => setContador(4)}
                 margin="2"
                 alignItems="center"
                 justifyContent="center"
-                width="90%"
+                width="85%"
                 height="16"
                 bg="#FFFFFF"
+                borderWidth="3"
+                borderColor={contador == 4 ? "#1EA1CA" : "#FFFFFF"}
                 borderRadius={8}
                 shadow="7"
             >
                 <Box
                 >
                     <Text
-                        color="#003E52"
-                        fontSize="24"
+                        color={contador == 4 ? "#1EA1CA" : "#003E52"}
+                        fontSize="20"
                         fontWeight="bold"
+                        textAlign="center"
                     >
                         {props.D}
                     </Text>
@@ -126,27 +133,30 @@ function Form(props) {
             </Pressable>
 
             <Pressable
+                onPress={(contador) => setContador(5)}
                 margin="2"
                 alignItems="center"
                 justifyContent="center"
-                width="90%"
+                width="85%"
                 height="16"
                 bg="#FFFFFF"
+                borderWidth="3"
+                borderColor={contador == 5 ? "#1EA1CA" : "#FFFFFF"}
                 borderRadius={8}
                 shadow="7"
             >
                 <Box
                 >
                     <Text
-                        color="#003E52"
-                        fontSize="24"
+                        color={contador == 5 ? "#1EA1CA" : "#003E52"}
+                        fontSize="20"
                         fontWeight="bold"
+                        textAlign="center"
                     >
                         {props.E}
                     </Text>
                 </Box>
             </Pressable>
-
         </Box>
     );
-} export default Form;
+};

@@ -6,7 +6,12 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import { NativeBaseProvider, Box } from "native-base";
+import {
+  NativeBaseProvider,
+  Box,
+  Pressable,
+  Text
+} from "native-base";
 
 import Card from "../components/Card";
 import GradientText from "../components/GradientText";
@@ -63,6 +68,16 @@ export default function Home({ navigation }) {
               }
               acaoPrimaria={"Continuar"}
             />
+
+            {/* Botão de teste */}
+            <Pressable
+              onPress={() => navigation.navigate("Form")}
+            >
+              <Text>
+                Teste
+              </Text>
+            </Pressable>
+            {/* Fim da area do botão de teste */}
           </Box>
         </ImageBackground>
       </ScrollView>
