@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../pages/Home";
 import Palette from "../pages/Palette";
 import Photo from "../pages/Photo";
+//Paginas do formulario.
 import Form from "../pages/Form";
 
 export default function Routes() {
@@ -25,6 +26,7 @@ export default function Routes() {
           component={Photo} 
           options={{headerShown:false}}
         />
+        {/* A baixo, a Stack segue as paginas de cada questão do formulario. */}
         <Stack.Screen name="Form" component={Form} />
       </Stack.Navigator>
   );

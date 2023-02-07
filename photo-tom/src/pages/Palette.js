@@ -17,7 +17,7 @@ import GradientText from "../components/GradientText";
 import { ImageContext } from "../contexts/img";
 import { AntDesign } from '@expo/vector-icons';
 
-export function Palette() {
+export default function Palette() {
   const { img } = useContext(ImageContext);
   const [data, setData] = useState([
     { color: "#D3BCA0", id: 1 },
