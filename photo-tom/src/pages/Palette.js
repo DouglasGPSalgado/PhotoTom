@@ -15,10 +15,12 @@ import {
 } from "react-native";
 import GradientText from "../components/GradientText";
 import { ImageContext } from "../contexts/img";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Palette() {
   const { img } = useContext(ImageContext);
+  const navigation = useNavigation();
   const [data, setData] = useState([
     { color: "#D3BCA0", id: 1 },
     { color: "#C7B297", id: 2 },
@@ -131,8 +133,10 @@ export default function Palette() {
                       )}
                       getItemLayout={getItemLayout}
                     />
-                    <VStack justifyContent={"center"}><AntDesign name="caretleft" size={30} color="#003E52" /></VStack>
-                    
+                    <VStack justifyContent={"center"}>
+                      <AntDesign name="caretleft" size={30} color="#003E52" />
+                    </VStack>
+
                     <VStack space={3} justifyContent={"center"}>
                       <Image
                         w={180}
@@ -147,7 +151,7 @@ export default function Palette() {
                 </Center>
               </HStack>
             </Center>
-            <TouchableOpacity >
+            <TouchableOpacity onPress={() => navigation.navigate("Form")}>
               <Text style={{ fontSize: 32, color: "#00B707" }}>Continuar</Text>
             </TouchableOpacity>
           </VStack>

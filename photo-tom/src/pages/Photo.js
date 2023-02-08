@@ -38,7 +38,7 @@ export default function Photo() {
       try {
         await MediaLibrary.createAssetAsync(image);
         alert("Picture save!");
-        signIn(image)
+        signIn(image);
         setImage(null);
       } catch (e) {
         console.log(e);

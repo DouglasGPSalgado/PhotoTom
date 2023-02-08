@@ -17,31 +17,31 @@ export default function Routes() {
   const Stack = createStackNavigator();
 
   return (
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#FFFFFF",
-          },
-          headerTintColor: "#DCE9F6",
-          headerTitleStyle: { display: "none" },
-        }}
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Palette" component={Palette} />
-        <Stack.Screen 
-          name="Photo"
-          component={Photo} 
-          options={{headerShown:false}}
-        />
-        {/* A baixo, a Stack segue as paginas de cada questão do formulario. */}
-        <Stack.Screen name="Form" component={Form} />
-        <Stack.Screen name="Form2" component={Form2} />
-        <Stack.Screen name="Form3" component={Form3} />
-        <Stack.Screen name="Form4" component={Form4} />
-        <Stack.Screen name="Form5" component={Form5} />
-        <Stack.Screen name="Form6" component={Form6} />
-        <Stack.Screen name="Form7" component={Form7} />
-        <Stack.Screen name="Form8" component={Form8} />
-      </Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#FFFFFF",
+        },
+        headerTintColor: "#DCE9F6",
+        headerTitleStyle: { display: "none" },
+      }}
+    >
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Palette" component={Palette} />
+      <Stack.Screen
+        name="Photo"
+        component={Photo}
+        options={{ headerShown: false }}
+      />
+      {/* A baixo, a Stack segue as paginas de cada questão do formulario. */}
+      <Stack.Screen name="Form" component={Form} />
+      <Stack.Screen name="Form2" component={Form2} />
+      <Stack.Screen name="Form3" component={Form3} />
+      <Stack.Screen name="Form4" component={Form4} />
+      <Stack.Screen name="Form5" component={Form5} />
+      <Stack.Screen name="Form6" component={Form6} />
+      <Stack.Screen name="Form7" component={Form7} />
+      <Stack.Screen name="Form8" component={Form8} />
+    </Stack.Navigator>
   );
 }
