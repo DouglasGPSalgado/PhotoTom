@@ -60,6 +60,7 @@ export default function Home({ navigation }) {
               }
               acaoPrimaria={"Continuar"}
             />
+            
             <Card
               titulo={"Reconhecimento de Imagem"}
               subTitulo={"Visão computacional"}

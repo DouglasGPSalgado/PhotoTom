@@ -33,7 +33,7 @@ export default function Form3({ navigation }) {
                         <FormComponent
                             titulo={"Qual a cor dos olhos?"}
                             subTitulo={""}
-                            A={"Azul, Cinza ou Verde (Claro)"}
+                            A={"Azul Claro, Cinza Claro ou Verde Claro"}
                             B={"Azul, Cinza ou Verde"}
                             C={"Castanho Claro ou Mel"}
                             D={"Castanho"}
