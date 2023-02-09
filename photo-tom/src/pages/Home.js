@@ -20,11 +20,15 @@ export default function Home({ navigation }) {
           style={{ flex: 1 }}
           resizeMode="cover"
         >
-          {/* <View
-            flexDirection={"row"}
+          {/* Botão de teste */}
+          <Pressable
+            onPress={() => navigation.navigate("Form")}
           >
-            <Text>Teste</Text>
-          </View> */}
+            <Text>
+              Teste
+            </Text>
+          </Pressable>
+          {/* Fim da area do botão de teste */}
           <Box
             //Viel trocada por Box na Native Base
             alignItems="center"
@@ -55,7 +59,7 @@ export default function Home({ navigation }) {
               acaoPrimaria={"Continuar"}
               onPress={() => navigation.navigate("Photo")}
             />
-            
+
             <Card
               titulo={"Reconhecimento de Imagem"}
               subTitulo={"Visão computacional"}
@@ -64,16 +68,6 @@ export default function Home({ navigation }) {
               }
               acaoPrimaria={"Continuar"}
             />
-
-            {/* Botão de teste */}
-            {/* <Pressable
-              onPress={() => navigation.navigate("Form")}
-            >
-              <Text>
-                Teste
-              </Text>
-            </Pressable> */}
-            {/* Fim da area do botão de teste */}
           </Box>
         </ImageBackground>
       </ScrollView>

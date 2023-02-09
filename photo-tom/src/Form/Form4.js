@@ -1,9 +1,11 @@
-import { React } from "react";
+import {
+    React,
+    useState
+} from "react";
 import {
     StyleSheet,
     View,
     ScrollView,
-    Text,
     Image,
     ImageBackground,
     TouchableOpacity
@@ -11,11 +13,16 @@ import {
 import {
     NativeBaseProvider,
     Box,
-    Center
+    Center,
+    Text,
+    Pressable
 } from "native-base";
-import FormComponent from "../components/FormComponent";
+import { globalStyles } from "../GlobalStyles";
 
 export default function Form4({ navigation }) {
+
+    const [quantidadeSardas, setQuantidadeSardas] = useState(null);
+
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -29,46 +36,99 @@ export default function Form4({ navigation }) {
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
+
                     <Center>
-                        <FormComponent
-                            titulo={"Qual é a quantidade de sardas na pele em áreas que não estão expostas?"}
-                            subTitulo={""}
-                            A={"Muitas"}
-                            B={"Várias"}
-                            C={"Algumas"}
-                            D={"Muito poucas"}
-                            E={"Nenhuma"}
-                        />
-                        {/* <NavigationButton
-                            titulo={"Continue"}
-                         /> */}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form5")}
-                            style={styles.navigationButton}
+                        <Text
+                            style={globalStyles.formTitle}
+                        >
+                            Qual é a quantidade de sardas na pele em áreas que não estão expostas?
+                        </Text>
+                        <Pressable
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(0)}
+                            style={globalStyles.formSelect}
+                            borderColor={quantidadeSardas == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
                         >
                             <Text
-                                style={styles.navigationTitle}
+                                style={globalStyles.formSelectTitle}
+                                color={quantidadeSardas == 0 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Muitas
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(1)}
+                            style={globalStyles.formSelect}
+                            borderColor={quantidadeSardas == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={quantidadeSardas == 1 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Várias
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(2)}
+                            style={globalStyles.formSelect}
+                            borderColor={quantidadeSardas == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={quantidadeSardas == 2 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Algumas
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(3)}
+                            style={globalStyles.formSelect}
+                            borderColor={quantidadeSardas == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={quantidadeSardas == 3 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Muito poucas
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(4)}
+                            style={globalStyles.formSelect}
+                            borderColor={quantidadeSardas == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={quantidadeSardas == 4 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Nenhuma
+                            </Text>
+                        </Pressable>
+
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Form5")}
+                        >
+                            <Text
+                                margin="6"
+                                fontSize="28"
+                                fontWeight="normal"
+                                color="#19C8FF"
                             >
                                 Continuar
                             </Text>
                         </TouchableOpacity>
+
                     </Center>
                 </ImageBackground>
             </ScrollView>
         </NativeBaseProvider>
     );
 };
-
-const styles = StyleSheet.create({
-
-    navigationButton: {
-        margin: 20,
-    },
-    navigationTitle: {
-        textAlign: "center",
-        fontSize: 28,
-        fontWeight: "normal",
-        color: "#19C8FF"
-    }
-
-});

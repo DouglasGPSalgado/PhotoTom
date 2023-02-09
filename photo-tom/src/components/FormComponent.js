@@ -1,15 +1,24 @@
 import { React, useState } from "react";
-import { NativeBaseProvider, Box, Text, Pressable } from "native-base";
+import {
+  StyleSheet
+} from "react-native";
+import { 
+  NativeBaseProvider, 
+  Box, 
+  Text, 
+  Pressable 
+} from "native-base";
+import { globalStyles } from "../GlobalStyles";
+
 export default function FormComponent(props) {
-  const [contador, setContador] = useState(null);
+
+  const [onPress, setOnPress] = useState(null);
 
   return (
+
     <Box alignItems="center" width="100%">
       <Text
-        fontSize="20"
-        fontWeight="normal"
-        color="#003E52"
-        textAlign="center"
+        style={globalStyles.titulo}
       >
         {props.titulo}
       </Text>
@@ -17,21 +26,13 @@ export default function FormComponent(props) {
 
       {/* Alternativas do Formulario */}
       <Pressable
-        onPress={(contador) => setContador(1)}
-        margin="2"
-        alignItems="center"
-        justifyContent="center"
-        width="85%"
-        height="16"
-        bg="#FFFFFF"
-        borderWidth="3"
-        borderColor={contador == 1 ? "#1EA1CA" : "#FFFFFF"}
-        borderRadius={8}
-        shadow="7"
+        onPress={(value) => setValue(0)}
+        style={globalStyles.formSelect}
+        borderColor={onPress == 0 ? "#1EA1CA" : "#FFFFFF"}
       >
         <Box>
           <Text
-            color={contador == 1 ? "#1EA1CA" : "#003E52"}
+            color={onPress == 0 ? "#1EA1CA" : "#003E52"}
             fontSize="20"
             fontWeight="bold"
             textAlign="center"
@@ -42,7 +43,7 @@ export default function FormComponent(props) {
       </Pressable>
 
       <Pressable
-        onPress={(contador) => setContador(2)}
+        onPress={(onPress) => setOnPress(1)}
         margin="2"
         alignItems="center"
         justifyContent="center"
@@ -50,13 +51,13 @@ export default function FormComponent(props) {
         height="16"
         bg="#FFFFFF"
         borderWidth="3"
-        borderColor={contador == 2 ? "#1EA1CA" : "#FFFFFF"}
+        borderColor={onPress == 1 ? "#1EA1CA" : "#FFFFFF"}
         borderRadius={8}
         shadow="7"
       >
         <Box>
           <Text
-            color={contador == 2 ? "#1EA1CA" : "#003E52"}
+            color={onPress == 1 ? "#1EA1CA" : "#003E52"}
             fontSize="20"
             fontWeight="bold"
             textAlign="center"
@@ -67,7 +68,7 @@ export default function FormComponent(props) {
       </Pressable>
 
       <Pressable
-        onPress={(contador) => setContador(3)}
+        onPress={(onPress) => setOnPress(2)}
         margin="2"
         alignItems="center"
         justifyContent="center"
@@ -75,13 +76,13 @@ export default function FormComponent(props) {
         height="16"
         bg="#FFFFFF"
         borderWidth="3"
-        borderColor={contador == 3 ? "#1EA1CA" : "#FFFFFF"}
+        borderColor={onPress == 2 ? "#1EA1CA" : "#FFFFFF"}
         borderRadius={8}
         shadow="7"
       >
         <Box>
           <Text
-            color={contador == 3 ? "#1EA1CA" : "#003E52"}
+            color={onPress == 2 ? "#1EA1CA" : "#003E52"}
             fontSize="20"
             fontWeight="bold"
             textAlign="center"
@@ -92,7 +93,7 @@ export default function FormComponent(props) {
       </Pressable>
 
       <Pressable
-        onPress={(contador) => setContador(4)}
+        onPress={(onPress) => setOnPress(3)}
         margin="2"
         alignItems="center"
         justifyContent="center"
@@ -100,13 +101,13 @@ export default function FormComponent(props) {
         height="16"
         bg="#FFFFFF"
         borderWidth="3"
-        borderColor={contador == 4 ? "#1EA1CA" : "#FFFFFF"}
+        borderColor={onPress == 3 ? "#1EA1CA" : "#FFFFFF"}
         borderRadius={8}
         shadow="7"
       >
         <Box>
           <Text
-            color={contador == 4 ? "#1EA1CA" : "#003E52"}
+            color={onPress == 3 ? "#1EA1CA" : "#003E52"}
             fontSize="20"
             fontWeight="bold"
             textAlign="center"
@@ -117,7 +118,7 @@ export default function FormComponent(props) {
       </Pressable>
 
       <Pressable
-        onPress={(contador) => setContador(5)}
+        onPress={(onPress) => setOnPress(4)}
         margin="2"
         alignItems="center"
         justifyContent="center"
@@ -125,13 +126,13 @@ export default function FormComponent(props) {
         height="16"
         bg="#FFFFFF"
         borderWidth="3"
-        borderColor={contador == 5 ? "#1EA1CA" : "#FFFFFF"}
+        borderColor={onPress == 4 ? "#1EA1CA" : "#FFFFFF"}
         borderRadius={8}
         shadow="7"
       >
         <Box>
           <Text
-            color={contador == 5 ? "#1EA1CA" : "#003E52"}
+            color={onPress == 4 ? "#1EA1CA" : "#003E52"}
             fontSize="20"
             fontWeight="bold"
             textAlign="center"
@@ -143,3 +144,14 @@ export default function FormComponent(props) {
     </Box>
   );
 }
+
+const styles = StyleSheet.create({
+
+  titulo: {
+    fontSize: 38,
+    fontWeight: "normal",
+    color: "#003E52",
+    textAlign: "center"
+  }
+
+});

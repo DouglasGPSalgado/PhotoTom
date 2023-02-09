@@ -1,9 +1,11 @@
-import { React } from "react";
+import {
+    React,
+    useState
+} from "react";
 import {
     StyleSheet,
     View,
     ScrollView,
-    Text,
     Image,
     ImageBackground,
     TouchableOpacity
@@ -11,11 +13,16 @@ import {
 import {
     NativeBaseProvider,
     Box,
-    Center
+    Center,
+    Text,
+    Pressable
 } from "native-base";
-import FormComponent from "../components/FormComponent";
+import { globalStyles } from "../GlobalStyles";
 
 export default function Form({ navigation }) {
+
+    const [corPele, setCorPele] = useState(null);
+
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -29,46 +36,99 @@ export default function Form({ navigation }) {
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
+
                     <Center>
-                        <FormComponent
-                            titulo={"Qual a cor da pele do paciente antes da exposição solar?"}
-                            subTitulo={""}
-                            A={"Branco Marfim"}
-                            B={"Pele Clara ou Pálida"}
-                            C={"Pele com Tom de Ouro"}
-                            D={"Castanho Claro"}
-                            E={"Castanho Escuro ou Preto"}
-                        />
-                        {/* <NavigationButton
-                            titulo={"Continue"}
-                         /> */}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form2")}
-                            style={styles.navigationButton}
+                        <Text
+                            style={globalStyles.formTitle}
+                        >
+                            Qual a cor da pele do paciente antes da exposição solar?
+                        </Text>
+                        <Pressable
+                            onPress={(corPele) => setCorPele(0)}
+                            style={globalStyles.formSelect}
+                            borderColor={corPele == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
                         >
                             <Text
-                                style={styles.navigationTitle}
+                                style={globalStyles.formSelectTitle}
+                                color={corPele == 0 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Branco Marfim
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corPele) => setCorPele(1)}
+                            style={globalStyles.formSelect}
+                            borderColor={corPele == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corPele == 1 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Pele Clara ou Pálida
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corPele) => setCorPele(2)}
+                            style={globalStyles.formSelect}
+                            borderColor={corPele == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corPele == 2 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Pele com Tom de Ouro
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corPele) => setCorPele(3)}
+                            style={globalStyles.formSelect}
+                            borderColor={corPele == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corPele == 3 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Castanho Claro
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corPele) => setCorPele(4)}
+                            style={globalStyles.formSelect}
+                            borderColor={corPele == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corPele == 4 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Castanho Escuro ou Preto
+                            </Text>
+                        </Pressable>
+
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Form2")}
+                        >
+                            <Text
+                                margin="6"
+                                fontSize="28"
+                                fontWeight="normal"
+                                color="#19C8FF"
                             >
                                 Continuar
                             </Text>
                         </TouchableOpacity>
+
                     </Center>
                 </ImageBackground>
             </ScrollView>
         </NativeBaseProvider>
     );
 };
-
-const styles = StyleSheet.create({
-
-    navigationButton: {
-        margin: 20,
-    },
-    navigationTitle: {
-        textAlign: "center",
-        fontSize: 28,
-        fontWeight: "normal",
-        color: "#19C8FF"
-    }
-
-});

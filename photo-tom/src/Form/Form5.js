@@ -1,9 +1,11 @@
-import { React } from "react";
+import {
+    React,
+    useState
+} from "react";
 import {
     StyleSheet,
     View,
     ScrollView,
-    Text,
     Image,
     ImageBackground,
     TouchableOpacity
@@ -11,11 +13,16 @@ import {
 import {
     NativeBaseProvider,
     Box,
-    Center
+    Center,
+    Text,
+    Pressable
 } from "native-base";
-import FormComponent from "../components/FormComponent";
+import { globalStyles } from "../GlobalStyles";
 
 export default function Form5({ navigation }) {
+
+    const [bronze, setBonze] = useState(null);
+
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -29,46 +36,99 @@ export default function Form5({ navigation }) {
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
+
                     <Center>
-                        <FormComponent
-                            titulo={"A pele do paciente fica bronzeada?"}
-                            subTitulo={""}
-                            A={"Nunca"}
-                            B={"Raramente"}
-                            C={"Às vezes"}
-                            D={"Frequentemente"}
-                            E={"Sempre"}
-                        />
-                        {/* <NavigationButton
-                            titulo={"Continue"}
-                         /> */}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form6")}
-                            style={styles.navigationButton}
+                        <Text
+                            style={globalStyles.formTitle}
+                        >
+                            A pele do paciente fica bronzeada?
+                        </Text>
+                        <Pressable
+                            onPress={(bronze) => setBonze(0)}
+                            style={globalStyles.formSelect}
+                            borderColor={bronze == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
                         >
                             <Text
-                                style={styles.navigationTitle}
+                                style={globalStyles.formSelectTitle}
+                                color={bronze == 0 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Nunca
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(bronze) => setBonze(1)}
+                            style={globalStyles.formSelect}
+                            borderColor={bronze == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={bronze == 1 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Raramente
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(bronze) => setBonze(2)}
+                            style={globalStyles.formSelect}
+                            borderColor={bronze == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={bronze == 2 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Às vezes
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(bronze) => setBonze(3)}
+                            style={globalStyles.formSelect}
+                            borderColor={bronze == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={bronze == 3 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Frequentemente
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(bronze) => setBonze(4)}
+                            style={globalStyles.formSelect}
+                            borderColor={bronze == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={bronze == 4 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Sempre
+                            </Text>
+                        </Pressable>
+
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Form6")}
+                        >
+                            <Text
+                                margin="6"
+                                fontSize="28"
+                                fontWeight="normal"
+                                color="#19C8FF"
                             >
                                 Continuar
                             </Text>
                         </TouchableOpacity>
+
                     </Center>
                 </ImageBackground>
             </ScrollView>
         </NativeBaseProvider>
     );
 };
-
-const styles = StyleSheet.create({
-
-    navigationButton: {
-        margin: 20,
-    },
-    navigationTitle: {
-        textAlign: "center",
-        fontSize: 28,
-        fontWeight: "normal",
-        color: "#19C8FF"
-    }
-
-});

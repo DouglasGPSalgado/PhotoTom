@@ -1,9 +1,11 @@
-import { React } from "react";
+import {
+    React,
+    useState
+} from "react";
 import {
     StyleSheet,
     View,
     ScrollView,
-    Text,
     Image,
     ImageBackground,
     TouchableOpacity
@@ -11,11 +13,16 @@ import {
 import {
     NativeBaseProvider,
     Box,
-    Center
+    Center,
+    Text,
+    Pressable
 } from "native-base";
-import FormComponent from "../components/FormComponent";
+import { globalStyles } from "../GlobalStyles";
 
 export default function Form3({ navigation }) {
+
+    const [corOlhos, setCorOlhos] = useState(null);
+
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -29,46 +36,100 @@ export default function Form3({ navigation }) {
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
+
                     <Center>
-                        <FormComponent
-                            titulo={"Qual a cor dos olhos?"}
-                            subTitulo={""}
-                            A={"Azul Claro, Cinza Claro ou Verde Claro"}
-                            B={"Azul, Cinza ou Verde"}
-                            C={"Castanho Claro ou Mel"}
-                            D={"Castanho"}
-                            E={"Marrom Escuro/Preto"}
-                        />
-                        {/* <NavigationButton
-                            titulo={"Continue"}
-                         /> */}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form4")}
-                            style={styles.navigationButton}
+                        <Text
+                            style={globalStyles.formTitle}
+                        >
+                            Qual a cor dos olhos?
+                        </Text>
+                        <Pressable
+                            onPress={(corOlhos) => setCorOlhos(0)}
+                            style={globalStyles.formSelect}
+                            borderColor={corOlhos == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
                         >
                             <Text
-                                style={styles.navigationTitle}
+                                style={globalStyles.formSelectTitle}
+                                color={corOlhos == 0 ? "#1EA1CA" : "#003E52"}
+                            >
+                                 Azul Claro, Cinza Verde Claro
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corOlhos) => setCorOlhos(1)}
+                            style={globalStyles.formSelect}
+                            borderColor={corOlhos == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corOlhos == 1 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Azul, Cinza ou Verde
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corOlhos) => setCorOlhos(2)}
+                            style={globalStyles.formSelect}
+                            borderColor={corOlhos == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corOlhos == 2 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Castanho Claro ou Mel
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corOlhos) => setCorOlhos(3)}
+                            style={globalStyles.formSelect}
+                            borderColor={corOlhos == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corOlhos == 3 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Castanho
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(corOlhos) => setCorOlhos(4)}
+                            style={globalStyles.formSelect}
+                            borderColor={corOlhos == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={corOlhos == 4 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Marrom Escuro/Preto
+                            </Text>
+                        </Pressable>
+
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Form4")}
+                            style={globalStyles.navigationButton}
+                        >
+                            <Text
+                                margin="6"
+                                fontSize="28"
+                                fontWeight="normal"
+                                color="#19C8FF"
                             >
                                 Continuar
                             </Text>
                         </TouchableOpacity>
+
                     </Center>
                 </ImageBackground>
             </ScrollView>
         </NativeBaseProvider>
     );
 };
-
-const styles = StyleSheet.create({
-
-    navigationButton: {
-        margin: 20,
-    },
-    navigationTitle: {
-        textAlign: "center",
-        fontSize: 28,
-        fontWeight: "normal",
-        color: "#19C8FF"
-    }
-
-});

@@ -1,9 +1,11 @@
-import { React } from "react";
+import {
+    React,
+    useState
+} from "react";
 import {
     StyleSheet,
     View,
     ScrollView,
-    Text,
     Image,
     ImageBackground,
     TouchableOpacity
@@ -11,11 +13,16 @@ import {
 import {
     NativeBaseProvider,
     Box,
-    Center
+    Center,
+    Text,
+    Pressable
 } from "native-base";
-import FormComponent from "../components/FormComponent";
+import { globalStyles } from "../GlobalStyles";
 
 export default function Form7({ navigation }) {
+
+    const [reacaoSolar, setReacaoSolar] = useState(null);
+
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -29,46 +36,99 @@ export default function Form7({ navigation }) {
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
+
                     <Center>
-                        <FormComponent
-                            titulo={"Como a pele reage ao Sol?"}
-                            subTitulo={""}
-                            A={"Sempre queima, forma bolhas e descama"}
-                            B={"Quase sempre queima, forma bolhas e descama"}
-                            C={"De vez em quando queima"}
-                            D={"Raramente queima"}
-                            E={"Nunca queima"}
-                        />
-                        {/* <NavigationButton
-                            titulo={"Continue"}
-                         /> */}
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form8")}
-                            style={styles.navigationButton}
+                        <Text
+                            style={globalStyles.formTitle}
+                        >
+                            Como a pele reage ao Sol?
+                        </Text>
+                        <Pressable
+                            onPress={(reacaoSolar) => setReacaoSolar(0)}
+                            style={globalStyles.formSelect}
+                            borderColor={reacaoSolar == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
                         >
                             <Text
-                                style={styles.navigationTitle}
+                                style={globalStyles.formSelectTitle}
+                                color={reacaoSolar == 0 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Sempre queima, forma bolhas e descama
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(reacaoSolar) => setReacaoSolar(1)}
+                            style={globalStyles.formSelect}
+                            borderColor={reacaoSolar == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={reacaoSolar == 1 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Quase sempre queima, forma bolhas e descama
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(reacaoSolar) => setReacaoSolar(2)}
+                            style={globalStyles.formSelect}
+                            borderColor={reacaoSolar == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={reacaoSolar == 2 ? "#1EA1CA" : "#003E52"}
+                            >
+                                De vez em quando queima
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(reacaoSolar) => setReacaoSolar(3)}
+                            style={globalStyles.formSelect}
+                            borderColor={reacaoSolar == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={reacaoSolar == 3 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Raramente queima
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            onPress={(reacaoSolar) => setReacaoSolar(4)}
+                            style={globalStyles.formSelect}
+                            borderColor={reacaoSolar == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            shadow="7"
+                        >
+                            <Text
+                                style={globalStyles.formSelectTitle}
+                                color={reacaoSolar == 4 ? "#1EA1CA" : "#003E52"}
+                            >
+                                Nunca queima
+                            </Text>
+                        </Pressable>
+
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Form8")}
+                        >
+                            <Text
+                                margin="6"
+                                fontSize="28"
+                                fontWeight="normal"
+                                color="#19C8FF"
                             >
                                 Continuar
                             </Text>
                         </TouchableOpacity>
+
                     </Center>
                 </ImageBackground>
             </ScrollView>
         </NativeBaseProvider>
     );
 };
-
-const styles = StyleSheet.create({
-
-    navigationButton: {
-        margin: 20,
-    },
-    navigationTitle: {
-        textAlign: "center",
-        fontSize: 28,
-        fontWeight: "normal",
-        color: "#19C8FF"
-    }
-
-});
