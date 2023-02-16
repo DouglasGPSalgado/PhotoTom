@@ -23,6 +23,14 @@ import NavigationButton from "../components/NavigationButton";
 export default function Form8({ navigation }) {
 
     const [sensibilidadeFacial, setSensibilidadeFacial] = useState(null);
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -114,10 +122,18 @@ export default function Form8({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <NavigationButton
-                            onPress={() => navigation.navigate("Home")}
-                            titulo={"Finalizar"}
-                        />
+                        {
+                            sensibilidadeFacial == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Finalizar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Home")}
+                                titulo={"Finalizar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

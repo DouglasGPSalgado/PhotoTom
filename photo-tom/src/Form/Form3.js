@@ -23,6 +23,14 @@ import NavigationButton from "../components/NavigationButton";
 export default function Form3({ navigation }) {
 
     const [corOlhos, setCorOlhos] = useState(null);
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -114,10 +122,18 @@ export default function Form3({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <NavigationButton
-                            onPress={() => navigation.navigate("Form4")}
-                            titulo={"Continuar"}
-                        />
+                        {
+                            corOlhos == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Continuar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Form4")}
+                                titulo={"Continuar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

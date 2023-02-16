@@ -23,6 +23,14 @@ import NavigationButton from "../components/NavigationButton";
 export default function Form4({ navigation }) {
 
     const [quantidadeSardas, setQuantidadeSardas] = useState(null);
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -114,10 +122,18 @@ export default function Form4({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <NavigationButton
-                            onPress={() => navigation.navigate("Form5")}
-                            titulo={"Continuar"}
-                        />
+                        {
+                            quantidadeSardas == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Continuar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Form5")}
+                                titulo={"Continuar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

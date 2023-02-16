@@ -98,7 +98,7 @@ export default function Home({ navigation }) {
                 size="lg"
                 shadow="7"
               >
-                <Modal.Content width="85%">
+                <Modal.Content width="80%">
                   <Modal.CloseButton />
                   <Modal.Header                  >
                     <Text
@@ -140,7 +140,7 @@ export default function Home({ navigation }) {
                             width={"80%"}
                             fontSize={28}
                             textColor={"#003E52"}
-                            buttonTextColor={"#1EA1CA"}
+                            buttonTextColor={"#FFFFFF"}
                             skin={"round"}
                             //logica da dependencia.
                             max={6}

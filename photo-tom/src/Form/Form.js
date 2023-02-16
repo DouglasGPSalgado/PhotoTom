@@ -8,14 +8,15 @@ import {
     ScrollView,
     Image,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import {
     NativeBaseProvider,
     Box,
     Center,
     Text,
-    Pressable,
+    Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
 import FormComponent from "../components/FormComponent";
@@ -24,6 +25,15 @@ import NavigationButton from "../components/NavigationButton";
 export default function Form({ navigation }) {
 
     const [corPele, setCorPele] = useState(null);
+
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -123,10 +133,18 @@ export default function Form({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <NavigationButton
-                            onPress={() => navigation.navigate("Form2")}
-                            titulo={"Continuar"}
-                        />
+                        {
+                            corPele == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Continuar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Form2")}
+                                titulo={"Continuar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

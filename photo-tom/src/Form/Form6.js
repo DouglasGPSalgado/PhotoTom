@@ -22,6 +22,14 @@ import { globalStyles } from "../GlobalStyles";
 export default function Form6({ navigation }) {
 
     const [intencidadeBronze, setIntencidadeBronze] = useState(null);
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -113,18 +121,18 @@ export default function Form6({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form7")}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Continuar
-                            </Text>
-                        </TouchableOpacity>
+                        {
+                            intencidadeBronze == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Continuar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Form7")}
+                                titulo={"Continuar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>
