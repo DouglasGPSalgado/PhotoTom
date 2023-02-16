@@ -8,7 +8,8 @@ import {
     ScrollView,
     Image,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import {
     NativeBaseProvider,
@@ -18,6 +19,7 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form6({ navigation }) {
 

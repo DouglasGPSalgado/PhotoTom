@@ -8,7 +8,8 @@ import {
     ScrollView,
     Image,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import {
     NativeBaseProvider,
@@ -26,7 +27,7 @@ export default function Form8({ navigation }) {
     const validacao = () =>
         Alert.alert(
             'Ops',
-            'Selecione uma das alternativas para continuar!',
+            'Selecione uma das alternativas para finalisar a análise!',
             [
                 { text: 'OK', onPress: () => console.log('OK Pressed') },
             ]
