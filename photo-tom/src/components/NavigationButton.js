@@ -6,9 +6,10 @@ function NavigationButton(props) {
     <NativeBaseProvider>
       <TouchableOpacity onPress={props.onPress} margin="4" padding="4">
         <Text
+          margin="4"
           textAlign="center"
-          fontSize="36"
-          fontWeight="bold"
+          fontSize="28"
+          fontWeight="medium"
           color="#19C8FF"
         >
           {props.titulo}

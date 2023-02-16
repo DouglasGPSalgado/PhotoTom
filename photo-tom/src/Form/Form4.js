@@ -18,6 +18,7 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form4({ navigation }) {
 
@@ -113,18 +114,10 @@ export default function Form4({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
+                        <NavigationButton
                             onPress={() => navigation.navigate("Form5")}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Continuar
-                            </Text>
-                        </TouchableOpacity>
+                            titulo={"Continuar"}
+                        />
 
                     </Center>
                 </ImageBackground>

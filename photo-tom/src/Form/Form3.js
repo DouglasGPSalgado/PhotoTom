@@ -18,6 +18,7 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form3({ navigation }) {
 
@@ -53,7 +54,7 @@ export default function Form3({ navigation }) {
                                 style={globalStyles.formSelectTitle}
                                 color={corOlhos == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                 Azul Claro, Cinza Verde Claro
+                                 Azul Claro, Cinza Claro ou Verde Claro
                             </Text>
                         </Pressable>
 
@@ -113,19 +114,10 @@ export default function Form3({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
+                        <NavigationButton
                             onPress={() => navigation.navigate("Form4")}
-                            style={globalStyles.navigationButton}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Continuar
-                            </Text>
-                        </TouchableOpacity>
+                            titulo={"Continuar"}
+                        />
 
                     </Center>
                 </ImageBackground>

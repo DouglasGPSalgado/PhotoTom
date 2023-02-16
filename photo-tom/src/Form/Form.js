@@ -15,9 +15,11 @@ import {
     Box,
     Center,
     Text,
-    Pressable
+    Pressable,
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import FormComponent from "../components/FormComponent";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form({ navigation }) {
 
@@ -38,6 +40,14 @@ export default function Form({ navigation }) {
                     />
 
                     <Center>
+                        {/* <FormComponent
+                            titulo={"Qual a cor da pele do paciente antes da exposição solar?"}
+                            A={"Branco Marfim"} 
+                            B={"Pele Clara ou Pálida"}
+                            C={"Pele com Tom de Ouro"}
+                            D={"Castanho Claro"}
+                            E={"Castanho Escuro ou Preto"}
+                        /> */}
                         <Text
                             style={globalStyles.formTitle}
                         >
@@ -113,18 +123,10 @@ export default function Form({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
+                        <NavigationButton
                             onPress={() => navigation.navigate("Form2")}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Continuar
-                            </Text>
-                        </TouchableOpacity>
+                            titulo={"Continuar"}
+                        />
 
                     </Center>
                 </ImageBackground>
