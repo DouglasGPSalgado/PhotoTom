@@ -8,7 +8,8 @@ import {
     ScrollView,
     Image,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import {
     NativeBaseProvider,
@@ -18,10 +19,21 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import FormComponent from "../components/FormComponent";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form({ navigation }) {
 
     const [corPele, setCorPele] = useState(null);
+
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -38,6 +50,14 @@ export default function Form({ navigation }) {
                     />
 
                     <Center>
+                        {/* <FormComponent
+                            titulo={"Qual a cor da pele do paciente antes da exposição solar?"}
+                            A={"Branco Marfim"} 
+                            B={"Pele Clara ou Pálida"}
+                            C={"Pele com Tom de Ouro"}
+                            D={"Castanho Claro"}
+                            E={"Castanho Escuro ou Preto"}
+                        /> */}
                         <Text
                             style={globalStyles.formTitle}
                         >
@@ -113,18 +133,18 @@ export default function Form({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form2")}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Continuar
-                            </Text>
-                        </TouchableOpacity>
+                        {
+                            corPele == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Continuar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Form2")}
+                                titulo={"Continuar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

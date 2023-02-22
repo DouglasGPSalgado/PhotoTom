@@ -8,7 +8,8 @@ import {
     ScrollView,
     Image,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import {
     NativeBaseProvider,
@@ -18,10 +19,19 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form2({ navigation }) {
 
     const [corCabelo, setCorCabelo] = useState(null);
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para continuar!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -113,19 +123,18 @@ export default function Form2({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Form3")}
-                            style={globalStyles.navigationButton}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Continuar
-                            </Text>
-                        </TouchableOpacity>
+                        {
+                            corCabelo == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Continuar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Form3")}
+                                titulo={"Continuar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

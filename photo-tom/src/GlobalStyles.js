@@ -11,16 +11,17 @@ export const globalStyles = StyleSheet.create({
     },
 
     formSelect: {
-        margin: 5,
+        margin: 7,
         alignItems: "center",
         justifyContent: "center",
-        width: "85%",
+        width: "80%",
         height: 60,
         backgroundColor: "#FFFFFF",
         borderRadius: 8,
         borderWidth: 2,
         //shadow: 7
     },
+
     formSelectTitle: {
         fontSize: 20,
          fontWeight: "bold",

@@ -8,7 +8,8 @@ import {
     ScrollView,
     Image,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 import {
     NativeBaseProvider,
@@ -18,10 +19,19 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import NavigationButton from "../components/NavigationButton";
 
 export default function Form8({ navigation }) {
 
     const [sensibilidadeFacial, setSensibilidadeFacial] = useState(null);
+    const validacao = () =>
+        Alert.alert(
+            'Ops',
+            'Selecione uma das alternativas para finalisar a análise!',
+            [
+                { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]
+        );
 
     return (
         <NativeBaseProvider>
@@ -53,7 +63,7 @@ export default function Form8({ navigation }) {
                                 style={globalStyles.formSelectTitle}
                                 color={sensibilidadeFacial == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                Branco Marfim
+                                Muito sensível
                             </Text>
                         </Pressable>
 
@@ -67,7 +77,7 @@ export default function Form8({ navigation }) {
                                 style={globalStyles.formSelectTitle}
                                 color={sensibilidadeFacial == 1 ? "#1EA1CA" : "#003E52"}
                             >
-                                Muito sensível
+                                Sensível
                             </Text>
                         </Pressable>
 
@@ -81,7 +91,7 @@ export default function Form8({ navigation }) {
                                 style={globalStyles.formSelectTitle}
                                 color={sensibilidadeFacial == 2 ? "#1EA1CA" : "#003E52"}
                             >
-                                Sensível
+                                Normal
                             </Text>
                         </Pressable>
 
@@ -113,18 +123,18 @@ export default function Form8({ navigation }) {
                             </Text>
                         </Pressable>
 
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate("Home")}
-                        >
-                            <Text
-                                margin="6"
-                                fontSize="28"
-                                fontWeight="normal"
-                                color="#19C8FF"
-                            >
-                                Finalizar
-                            </Text>
-                        </TouchableOpacity>
+                        {
+                            sensibilidadeFacial == null ? (
+                                <NavigationButton
+                                    onPress={validacao}
+                                    titulo={"Finalizar"}
+                                />
+                            ) : 
+                            <NavigationButton
+                                onPress={() => navigation.navigate("Home")}
+                                titulo={"Finalizar"}
+                            />
+                        }
 
                     </Center>
                 </ImageBackground>

@@ -5,12 +5,14 @@ import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 function Card(props) {
+
   const [detalhes, setDetalhes] = useState(false);
   const navigation = useNavigation();
+  
   return (
     <NativeBaseProvider>
       <Box
-        width="90%"
+        width="85%"
         margin="4"
         padding="4"
         alignSelf="center"
@@ -31,7 +33,7 @@ function Card(props) {
               {props.titulo}
             </Text>
           </Box>
-          <Box width="15%" alignItems="center">
+          <Box width="10%" alignItems="center">
             <TouchableOpacity
               style={styles.detalhes}
               onPress={(detalhes) => setDetalhes(true)}
@@ -47,6 +49,7 @@ function Card(props) {
         </Text>
         {detalhes == true ? (
           <Text
+            margin="1"
             textAlign="center"
             fontSize="16"
             fontWeight="medium"
@@ -58,7 +61,7 @@ function Card(props) {
           <></>
         )}
         <TouchableOpacity onPress={props.onPress}>
-          <Text margin="2" fontSize="20" color="#19C8FF">
+          <Text margin="4" fontSize="22" color="#19C8FF">
             {props.acaoPrimaria}
           </Text>
         </TouchableOpacity>
