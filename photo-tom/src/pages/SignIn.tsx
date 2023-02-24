@@ -15,36 +15,31 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 type FormDataProps = {
-  name: string;
   email: string;
   password: string;
-  password_confirm: string;
 };
 
-const signUpSchema = yup.object({
-  name: yup.string().required("Informe o nome"),
+const signInSchema = yup.object({
   email: yup.string().required("Informe o e-mail").email("E-mail inválido"),
   password: yup
     .string()
     .required("Informe a senha")
     .min(6, "A senha deve ter pelo menos 6 dígitos"),
-  password_confirm: yup
-    .string()
-    .required("Informe a confirmação de senha")
-    .oneOf([yup.ref("password"), null], "A confirmação de senha não é igual."),
 });
 
-export function SignUp() {
+export function SignIn() {
+  const navigation = useNavigation();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataProps>({
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(signInSchema),
   });
 
   function handleSignUp(data: FormDataProps) {
     console.log(data);
+    navigation.navigate("Home")
   }
 
   return (
@@ -65,19 +60,8 @@ export function SignUp() {
           borderRadius={25}
         >
           <Heading marginBottom={10} color={"#003E52"} fontSize={48}>
-            Cadastro
+            Login
           </Heading>
-          <Controller
-            control={control}
-            name="name"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Nome"
-                onChangeText={onChange}
-                errorMessage={errors.name?.message}
-              />
-            )}
-          />
           <Controller
             control={control}
             name="email"
@@ -101,19 +85,7 @@ export function SignUp() {
               />
             )}
           />
-          <Controller
-            control={control}
-            name="password_confirm"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Confirmar senha"
-                onChangeText={onChange}
-                secureTextEntry
-                errorMessage={errors.password_confirm?.message}
-              />
-            )}
-          />
-          <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
+          <Button title="Login" onPress={handleSubmit(handleSignUp)} />
         </Center>
       </VStack>
     </NativeBaseProvider>
