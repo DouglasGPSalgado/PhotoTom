@@ -47,7 +47,7 @@ export default function Home({ navigation }) {
 
           {/* Botão de teste */}
           <Pressable
-            onPress={() => navigation.navigate("Form")}
+            onPress={() => handleSignOut()}
           >
             <Text>Teste</Text>
           </Pressable>

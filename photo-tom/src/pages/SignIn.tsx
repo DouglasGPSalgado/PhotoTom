@@ -35,8 +35,6 @@ export function SignIn() {
 
 console.log(signed);
 
-
-  const navigation = useNavigation();
   const {
     control,
     handleSubmit,

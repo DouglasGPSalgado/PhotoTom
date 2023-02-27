@@ -22,7 +22,7 @@ export default function AppRoutes () {
         headerStyle: {
           backgroundColor: "#FFFFFF",
         },
-        headerTintColor: "#DCE9F6",
+        headerTintColor: "#003E52",
         headerTitleStyle: { display: "none" },
       }}
     >
