@@ -3,7 +3,7 @@ import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { View, NativeBaseProvider, Text } from "native-base";
 import { StyleSheet, Image } from "react-native";
-import Button from "../components/Button";
+import ButtonCamera from "../components/ButtonCamera";
 import { useNavigation } from "@react-navigation/native";
 import { ImageContext } from "../contexts/img";
 
@@ -64,7 +64,7 @@ export default function Photo() {
               justifyContent={"space-between"}
               padding={30}
             >
-              <Button
+              <ButtonCamera
                 icon={"retweet"}
                 onPress={() => {
                   setType(
@@ -74,7 +74,7 @@ export default function Photo() {
                   );
                 }}
               />
-              <Button
+              <ButtonCamera
                 icon={"flash"}
                 onPress={() => {
                   setFlash(
@@ -96,15 +96,15 @@ export default function Photo() {
               justifyContent={"space-between"}
               paddingX={50}
             >
-              <Button
+              <ButtonCamera
                 title={"Re-take"}
                 icon="retweet"
                 onPress={() => setImage(null)}
               />
-              <Button title={"Save"} icon="check" onPress={saveImage} />
+              <ButtonCamera title={"Save"} icon="check" onPress={saveImage} />
             </View>
           ) : (
-            <Button
+            <ButtonCamera
               title={"Take a picture"}
               icon="camera"
               onPress={takePicture}
