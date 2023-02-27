@@ -4,16 +4,20 @@ import ImageProvider from "./src/contexts/img";
 import AuthRoutes from "./src/routes/auth.routes";
 import { AuthProvider } from "./src/contexts/auth";
 import Routes from "./src/routes";
+import {NativeBaseProvider} from 'native-base'
+import { THEME } from "./src/theme";
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <AuthProvider>
-      <ImageProvider>
-        <Routes/>
-      </ImageProvider>
-      </AuthProvider>
-    </NavigationContainer>
+    <NativeBaseProvider theme={THEME}>
+      <NavigationContainer>
+        <AuthProvider>
+          <ImageProvider>
+            <Routes />
+          </ImageProvider>
+        </AuthProvider>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 };
 

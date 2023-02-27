@@ -33,7 +33,6 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
         setUser(JSON.parse(storagedUser));
         setLoading(false);
         console.log("storagedUser");
-        
       }
     }
     
@@ -54,7 +53,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     });
   }
 
-  if (!loading) {
+  if (loading) {
     return (
       <NativeBaseProvider>
           <HStack flex={1} justifyContent={"center"} alignItems={"center"}>
