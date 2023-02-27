@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import {
   ImageBackground,
   Image,
@@ -21,13 +21,18 @@ import InputSpinner from "react-native-input-spinner";
 
 import Card from "../components/Card";
 import GradientText from "../components/GradientText";
+import AuthContext from "../contexts/auth";
 
 export default function Home({ navigation }) {
 
+  const {signOut} = useContext(AuthContext);
   //Const Modal
   const [showModal, setShowModal] = useState(false);
   const [fototipo, setFototipo] = useState(1);
 
+  function handleSignOut(){
+    signOut();
+  }
   //testes
   console.log(fototipo)
 

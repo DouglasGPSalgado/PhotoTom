@@ -12,10 +12,8 @@ import Form5 from "../Form/Form5";
 import Form6 from "../Form/Form6";
 import Form7 from "../Form/Form7";
 import Form8 from "../Form/Form8";
-import { SignUp } from "../pages/SignUp";
-import { SignIn } from "../pages/SignIn";
 
-export default function Routes() {
+export default function AppRoutes () {
   const Stack = createStackNavigator();
 
   return (
@@ -28,16 +26,6 @@ export default function Routes() {
         headerTitleStyle: { display: "none" },
       }}
     >
-      <Stack.Screen
-        name="SignIn"
-        component={SignIn}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{ headerShown: false }}
-      />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Palette" component={Palette} />
       <Stack.Screen

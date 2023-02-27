@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -13,6 +13,8 @@ import { useNavigation } from "@react-navigation/core";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import AuthContext from "../contexts/auth";
+
 
 type FormDataProps = {
   email: string;
@@ -28,6 +30,12 @@ const signInSchema = yup.object({
 });
 
 export function SignIn() {
+
+  const { signed, signIn } = useContext(AuthContext);
+
+console.log(signed);
+
+
   const navigation = useNavigation();
   const {
     control,
@@ -37,9 +45,9 @@ export function SignIn() {
     resolver: yupResolver(signInSchema),
   });
 
-  function handleSignUp(data: FormDataProps) {
-    console.log(data);
-    navigation.navigate("Home")
+  async function handleSignIn(data: FormDataProps) {
+      signIn();
+      
   }
 
   return (
@@ -49,7 +57,8 @@ export function SignIn() {
           source={require("../../assets/icon.png")}
           alt="Icon"
           alignSelf={"center"}
-          marginTop={30}
+          mt={20}
+          mb={5}
         />
         <Center
           flex={1}
@@ -85,7 +94,7 @@ export function SignIn() {
               />
             )}
           />
-          <Button title="Login" onPress={handleSubmit(handleSignUp)} />
+          <Button title="Login" onPress={handleSubmit(handleSignIn)} />
         </Center>
       </VStack>
     </NativeBaseProvider>
