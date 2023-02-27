@@ -19,15 +19,17 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../GlobalStyles";
+import FormComponent from "../components/FormComponent";
 import NavigationButton from "../components/NavigationButton";
 
-export default function Form8({ navigation }) {
+export default function Form({ navigation }) {
 
-    const [sensibilidadeFacial, setSensibilidadeFacial] = useState(null);
+    const [corPele, setCorPele] = useState(null);
+
     const validacao = () =>
         Alert.alert(
             'Ops',
-            'Selecione uma das alternativas para finalisar a análise!',
+            'Selecione uma das alternativas para continuar!',
             [
                 { text: 'OK', onPress: () => console.log('OK Pressed') },
             ]
@@ -48,91 +50,99 @@ export default function Form8({ navigation }) {
                     />
 
                     <Center>
+                        {/* <FormComponent
+                            titulo={"Qual a cor da pele do paciente antes da exposição solar?"}
+                            A={"Branco Marfim"} 
+                            B={"Pele Clara ou Pálida"}
+                            C={"Pele com Tom de Ouro"}
+                            D={"Castanho Claro"}
+                            E={"Castanho Escuro ou Preto"}
+                        /> */}
                         <Text
                             style={globalStyles.formTitle}
                         >
-                            Qual é o grau de sensibilidade do rosto quando exposto ao sol?
+                            Qual a cor da pele do paciente antes da exposição solar?
                         </Text>
                         <Pressable
-                            onPress={(sensibilidadeFacial) => setSensibilidadeFacial(0)}
+                            onPress={(corPele) => setCorPele(0)}
                             style={globalStyles.formSelect}
-                            borderColor={sensibilidadeFacial == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corPele == 0 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={sensibilidadeFacial == 0 ? "#1EA1CA" : "#003E52"}
+                                color={corPele == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                Muito sensível
+                                Branco Marfim
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(sensibilidadeFacial) => setSensibilidadeFacial(1)}
+                            onPress={(corPele) => setCorPele(1)}
                             style={globalStyles.formSelect}
-                            borderColor={sensibilidadeFacial == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corPele == 1 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={sensibilidadeFacial == 1 ? "#1EA1CA" : "#003E52"}
+                                color={corPele == 1 ? "#1EA1CA" : "#003E52"}
                             >
-                                Sensível
+                                Pele Clara ou Pálida
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(sensibilidadeFacial) => setSensibilidadeFacial(2)}
+                            onPress={(corPele) => setCorPele(2)}
                             style={globalStyles.formSelect}
-                            borderColor={sensibilidadeFacial == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corPele == 2 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={sensibilidadeFacial == 2 ? "#1EA1CA" : "#003E52"}
+                                color={corPele == 2 ? "#1EA1CA" : "#003E52"}
                             >
-                                Normal
+                                Pele com Tom de Ouro
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(sensibilidadeFacial) => setSensibilidadeFacial(3)}
+                            onPress={(corPele) => setCorPele(3)}
                             style={globalStyles.formSelect}
-                            borderColor={sensibilidadeFacial == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corPele == 3 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={sensibilidadeFacial == 3 ? "#1EA1CA" : "#003E52"}
+                                color={corPele == 3 ? "#1EA1CA" : "#003E52"}
                             >
-                                Resistente
+                                Castanho Claro
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(sensibilidadeFacial) => setSensibilidadeFacial(4)}
+                            onPress={(corPele) => setCorPele(4)}
                             style={globalStyles.formSelect}
-                            borderColor={sensibilidadeFacial == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corPele == 4 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={sensibilidadeFacial == 4 ? "#1EA1CA" : "#003E52"}
+                                color={corPele == 4 ? "#1EA1CA" : "#003E52"}
                             >
-                                Muito resistente (nunca queimou)
+                                Castanho Escuro ou Preto
                             </Text>
                         </Pressable>
 
                         {
-                            sensibilidadeFacial == null ? (
+                            corPele == null ? (
                                 <NavigationButton
                                     onPress={validacao}
-                                    titulo={"Finalizar"}
+                                    titulo={"Continuar"}
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Home")}
-                                titulo={"Finalizar"}
+                                onPress={() => navigation.navigate("Form2", {corPele})}
+                                titulo={"Continuar"}
                             />
                         }
 

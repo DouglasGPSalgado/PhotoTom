@@ -4,14 +4,15 @@ import Home from "../pages/Home";
 import Palette from "../pages/Palette";
 import Photo from "../pages/Photo";
 //Paginas do formulario.
-import Form from "../Form/Form";
-import Form2 from "../Form/Form2";
-import Form3 from "../Form/Form3";
-import Form4 from "../Form/Form4";
-import Form5 from "../Form/Form5";
-import Form6 from "../Form/Form6";
-import Form7 from "../Form/Form7";
-import Form8 from "../Form/Form8";
+import Form from "../pages/Form/Form";
+import Form2 from "../pages/Form/Form2";
+import Form3 from "../pages/Form/Form3";
+import Form4 from "../pages/Form/Form4";
+import Form5 from "../pages/Form/Form5";
+import Form6 from "../pages/Form/Form6";
+import Form7 from "../pages/Form/Form7";
+import Form8 from "../pages/Form/Form8";
+import Results from "../pages/Results";
 
 export default function Routes() {
   const Stack = createStackNavigator();
@@ -42,6 +43,7 @@ export default function Routes() {
       <Stack.Screen name="Form6" component={Form6} />
       <Stack.Screen name="Form7" component={Form7} />
       <Stack.Screen name="Form8" component={Form8} />
+      <Stack.Screen name="Results" component={Results} />
     </Stack.Navigator>
   );
 }
