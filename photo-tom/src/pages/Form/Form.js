@@ -140,7 +140,7 @@ export default function Form({ navigation }) {
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Form2")}
+                                onPress={() => navigation.navigate("form2", {corPele})}
                                 titulo={"Continuar"}
                             />
                         }

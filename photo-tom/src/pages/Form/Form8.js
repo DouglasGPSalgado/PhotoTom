@@ -21,7 +21,10 @@ import {
 import { globalStyles } from "../../GlobalStyles";
 import NavigationButton from "../../components/NavigationButton";
 
-export default function Form8({ navigation }) {
+export default function Form8({ navigation, route }) {
+
+    const {corPele} = route.params;
+    console.log(route.params.corPele)
 
     const [sensibilidadeFacial, setSensibilidadeFacial] = useState(null);
     const validacao = () =>
@@ -49,7 +52,7 @@ export default function Form8({ navigation }) {
                     <Center>
                         <Text
                             style={globalStyles.formTitle}
-                        >
+                        >{route.params.corPele} X
                             Qual é o grau de sensibilidade do rosto quando exposto ao sol?
                         </Text>
                         <Pressable
@@ -130,7 +133,7 @@ export default function Form8({ navigation }) {
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Home")}
+                                onPress={() => navigation.navigate("home")}
                                 titulo={"Finalizar"}
                             />
                         }
