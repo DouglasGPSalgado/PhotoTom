@@ -48,7 +48,6 @@ export function SignUp() {
   }
 
   return (
-    <NativeBaseProvider>
       <VStack flex={1} bgColor={"#C9F2FF"}>
         <Image
           source={require("../../assets/icon.png")}
@@ -116,6 +115,5 @@ export function SignUp() {
           <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
         </Center>
       </VStack>
-    </NativeBaseProvider>
   );
 }

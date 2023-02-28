@@ -37,7 +37,6 @@ export default function Form8({ navigation, route }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
                     source={require("../../../assets/Background.png")}
@@ -142,6 +141,5 @@ export default function Form8({ navigation, route }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };

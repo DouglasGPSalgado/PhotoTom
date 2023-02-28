@@ -19,6 +19,7 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../../GlobalStyles";
+import FormComponent from "../../components/FormComponent";
 import NavigationButton from "../../components/NavigationButton";
 
 export default function Form({ navigation }) {
@@ -35,7 +36,6 @@ export default function Form({ navigation }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
                     source={require("../../../assets/Background.png")}
@@ -148,6 +148,5 @@ export default function Form({ navigation }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };

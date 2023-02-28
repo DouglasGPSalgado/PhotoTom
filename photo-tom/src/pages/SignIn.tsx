@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import {
-  NativeBaseProvider,
-  Box,
   Heading,
   VStack,
   Center,
   Image,
+  KeyboardAvoidingView,
+  ScrollView,
 } from "native-base";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
@@ -13,8 +13,9 @@ import { useNavigation } from "@react-navigation/core";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import AuthContext from "../contexts/auth";
-
+import { useAuth } from "../contexts/auth";
+import { Platform } from "react-native";
+import api from "../services/api";
 
 type FormDataProps = {
   email: string;
@@ -30,10 +31,10 @@ const signInSchema = yup.object({
 });
 
 export function SignIn() {
+  const [data, setData] = useState({});
+  const { signed, signIn } = useAuth();
 
-  const { signed, signIn } = useContext(AuthContext);
-
-console.log(signed);
+  console.log(signed);
 
   const {
     control,
@@ -43,57 +44,66 @@ console.log(signed);
     resolver: yupResolver(signInSchema),
   });
 
-  async function handleSignIn(data: FormDataProps) {
-      signIn();
+  async function handleSignIn({email, password}: FormDataProps) {
+    const respose = api.post("/login",{
+      email,
+      password
+    })
+    signIn(respose)
   }
 
   return (
-    <NativeBaseProvider>
-      <VStack flex={1} bgColor={"#C9F2FF"}>
-        <Image
-          source={require("../../assets/icon.png")}
-          alt="Icon"
-          alignSelf={"center"}
-          mt={20}
-          mb={5}
-        />
-        <Center
-          flex={1}
-          bgColor={"white"}
-          mt={5}
-          mx={5}
-          px={8}
-          borderRadius={25}
-        >
-          <Heading marginBottom={10} color={"#003E52"} fontSize={48}>
-            Login
-          </Heading>
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Email"
-                onChangeText={onChange}
-                errorMessage={errors.email?.message}
-              />
-            )}
+    
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      enabled
+      flex={1}
+    >
+        <VStack flex={1} bgColor={"#C9F2FF"}>
+          <Image
+            source={require("../../assets/icon.png")}
+            alt="Icon"
+            alignSelf={"center"}
+            mt={20}
+            mb={5}
           />
-          <Controller
-            control={control}
-            name="password"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Senha"
-                onChangeText={onChange}
-                secureTextEntry
-                errorMessage={errors.password?.message}
-              />
-            )}
-          />
-          <Button title="Login" onPress={handleSubmit(handleSignIn)} />
-        </Center>
-      </VStack>
-    </NativeBaseProvider>
+          <Center
+            flex={1}
+            bgColor={"white"}
+            mt={5}
+            mx={5}
+            px={8}
+            borderRadius={25}
+          >
+            <Heading marginBottom={10} color={"#003E52"} fontSize={48}>
+              Login
+            </Heading>
+            <Controller
+              control={control}
+              name="email"
+              render={({ field: { onChange } }) => (
+                <Input
+                  placeholder="Email"
+                  onChangeText={onChange}
+                  errorMessage={errors.email?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field: { onChange } }) => (
+                <Input
+                  placeholder="Senha"
+                  onChangeText={onChange}
+                  secureTextEntry
+                  errorMessage={errors.password?.message}
+                />
+              )}
+            />
+            <Button title="Login" onPress={handleSubmit(handleSignIn)} />
+          </Center>
+        </VStack>
+    </KeyboardAvoidingView>
   );
 }

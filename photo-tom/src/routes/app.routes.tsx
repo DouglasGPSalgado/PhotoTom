@@ -1,18 +1,18 @@
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
-
-import Form from '../pages/Form/Form';
-import Form2 from '../pages/Form/Form2';
-import Form3 from '../pages/Form/Form3';
-import Form4 from '../pages/Form/Form4';
-import Form5 from '../pages/Form/Form5';
-import Form6 from '../pages/Form/Form6';
-import Form7 from '../pages/Form/Form7';
-import Form8 from '../pages/Form/Form8';
-import Home from '../pages/Home';
-import Palette from '../pages/Palette';
-import Photo from '../pages/Photo';
-import Results from '../pages/Results';
+import React from "react";
+import { createStackNavigator, StackNavigationProp } from "@react-navigation/stack";
+import Home from "../pages/Home";
+import Palette from "../pages/Palette";
+import Photo from "../pages/Photo";
+//Paginas do formulario.
+import Form from "../pages/Form/Form";
+import Form2 from "../pages/Form/Form2";
+import Form3 from "../pages/Form/Form3";
+import Form4 from "../pages/Form/Form4";
+import Form5 from "../pages/Form/Form5";
+import Form6 from "../pages/Form/Form6";
+import Form7 from "../pages/Form/Form7";
+import Form8 from "../pages/Form/Form8";
+import Results from "../pages/Results";
 
 type AppRoutes = {
   home: undefined

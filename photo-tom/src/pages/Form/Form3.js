@@ -34,7 +34,6 @@ export default function Form3({ navigation }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
                     source={require("../../../assets/Background.png")}
@@ -139,6 +138,5 @@ export default function Form3({ navigation }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };
