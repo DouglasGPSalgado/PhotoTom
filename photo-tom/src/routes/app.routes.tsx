@@ -48,7 +48,7 @@ export default function AppRoutes() {
       <Screen name="home" component={Home} options={{ headerShown: false }} />
       <Screen name="Palette" component={Palette} />
       <Screen
-        name="photo"
+        name='photo'
         component={Photo}
         options={{ headerShown: false }}
       />

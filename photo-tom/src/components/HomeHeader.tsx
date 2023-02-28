@@ -9,7 +9,7 @@ export function HomeHeader() {
     const { signOut } = useContext(AuthContext);
 
     return (
-        <HStack bg="blue.400" pt={16} pb={5} px={8} alignItems="center">
+        <HStack bg="blue.300" pt={16} pb={5} px={8} alignItems="center">
             <VStack flex={1}>
                 <Text color="white" fontSize="md">
                     Olá,

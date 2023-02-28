@@ -1,21 +1,19 @@
-import { useNavigation } from '@react-navigation/native';
-import { Box, Center, Image, Modal, Pressable, Text, VStack } from 'native-base';
-import { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import InputSpinner from 'react-native-input-spinner';
+import { useNavigation } from '@react-navigation/native'
+import { Box, Center, Heading, Image, Modal, Pressable, Text, VStack } from 'native-base'
+import { useState } from 'react'
+import InputSpinner from 'react-native-input-spinner'
 
-import Background from '../../assets/Background.png';
-import ImageHome from '../../assets/image_home.png';
-import Card from '../components/Card';
-import GradientText from '../components/GradientText';
-import { HomeHeader } from '../components/HomeHeader';
-import { AppNavigatorRoutesProps } from '../routes/app.routes';
+import Background from '../../assets/Background.png'
+import ImageHome from '../../assets/image_home.png'
+import Card from '../components/Card'
+import { HomeHeader } from '../components/HomeHeader'
+import { type AppNavigatorRoutesProps } from '../routes/app.routes'
 
-export default function Home() {
+export default function Home () {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const [showModal, setShowModal] = useState(false);
-  const [fototipo, setFototipo] = useState<any>(1);
+  const [showModal, setShowModal] = useState(false)
+  const [fototipo, setFototipo] = useState<any>(1)
 
   console.log(fototipo)
 
@@ -40,14 +38,12 @@ export default function Home() {
           resizeMode="contain"
           alt=""
         />
-        <GradientText
-          style={styles.title}
-          text={"Escolha o tipo de análise"}
-        />
-        <GradientText
-          style={styles.info}
-          text={"Caso tenha duvidas clique no botão “?” para mais detalhes"}
-        />
+        <Text fontSize='28' color='blue.800' fontFamily='heading'>
+          Escolha o tipo de análise
+        </Text>
+        <Heading fontSize='xs' color='blue.800'>
+          Caso tenha duvidas clique no botão “?” para mais detalhes
+        </Heading>
       </Center>
 
       <Box px={10}>
@@ -56,19 +52,19 @@ export default function Home() {
           subtitle="Comparação visual do técnico"
           description="Análise simples onde o técnico tira uma foto do cliente e compara visualmente com uma paleta de cores + Formulário para análise minuciosa"
           action="Continuar"
-          onPress={() => setShowModal(true)}
+          onPress={() => { setShowModal(true) }}
         />
 
         <Modal
-          //Modal chamado pelo <Card /> para definir o fototipo.
+          // Modal chamado pelo <Card /> para definir o fototipo.
           isOpen={showModal}
-          onClose={() => setShowModal(false)}
+          onClose={() => { setShowModal(false) }}
           size="lg"
           shadow="7"
         >
           <Modal.Content width="80%">
             <Modal.CloseButton />
-            <Modal.Header                  >
+            <Modal.Header >
               <Text
                 fontSize="20"
                 fontWeight="normal"
@@ -104,20 +100,20 @@ export default function Home() {
                     py="8"
                   >
                     <InputSpinner
-                      //estilo
-                      width={"80%"}
+                      // estilo
+                      width={'80%'}
                       fontSize={28}
-                      textColor={"#003E52"}
-                      buttonTextColor={"#FFFFFF"}
-                      skin={"round"}
-                      //logica da dependencia.
+                      textColor={'#003E52'}
+                      buttonTextColor={'#FFFFFF'}
+                      skin={'round'}
+                      // logica da dependencia.
                       max={6}
                       min={1}
                       step={1}
                       arrows={true}
-                      color={"#003E52"}
-                      //colorMax={"#f04048"}
-                      //colorMin={"#40c5f4"}
+                      color={'#003E52'}
+                      // colorMax={"#f04048"}
+                      // colorMin={"#40c5f4"}
                       value={fototipo}
                       onChange={(fototipo) => {
                         setFototipo(fototipo)
@@ -149,19 +145,5 @@ export default function Home() {
         </Modal>
       </Box>
     </VStack>
-  );
+  )
 }
-
-const styles = StyleSheet.create({
-  title: {
-    marginHorizontal: 10,
-    fontSize: 32,
-    textAlign: "left",
-  },
-  info: {
-    marginHorizontal: 10,
-    fontSize: 10,
-    color: "#003E52",
-    textAlign: "left",
-  },
-});
