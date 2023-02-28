@@ -3,16 +3,17 @@ import React, {
   PropsWithChildren,
   useEffect,
   useState,
+  useContext,
 } from "react";
-import * as auth from "../services/auth";
-import { HStack, Spinner, NativeBaseProvider } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from "../services/api";
 
 interface AuthContextData {
   signed: boolean;
   user: object | null;
-  signIn(): Promise<void>;
-  signOut(): void;
+  loading: boolean;
+  signIn: (data) => void;
+  signOut: () => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -22,31 +23,29 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     async function LoadStoragedData() {
       const storagedUser = await AsyncStorage.getItem("@PTAuth:user");
       const storagedToken = await AsyncStorage.getItem("@PTAuth:token");
-      
-
-       await new Promise(resolve => setTimeout(resolve, 2000))
 
       if (storagedUser && storagedToken) {
-        setUser(JSON.parse(storagedUser));
         setLoading(false);
-        console.log("storagedUser");
-        
+        api.defaults.headers.Authorization = `Token ${storagedToken}`;
+        setUser(JSON.parse(storagedUser));
+        console.log(user);
       }
     }
-    
     LoadStoragedData();
   }, []);
 
-  async function signIn() {
-    const response = await auth.signIn();
-    console.log(response);
+  async function signIn(data: any) {
 
-    setUser(response.user);
-    await AsyncStorage.setItem("@PTAuth:user", JSON.stringify(response.user));
-    await AsyncStorage.setItem("@PTAuth:token", response.token);
+    setUser(data.user);
+
+    api.defaults.headers.Authorization = `Token ${data.token}`;
+
+    await AsyncStorage.setItem("@PTAuth:user", JSON.stringify(data.user));
+    await AsyncStorage.setItem("@PTAuth:token", data.token);
   }
   function signOut() {
     AsyncStorage.clear().then(() => {
@@ -54,19 +53,17 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     });
   }
 
-  if (loading) {
-    return (
-          <HStack flex={1} justifyContent={"center"} alignItems={"center"}>
-            <Spinner size={"lg"} color="#666"/>
-          </HStack>
-    );
-  }
-
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ signed: !!user, user, signIn, loading, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
-export default AuthContext;
+export function useAuth() {
+  const context = useContext(AuthContext);
+
+  return context;
+}
