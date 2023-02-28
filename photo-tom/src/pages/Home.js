@@ -7,15 +7,12 @@ import {
   SafeAreaView,
 } from "react-native";
 import {
-  NativeBaseProvider,
   Box,
   Center,
   Pressable,
-  Button,
   Text,
   Modal,
   VStack,
-  HStack
 } from "native-base";
 import InputSpinner from "react-native-input-spinner";
 
@@ -37,7 +34,6 @@ export default function Home({ navigation }) {
   console.log(fototipo)
 
   return (
-    <NativeBaseProvider>
       <ScrollView style={{ flex: 1, flexDirection: "column" }}>
         <ImageBackground
           source={require("../../assets/Background.png")}
@@ -186,7 +182,6 @@ export default function Home({ navigation }) {
           </Box>
         </ImageBackground>
       </ScrollView>
-    </NativeBaseProvider>
   );
 }
 

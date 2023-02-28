@@ -64,7 +64,6 @@ export default function Palette() {
   const { height } = Dimensions.get("window");
 
   return (
-    <NativeBaseProvider>
       <ImageBackground
         source={require("../../assets/Background.png")}
         style={{ flex: 1 }}
@@ -157,6 +156,5 @@ export default function Palette() {
           </VStack>
         </Center>
       </ImageBackground>
-    </NativeBaseProvider>
   );
 }

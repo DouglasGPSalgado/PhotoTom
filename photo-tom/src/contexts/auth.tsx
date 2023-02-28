@@ -54,13 +54,11 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     });
   }
 
-  if (!loading) {
+  if (loading) {
     return (
-      <NativeBaseProvider>
           <HStack flex={1} justifyContent={"center"} alignItems={"center"}>
             <Spinner size={"lg"} color="#666"/>
           </HStack>
-      </NativeBaseProvider>
     );
   }
 

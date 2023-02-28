@@ -18,12 +18,12 @@ import {
     Text,
     Pressable
 } from "native-base";
-import { globalStyles } from "../GlobalStyles";
-import NavigationButton from "../components/NavigationButton";
+import { globalStyles } from "../../GlobalStyles";
+import NavigationButton from "../../components/NavigationButton";
 
-export default function Form3({ navigation }) {
+export default function Form4({ navigation }) {
 
-    const [corOlhos, setCorOlhos] = useState(null);
+    const [quantidadeSardas, setQuantidadeSardas] = useState(null);
     const validacao = () =>
         Alert.alert(
             'Ops',
@@ -34,15 +34,14 @@ export default function Form3({ navigation }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../assets/Background.png")}
+                    source={require("../../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../assets/image-form.png")}
+                        source={require("../../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
@@ -51,87 +50,87 @@ export default function Form3({ navigation }) {
                         <Text
                             style={globalStyles.formTitle}
                         >
-                            Qual a cor dos olhos?
+                            Qual é a quantidade de sardas na pele em áreas que não estão expostas?
                         </Text>
                         <Pressable
-                            onPress={(corOlhos) => setCorOlhos(0)}
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(0)}
                             style={globalStyles.formSelect}
-                            borderColor={corOlhos == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={quantidadeSardas == 0 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corOlhos == 0 ? "#1EA1CA" : "#003E52"}
+                                color={quantidadeSardas == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                 Azul Claro, Cinza Claro ou Verde Claro
+                                Muitas
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corOlhos) => setCorOlhos(1)}
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(1)}
                             style={globalStyles.formSelect}
-                            borderColor={corOlhos == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={quantidadeSardas == 1 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corOlhos == 1 ? "#1EA1CA" : "#003E52"}
+                                color={quantidadeSardas == 1 ? "#1EA1CA" : "#003E52"}
                             >
-                                Azul, Cinza ou Verde
+                                Várias
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corOlhos) => setCorOlhos(2)}
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(2)}
                             style={globalStyles.formSelect}
-                            borderColor={corOlhos == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={quantidadeSardas == 2 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corOlhos == 2 ? "#1EA1CA" : "#003E52"}
+                                color={quantidadeSardas == 2 ? "#1EA1CA" : "#003E52"}
                             >
-                                Castanho Claro ou Mel
+                                Algumas
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corOlhos) => setCorOlhos(3)}
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(3)}
                             style={globalStyles.formSelect}
-                            borderColor={corOlhos == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={quantidadeSardas == 3 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corOlhos == 3 ? "#1EA1CA" : "#003E52"}
+                                color={quantidadeSardas == 3 ? "#1EA1CA" : "#003E52"}
                             >
-                                Castanho
+                                Muito poucas
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corOlhos) => setCorOlhos(4)}
+                            onPress={(quantidadeSardas) => setQuantidadeSardas(4)}
                             style={globalStyles.formSelect}
-                            borderColor={corOlhos == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={quantidadeSardas == 4 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corOlhos == 4 ? "#1EA1CA" : "#003E52"}
+                                color={quantidadeSardas == 4 ? "#1EA1CA" : "#003E52"}
                             >
-                                Marrom Escuro/Preto
+                                Nenhuma
                             </Text>
                         </Pressable>
 
                         {
-                            corOlhos == null ? (
+                            quantidadeSardas == null ? (
                                 <NavigationButton
                                     onPress={validacao}
                                     titulo={"Continuar"}
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Form4")}
+                                onPress={() => navigation.navigate("Form5")}
                                 titulo={"Continuar"}
                             />
                         }
@@ -139,6 +138,5 @@ export default function Form3({ navigation }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };

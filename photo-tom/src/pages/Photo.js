@@ -50,7 +50,6 @@ export default function Photo() {
     return <Text>No access to camera</Text>;
   }
   return (
-    <NativeBaseProvider>
       <View style={styles.container}>
         {!image ? (
           <Camera
@@ -112,7 +111,6 @@ export default function Photo() {
           )}
         </View>
       </View>
-    </NativeBaseProvider>
   );
 }
 const styles = StyleSheet.create({

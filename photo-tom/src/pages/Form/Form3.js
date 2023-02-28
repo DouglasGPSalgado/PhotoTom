@@ -18,12 +18,12 @@ import {
     Text,
     Pressable
 } from "native-base";
-import { globalStyles } from "../GlobalStyles";
-import NavigationButton from "../components/NavigationButton";
+import { globalStyles } from "../../GlobalStyles";
+import NavigationButton from "../../components/NavigationButton";
 
-export default function Form2({ navigation }) {
+export default function Form3({ navigation }) {
 
-    const [corCabelo, setCorCabelo] = useState(null);
+    const [corOlhos, setCorOlhos] = useState(null);
     const validacao = () =>
         Alert.alert(
             'Ops',
@@ -34,15 +34,14 @@ export default function Form2({ navigation }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../assets/Background.png")}
+                    source={require("../../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../assets/image-form.png")}
+                        source={require("../../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
@@ -51,87 +50,87 @@ export default function Form2({ navigation }) {
                         <Text
                             style={globalStyles.formTitle}
                         >
-                            Qual a cor natural do cabelo?
+                            Qual a cor dos olhos?
                         </Text>
                         <Pressable
-                            onPress={(corCabelo) => setCorCabelo(0)}
+                            onPress={(corOlhos) => setCorOlhos(0)}
                             style={globalStyles.formSelect}
-                            borderColor={corCabelo == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corOlhos == 0 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corCabelo == 0 ? "#1EA1CA" : "#003E52"}
+                                color={corOlhos == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                Ruivo ou Loiro Claro
+                                 Azul Claro, Cinza Claro ou Verde Claro
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corCabelo) => setCorCabelo(1)}
+                            onPress={(corOlhos) => setCorOlhos(1)}
                             style={globalStyles.formSelect}
-                            borderColor={corCabelo == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corOlhos == 1 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corCabelo == 1 ? "#1EA1CA" : "#003E52"}
+                                color={corOlhos == 1 ? "#1EA1CA" : "#003E52"}
                             >
-                                Loiro
+                                Azul, Cinza ou Verde
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corCabelo) => setCorCabelo(2)}
+                            onPress={(corOlhos) => setCorOlhos(2)}
                             style={globalStyles.formSelect}
-                            borderColor={corCabelo == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corOlhos == 2 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corCabelo == 2 ? "#1EA1CA" : "#003E52"}
+                                color={corOlhos == 2 ? "#1EA1CA" : "#003E52"}
                             >
-                                Loiro Escuro ou Castanho Claro
+                                Castanho Claro ou Mel
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corCabelo) => setCorCabelo(3)}
+                            onPress={(corOlhos) => setCorOlhos(3)}
                             style={globalStyles.formSelect}
-                            borderColor={corCabelo == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corOlhos == 3 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corCabelo == 3 ? "#1EA1CA" : "#003E52"}
+                                color={corOlhos == 3 ? "#1EA1CA" : "#003E52"}
                             >
                                 Castanho
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(corCabelo) => setCorCabelo(4)}
+                            onPress={(corOlhos) => setCorOlhos(4)}
                             style={globalStyles.formSelect}
-                            borderColor={corCabelo == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corOlhos == 4 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={corCabelo == 4 ? "#1EA1CA" : "#003E52"}
+                                color={corOlhos == 4 ? "#1EA1CA" : "#003E52"}
                             >
-                                Preto
+                                Marrom Escuro/Preto
                             </Text>
                         </Pressable>
 
                         {
-                            corCabelo == null ? (
+                            corOlhos == null ? (
                                 <NavigationButton
                                     onPress={validacao}
                                     titulo={"Continuar"}
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Form3")}
+                                onPress={() => navigation.navigate("Form4")}
                                 titulo={"Continuar"}
                             />
                         }
@@ -139,6 +138,5 @@ export default function Form2({ navigation }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };

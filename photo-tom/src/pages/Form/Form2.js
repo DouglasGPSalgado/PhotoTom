@@ -18,12 +18,12 @@ import {
     Text,
     Pressable
 } from "native-base";
-import { globalStyles } from "../GlobalStyles";
-import NavigationButton from "../components/NavigationButton";
+import { globalStyles } from "../../GlobalStyles";
+import NavigationButton from "../../components/NavigationButton";
 
-export default function Form7({ navigation }) {
+export default function Form2({ navigation }) {
 
-    const [reacaoSolar, setReacaoSolar] = useState(null);
+    const [corCabelo, setCorCabelo] = useState(null);
     const validacao = () =>
         Alert.alert(
             'Ops',
@@ -34,15 +34,14 @@ export default function Form7({ navigation }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../assets/Background.png")}
+                    source={require("../../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../assets/image-form.png")}
+                        source={require("../../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
@@ -51,87 +50,87 @@ export default function Form7({ navigation }) {
                         <Text
                             style={globalStyles.formTitle}
                         >
-                            Como a pele reage ao Sol?
+                            Qual a cor natural do cabelo?
                         </Text>
                         <Pressable
-                            onPress={(reacaoSolar) => setReacaoSolar(0)}
+                            onPress={(corCabelo) => setCorCabelo(0)}
                             style={globalStyles.formSelect}
-                            borderColor={reacaoSolar == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corCabelo == 0 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={reacaoSolar == 0 ? "#1EA1CA" : "#003E52"}
+                                color={corCabelo == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                Sempre queima, forma bolhas e descama
+                                Ruivo ou Loiro Claro
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(reacaoSolar) => setReacaoSolar(1)}
+                            onPress={(corCabelo) => setCorCabelo(1)}
                             style={globalStyles.formSelect}
-                            borderColor={reacaoSolar == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corCabelo == 1 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={reacaoSolar == 1 ? "#1EA1CA" : "#003E52"}
+                                color={corCabelo == 1 ? "#1EA1CA" : "#003E52"}
                             >
-                                Quase sempre queima, forma bolhas e descama
+                                Loiro
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(reacaoSolar) => setReacaoSolar(2)}
+                            onPress={(corCabelo) => setCorCabelo(2)}
                             style={globalStyles.formSelect}
-                            borderColor={reacaoSolar == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corCabelo == 2 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={reacaoSolar == 2 ? "#1EA1CA" : "#003E52"}
+                                color={corCabelo == 2 ? "#1EA1CA" : "#003E52"}
                             >
-                                De vez em quando queima
+                                Loiro Escuro ou Castanho Claro
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(reacaoSolar) => setReacaoSolar(3)}
+                            onPress={(corCabelo) => setCorCabelo(3)}
                             style={globalStyles.formSelect}
-                            borderColor={reacaoSolar == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corCabelo == 3 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={reacaoSolar == 3 ? "#1EA1CA" : "#003E52"}
+                                color={corCabelo == 3 ? "#1EA1CA" : "#003E52"}
                             >
-                                Raramente queima
+                                Castanho
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(reacaoSolar) => setReacaoSolar(4)}
+                            onPress={(corCabelo) => setCorCabelo(4)}
                             style={globalStyles.formSelect}
-                            borderColor={reacaoSolar == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={corCabelo == 4 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={reacaoSolar == 4 ? "#1EA1CA" : "#003E52"}
+                                color={corCabelo == 4 ? "#1EA1CA" : "#003E52"}
                             >
-                                Nunca queima
+                                Preto
                             </Text>
                         </Pressable>
 
                         {
-                            reacaoSolar == null ? (
+                            corCabelo == null ? (
                                 <NavigationButton
                                     onPress={validacao}
                                     titulo={"Continuar"}
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Form8")}
+                                onPress={() => navigation.navigate("Form3")}
                                 titulo={"Continuar"}
                             />
                         }
@@ -139,6 +138,5 @@ export default function Form7({ navigation }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };

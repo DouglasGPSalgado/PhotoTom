@@ -49,7 +49,6 @@ console.log(signed);
   }
 
   return (
-    <NativeBaseProvider>
       <VStack flex={1} bgColor={"#C9F2FF"}>
         <Image
           source={require("../../assets/icon.png")}
@@ -95,6 +94,5 @@ console.log(signed);
           <Button title="Login" onPress={handleSubmit(handleSignIn)} />
         </Center>
       </VStack>
-    </NativeBaseProvider>
   );
 }

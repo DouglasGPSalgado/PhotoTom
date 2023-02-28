@@ -18,12 +18,12 @@ import {
     Text,
     Pressable
 } from "native-base";
-import { globalStyles } from "../GlobalStyles";
-import NavigationButton from "../components/NavigationButton";
+import { globalStyles } from "../../GlobalStyles";
+import NavigationButton from "../../components/NavigationButton";
 
-export default function Form4({ navigation }) {
+export default function Form7({ navigation }) {
 
-    const [quantidadeSardas, setQuantidadeSardas] = useState(null);
+    const [reacaoSolar, setReacaoSolar] = useState(null);
     const validacao = () =>
         Alert.alert(
             'Ops',
@@ -34,15 +34,14 @@ export default function Form4({ navigation }) {
         );
 
     return (
-        <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../assets/Background.png")}
+                    source={require("../../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../assets/image-form.png")}
+                        source={require("../../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
@@ -51,87 +50,87 @@ export default function Form4({ navigation }) {
                         <Text
                             style={globalStyles.formTitle}
                         >
-                            Qual é a quantidade de sardas na pele em áreas que não estão expostas?
+                            Como a pele reage ao Sol?
                         </Text>
                         <Pressable
-                            onPress={(quantidadeSardas) => setQuantidadeSardas(0)}
+                            onPress={(reacaoSolar) => setReacaoSolar(0)}
                             style={globalStyles.formSelect}
-                            borderColor={quantidadeSardas == 0 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={reacaoSolar == 0 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={quantidadeSardas == 0 ? "#1EA1CA" : "#003E52"}
+                                color={reacaoSolar == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                Muitas
+                                Sempre queima, forma bolhas e descama
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(quantidadeSardas) => setQuantidadeSardas(1)}
+                            onPress={(reacaoSolar) => setReacaoSolar(1)}
                             style={globalStyles.formSelect}
-                            borderColor={quantidadeSardas == 1 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={reacaoSolar == 1 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={quantidadeSardas == 1 ? "#1EA1CA" : "#003E52"}
+                                color={reacaoSolar == 1 ? "#1EA1CA" : "#003E52"}
                             >
-                                Várias
+                                Quase sempre queima, forma bolhas e descama
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(quantidadeSardas) => setQuantidadeSardas(2)}
+                            onPress={(reacaoSolar) => setReacaoSolar(2)}
                             style={globalStyles.formSelect}
-                            borderColor={quantidadeSardas == 2 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={reacaoSolar == 2 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={quantidadeSardas == 2 ? "#1EA1CA" : "#003E52"}
+                                color={reacaoSolar == 2 ? "#1EA1CA" : "#003E52"}
                             >
-                                Algumas
+                                De vez em quando queima
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(quantidadeSardas) => setQuantidadeSardas(3)}
+                            onPress={(reacaoSolar) => setReacaoSolar(3)}
                             style={globalStyles.formSelect}
-                            borderColor={quantidadeSardas == 3 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={reacaoSolar == 3 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={quantidadeSardas == 3 ? "#1EA1CA" : "#003E52"}
+                                color={reacaoSolar == 3 ? "#1EA1CA" : "#003E52"}
                             >
-                                Muito poucas
+                                Raramente queima
                             </Text>
                         </Pressable>
 
                         <Pressable
-                            onPress={(quantidadeSardas) => setQuantidadeSardas(4)}
+                            onPress={(reacaoSolar) => setReacaoSolar(4)}
                             style={globalStyles.formSelect}
-                            borderColor={quantidadeSardas == 4 ? "#1EA1CA" : "#FFFFFF"}
+                            borderColor={reacaoSolar == 4 ? "#1EA1CA" : "#FFFFFF"}
                             shadow="7"
                         >
                             <Text
                                 style={globalStyles.formSelectTitle}
-                                color={quantidadeSardas == 4 ? "#1EA1CA" : "#003E52"}
+                                color={reacaoSolar == 4 ? "#1EA1CA" : "#003E52"}
                             >
-                                Nenhuma
+                                Nunca queima
                             </Text>
                         </Pressable>
 
                         {
-                            quantidadeSardas == null ? (
+                            reacaoSolar == null ? (
                                 <NavigationButton
                                     onPress={validacao}
                                     titulo={"Continuar"}
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Form5")}
+                                onPress={() => navigation.navigate("Form8")}
                                 titulo={"Continuar"}
                             />
                         }
@@ -139,6 +138,5 @@ export default function Form4({ navigation }) {
                     </Center>
                 </ImageBackground>
             </ScrollView>
-        </NativeBaseProvider>
     );
 };
