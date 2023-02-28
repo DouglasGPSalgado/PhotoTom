@@ -151,7 +151,7 @@ export default function Palette() {
                 </Center>
               </HStack>
             </Center>
-            <TouchableOpacity onPress={() => navigation.navigate("Form")}>
+            <TouchableOpacity onPress={() => navigation.navigate("form")}>
               <Text style={{ fontSize: 32, color: "#00B707" }}>Continuar</Text>
             </TouchableOpacity>
           </VStack>

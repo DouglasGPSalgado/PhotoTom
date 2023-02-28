@@ -131,7 +131,7 @@ export default function Form5({ navigation }) {
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Form6")}
+                                onPress={() => navigation.navigate("form6")}
                                 titulo={"Continuar"}
                             />
                         }

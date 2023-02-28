@@ -45,7 +45,6 @@ console.log(signed);
 
   async function handleSignIn(data: FormDataProps) {
       signIn();
-      
   }
 
   return (

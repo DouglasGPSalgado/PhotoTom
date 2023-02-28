@@ -12,11 +12,19 @@ export const THEME = extendTheme({
         200: '#AAEBFF',
         100: '#C8F2FF',
       },
+      gray: {
+        700: '#121214',
+        600: '#202024',
+        500: '#29292E',
+        400: '#323238',
+        300: '#7C7C8A',
+        200: '#C4C4CC',
+        100: '#E1E1E6',
+      },
       white: '#FFF',
-    
     },
     fonts: {
-      heading: 'Roboto_700Bold',
+      heading: 'Roboto_500Medium',
       body: 'Roboto_400Regular',
     },
     fontSizes: {

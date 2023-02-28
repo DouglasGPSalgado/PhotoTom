@@ -134,7 +134,7 @@ export default function Form8({ navigation, route }) {
                                 />
                             ) : 
                             <NavigationButton
-                                onPress={() => navigation.navigate("Home")}
+                                onPress={() => navigation.navigate("home")}
                                 titulo={"Finalizar"}
                             />
                         }

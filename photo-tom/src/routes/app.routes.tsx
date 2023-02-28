@@ -1,26 +1,42 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../pages/Home";
-import Palette from "../pages/Palette";
-import Photo from "../pages/Photo";
-//Paginas do formulario.
-import Form from "../pages/Form/Form";
-import Form2 from "../pages/Form/Form2";
-import Form3 from "../pages/Form/Form3";
-import Form4 from "../pages/Form/Form4";
-import Form5 from "../pages/Form/Form5";
-import Form6 from "../pages/Form/Form6";
-import Form7 from "../pages/Form/Form7";
-import Form8 from "../pages/Form/Form8";
-import Results from "../pages/Results";
-import { SignUp } from "../pages/SignUp";
-import { SignIn } from "../pages/SignIn";
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import React from 'react';
 
-export default function AppRoutes () {
-  const Stack = createStackNavigator();
+import Form from '../pages/Form/Form';
+import Form2 from '../pages/Form/Form2';
+import Form3 from '../pages/Form/Form3';
+import Form4 from '../pages/Form/Form4';
+import Form5 from '../pages/Form/Form5';
+import Form6 from '../pages/Form/Form6';
+import Form7 from '../pages/Form/Form7';
+import Form8 from '../pages/Form/Form8';
+import Home from '../pages/Home';
+import Palette from '../pages/Palette';
+import Photo from '../pages/Photo';
+import Results from '../pages/Results';
+
+type AppRoutes = {
+  home: undefined
+  Palette: undefined
+  photo: undefined
+  form: undefined
+  form1: undefined
+  form2: undefined
+  form3: undefined
+  form4: undefined
+  form5: undefined
+  form6: undefined
+  form7: undefined
+  form8: undefined
+  results: undefined
+}
+
+export type AppNavigatorRoutesProps = StackNavigationProp<AppRoutes>
+
+export default function AppRoutes() {
+  const { Navigator, Screen } = createStackNavigator<AppRoutes>();
 
   return (
-    <Stack.Navigator
+    <Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: "#FFFFFF",
@@ -29,23 +45,22 @@ export default function AppRoutes () {
         headerTitleStyle: { display: "none" },
       }}
     >
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Palette" component={Palette} />
-      <Stack.Screen
-        name="Photo"
+      <Screen name="home" component={Home} options={{ headerShown: false }} />
+      <Screen name="Palette" component={Palette} />
+      <Screen
+        name="photo"
         component={Photo}
         options={{ headerShown: false }}
       />
-      {/* A baixo, a Stack segue as paginas de cada questão do formulario. */}
-      <Stack.Screen name="Form" component={Form} />
-      <Stack.Screen name="Form2" component={Form2} />
-      <Stack.Screen name="Form3" component={Form3} />
-      <Stack.Screen name="Form4" component={Form4} />
-      <Stack.Screen name="Form5" component={Form5} />
-      <Stack.Screen name="Form6" component={Form6} />
-      <Stack.Screen name="Form7" component={Form7} />
-      <Stack.Screen name="Form8" component={Form8} />
-      <Stack.Screen name="Results" component={Results} />
-    </Stack.Navigator>
+      <Screen name="form" component={Form} />
+      <Screen name="form2" component={Form2} />
+      <Screen name="form3" component={Form3} />
+      <Screen name="form4" component={Form4} />
+      <Screen name="form5" component={Form5} />
+      <Screen name="form6" component={Form6} />
+      <Screen name="form7" component={Form7} />
+      <Screen name="form8" component={Form8} />
+      <Screen name="results" component={Results} />
+    </Navigator>
   );
 }
