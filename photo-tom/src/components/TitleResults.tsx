@@ -1,15 +1,15 @@
-import { Text } from 'native-base';
+import { Heading, IHeadingProps } from 'native-base';
 
-type TitleResultsProps = {
+type TitleResultsProps = IHeadingProps & {
     title: string
 }
 
-export function TitleResults({ title }: TitleResultsProps) {
+export function TitleResults({ title, ...rest }: TitleResultsProps) {
     return (
         <>
-            <Text color='blue.800' fontSize='3xl'>
+            <Heading color='blue.800' {...rest}>
                 {title}
-            </Text>
+            </Heading>
         </>
     )
 } 
