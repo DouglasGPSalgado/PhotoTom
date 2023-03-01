@@ -1,6 +1,7 @@
 import { Roboto_400Regular, Roboto_500Medium, useFonts } from '@expo-google-fonts/roboto';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, Spinner } from 'native-base';
+import { StatusBar } from 'react-native';
 
 import { AuthProvider } from './src/contexts/auth';
 import ImageProvider from './src/contexts/img';
@@ -14,6 +15,11 @@ export default function App() {
   })
   return (
     <NativeBaseProvider theme={THEME}>
+       <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <NavigationContainer>
         <AuthProvider>
           <ImageProvider>
