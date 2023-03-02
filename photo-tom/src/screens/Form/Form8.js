@@ -18,7 +18,7 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../../GlobalStyles";
-import NavigationButton from "../../components/NavigationButton";
+import NavigationButton from "@components/NavigationButton";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Form8({navigation, route}) {
@@ -39,12 +39,12 @@ export default function Form8({navigation, route}) {
         <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../../assets/Background.png")}
+                    source={require("@assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../../assets/image-form.png")}
+                        source={require("@assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />

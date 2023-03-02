@@ -19,7 +19,7 @@ import {
     Pressable
 } from "native-base";
 import { globalStyles } from "../../GlobalStyles";
-import NavigationButton from "../../components/NavigationButton";
+import NavigationButton from "@components/NavigationButton";
 
 export default function Form({navigation}) {
 
@@ -40,12 +40,12 @@ export default function Form({navigation}) {
         <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../../assets/Background.png")}
+                    source={require("@assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../../assets/image-form.png")}
+                        source={require("@assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
