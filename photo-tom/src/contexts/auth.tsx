@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
       const storagedToken = await AsyncStorage.getItem('@PTAuth:token')
 
       if (storagedUser && storagedToken) {
-        api.defaults.headers.Authorization = `Token ${storagedToken}`
+        // api.defaults.headers.Authorization = `Token ${storagedToken}`;
         setUser(JSON.parse(storagedUser))
         console.log(user)
       }
@@ -40,9 +40,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   async function signIn(data: any) {
     setUser(data.user)
-
-    api.defaults.headers.Authorization = `Token ${data.token}`
-
+    // api.defaults.headers.Authorization = `Token ${data.token}`;
     await AsyncStorage.setItem('@PTAuth:user', JSON.stringify(data.user))
     await AsyncStorage.setItem('@PTAuth:token', data.token)
   }
