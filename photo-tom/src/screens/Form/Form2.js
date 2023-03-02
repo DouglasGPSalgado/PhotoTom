@@ -21,7 +21,7 @@ import {
 import { globalStyles } from "../../GlobalStyles";
 import NavigationButton from "../../components/NavigationButton";
 
-export default function Form2({navigation, route}) {
+export default function Form2({ navigation, route }) {
     console.log(route)
 
     const [corCabelo, setCorCabelo] = useState(null);
@@ -38,12 +38,12 @@ export default function Form2({navigation, route}) {
         <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../../assets/Background.png")}
+                    source={require("../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../../assets/image-form.png")}
+                        source={require("../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
@@ -130,11 +130,11 @@ export default function Form2({navigation, route}) {
                                     onPress={validacao}
                                     titulo={"Continuar"}
                                 />
-                            ) : 
-                            <NavigationButton
-                                onPress={() => navigation.navigate("Form3")}
-                                titulo={"Continuar"}
-                            />
+                            ) :
+                                <NavigationButton
+                                    onPress={() => navigation.navigate("Form3", { Resposta2: corCabelo })}
+                                    titulo={"Continuar"}
+                                />
                         }
 
                     </Center>

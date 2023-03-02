@@ -23,7 +23,7 @@ import NavigationButton from "../../components/NavigationButton";
 
 export default function Form({navigation}) {
 
-    const [corPele, setCorPele] = useState(4);
+    const [corPele, setCorPele] = useState(null);
 
     const validacao = () =>
         Alert.alert(
@@ -40,12 +40,12 @@ export default function Form({navigation}) {
         <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../../assets/Background.png")}
+                    source={require("../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../../assets/image-form.png")}
+                        source={require("../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />

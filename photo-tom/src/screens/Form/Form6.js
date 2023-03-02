@@ -21,7 +21,7 @@ import {
 import { globalStyles } from "../../GlobalStyles";
 import NavigationButton from "../../components/NavigationButton";
 
-export default function Form6({navigation, route}) {
+export default function Form6({ navigation, route }) {
 
     const [intencidadeBronze, setIntencidadeBronze] = useState(null);
     const validacao = () =>
@@ -37,12 +37,12 @@ export default function Form6({navigation, route}) {
         <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../../assets/Background.png")}
+                    source={require("../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../../assets/image-form.png")}
+                        source={require("../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
@@ -63,7 +63,7 @@ export default function Form6({navigation, route}) {
                                 style={globalStyles.formSelectTitle}
                                 color={intencidadeBronze == 0 ? "#1EA1CA" : "#003E52"}
                             >
-                                Pouco ou muito pouco 
+                                Pouco ou muito pouco
                             </Text>
                         </Pressable>
 
@@ -129,11 +129,11 @@ export default function Form6({navigation, route}) {
                                     onPress={validacao}
                                     titulo={"Continuar"}
                                 />
-                            ) : 
-                            <NavigationButton
-                                onPress={() => navigation.navigate("Form7")}
-                                titulo={"Continuar"}
-                            />
+                            ) :
+                                <NavigationButton
+                                    onPress={() => navigation.navigate("Form7", { Resposta6: intencidadeBronze })}
+                                    titulo={"Continuar"}
+                                />
                         }
 
                     </Center>

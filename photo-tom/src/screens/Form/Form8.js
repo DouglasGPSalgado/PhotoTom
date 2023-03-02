@@ -21,9 +21,11 @@ import { globalStyles } from "../../GlobalStyles";
 import NavigationButton from "../../components/NavigationButton";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Form8({navigation, route}) {
+export default function Form8({ navigation, route }) {
     //const { navigate } = useNavigation()
     console.log(route)
+    const { Respsota6 } = route.params;
+    const { Resposta7 } = route.params;
 
     const [sensibilidadeFacial, setSensibilidadeFacial] = useState(null);
     const validacao = () =>
@@ -39,20 +41,23 @@ export default function Form8({navigation, route}) {
         <NativeBaseProvider>
             <ScrollView>
                 <ImageBackground
-                    source={require("../../../assets/Background.png")}
+                    source={require("../../assets/Background.png")}
                     style={{ flex: 1 }}
                     resizeMode="cover"
                 >
                     <Image
-                        source={require("../../../assets/image-form.png")}
+                        source={require("../../assets/image-form.png")}
                         style={{ height: 200, width: 200, alignSelf: "center" }}
                         resizeMode="contain"
                     />
 
                     <Center>
+
+                        <Text>itemId: {JSON.stringify(Respsota6)}</Text>
+                        <Text>otherParam: {JSON.stringify(Resposta7)}</Text>
                         <Text
                             style={globalStyles.formTitle}
-                        > 
+                        >
                             Qual é o grau de sensibilidade do rosto quando exposto ao sol?
                         </Text>
 
