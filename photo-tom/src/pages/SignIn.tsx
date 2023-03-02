@@ -60,17 +60,15 @@ export function SignIn() {
       url: session_url,
       headers: { Authorization: encodedToken },
     };
-
-    const response = await api(config)
+    try{
+      const response = await api(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
       })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log("banana");
-    console.log(response);
     signIn(response);
+    }catch(err){ 
+      console.error(err);
+    }
   }
   return (
     <KeyboardAvoidingView
