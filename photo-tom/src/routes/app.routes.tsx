@@ -4,20 +4,20 @@ import {
 } from '@react-navigation/stack'
 import React from 'react'
 
-import Form from '../pages/Form/Form'
-import Form2 from '../pages/Form/Form2'
-import Form3 from '../pages/Form/Form3'
-import Form4 from '../pages/Form/Form4'
-import Form5 from '../pages/Form/Form5'
-import Form6 from '../pages/Form/Form6'
-import Form7 from '../pages/Form/Form7'
-import Form8 from '../pages/Form/Form8'
-import Home from '../pages/Home'
-import Palette from '../pages/Palette'
-import Photo from '../pages/Photo'
-import Results from '../pages/Results'
+import Form from '@screens/Form/Form'
+import Form2 from '@screens/Form/Form2'
+import Form3 from '@screens/Form/Form3'
+import Form4 from '@screens/Form/Form4'
+import Form5 from '@screens/Form/Form5'
+import Form6 from '@screens/Form/Form6'
+import Form7 from '@screens/Form/Form7'
+import Form8 from '@screens/Form/Form8'
+import Home from '@screens/Home'
+import Palette from '@screens/Palette'
+import Photo from '@screens/Photo'
+import Results from '@screens/Results'
 
-type AppRoutes = {
+type AppRoutesProps = {
   home: undefined
   Palette: undefined
   photo: undefined
@@ -33,10 +33,10 @@ type AppRoutes = {
   results: undefined
 }
 
-export type AppNavigatorRoutesProps = StackNavigationProp<AppRoutes>
+export type AppNavigatorRoutesProps = StackNavigationProp<AppRoutesProps>
 
 export default function AppRoutes() {
-  const { Navigator, Screen } = createStackNavigator<AppRoutes>()
+  const { Navigator, Screen } = createStackNavigator<AppRoutesProps>()
 
   return (
     <Navigator

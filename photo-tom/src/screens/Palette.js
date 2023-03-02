@@ -13,7 +13,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native'
-import GradientText from '../components/GradientText'
+import GradientText from '@components/GradientText'
 import { ImageContext } from '../contexts/img'
 import { AntDesign } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -67,7 +67,7 @@ export default function Palette() {
   return (
     <NativeBaseProvider>
       <ImageBackground
-        source={require('../../assets/Background.png')}
+        source={require('@assets/Background.png')}
         style={{ flex: 1 }}
         resizeMode="cover"
       >

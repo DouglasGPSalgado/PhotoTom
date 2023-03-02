@@ -3,8 +3,7 @@ import { Camera, CameraType } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 import { View, NativeBaseProvider, Text } from 'native-base'
 import { StyleSheet, Image } from 'react-native'
-import ButtonCamera from '../components/ButtonCamera'
-import { useNavigation } from '@react-navigation/native'
+import ButtonCamera from '@components/ButtonCamera'
 import { ImageContext } from '../contexts/img'
 
 export default function Photo() {

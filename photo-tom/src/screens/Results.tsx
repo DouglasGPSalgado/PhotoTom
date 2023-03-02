@@ -1,7 +1,7 @@
 import { Box, Center, Flex, Progress, Text, VStack } from 'native-base'
 
-import { NextPage } from '../components/NextPage'
-import { TitleResults } from '../components/TitleResults'
+import { NextPage } from '@components/NextPage'
+import { TitleResults } from '@components/TitleResults'
 
 export default function Results() {
   return (

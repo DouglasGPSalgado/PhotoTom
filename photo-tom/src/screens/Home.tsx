@@ -12,11 +12,11 @@ import {
 import { useState } from 'react'
 import InputSpinner from 'react-native-input-spinner'
 
-import Background from '../../assets/Background.png'
-import ImageHome from '../../assets/image_home.png'
-import Card from '../components/Card'
-import { HomeHeader } from '../components/HomeHeader'
-import { type AppNavigatorRoutesProps } from '../routes/app.routes'
+import Background from '@assets/Background.png'
+import ImageHome from '@assets/image_home.png'
+import Card from '@components/Card'
+import { HomeHeader } from '@components/HomeHeader'
+import { type AppNavigatorRoutesProps } from '@routes/app.routes'
 
 export default function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
