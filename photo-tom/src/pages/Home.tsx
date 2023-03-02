@@ -1,5 +1,14 @@
 import { useNavigation } from '@react-navigation/native'
-import { Box, Center, Heading, Image, Modal, Pressable, Text, VStack } from 'native-base'
+import {
+  Box,
+  Center,
+  Heading,
+  Image,
+  Modal,
+  Pressable,
+  Text,
+  VStack,
+} from 'native-base'
 import { useState } from 'react'
 import InputSpinner from 'react-native-input-spinner'
 
@@ -9,7 +18,7 @@ import Card from '../components/Card'
 import { HomeHeader } from '../components/HomeHeader'
 import { type AppNavigatorRoutesProps } from '../routes/app.routes'
 
-export default function Home () {
+export default function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const [showModal, setShowModal] = useState(false)
@@ -21,10 +30,10 @@ export default function Home () {
     <VStack flex={1}>
       <Image
         source={Background}
-        resizeMode='cover'
-        position='absolute'
-        width='full'
-        height='full'
+        resizeMode="cover"
+        position="absolute"
+        width="full"
+        height="full"
         alt=""
       />
 
@@ -38,10 +47,10 @@ export default function Home () {
           resizeMode="contain"
           alt=""
         />
-        <Text fontSize='28' color='blue.800' fontFamily='heading'>
+        <Text fontSize="28" color="blue.800" fontFamily="heading">
           Escolha o tipo de análise
         </Text>
-        <Heading fontSize='xs' color='blue.800'>
+        <Heading fontSize="xs" color="blue.800">
           Caso tenha duvidas clique no botão “?” para mais detalhes
         </Heading>
       </Center>
@@ -52,24 +61,24 @@ export default function Home () {
           subtitle="Comparação visual do técnico"
           description="Análise simples onde o técnico tira uma foto do cliente e compara visualmente com uma paleta de cores + Formulário para análise minuciosa"
           action="Continuar"
-          onPress={() => { setShowModal(true) }}
+          onPress={() => {
+            setShowModal(true)
+          }}
         />
 
         <Modal
           // Modal chamado pelo <Card /> para definir o fototipo.
           isOpen={showModal}
-          onClose={() => { setShowModal(false) }}
+          onClose={() => {
+            setShowModal(false)
+          }}
           size="lg"
           shadow="7"
         >
           <Modal.Content width="80%">
             <Modal.CloseButton />
-            <Modal.Header >
-              <Text
-                fontSize="20"
-                fontWeight="normal"
-                color="#003E52"
-              >
+            <Modal.Header>
+              <Text fontSize="20" fontWeight="normal" color="#003E52">
                 Fototipo
               </Text>
             </Modal.Header>
@@ -83,8 +92,8 @@ export default function Home () {
                     fontWeight="bold"
                     color="#003E52"
                   >
-                    Antes de começar, indique o fototipo que você identifica
-                    na pessoa analisada.
+                    Antes de começar, indique o fototipo que você identifica na
+                    pessoa analisada.
                   </Text>
                   <Text
                     marginBottom="2"
@@ -93,12 +102,10 @@ export default function Home () {
                     fontWeight="medium"
                     color="#003E52"
                   >
-                    Utilizamos esses dados para melhorar
-                    nosso método de análise.
+                    Utilizamos esses dados para melhorar nosso método de
+                    análise.
                   </Text>
-                  <Box
-                    py="8"
-                  >
+                  <Box py="8">
                     <InputSpinner
                       // estilo
                       width={'80%'}
@@ -120,7 +127,6 @@ export default function Home () {
                       }}
                     />
                   </Box>
-
                 </Center>
               </VStack>
             </Modal.Body>
@@ -128,15 +134,12 @@ export default function Home () {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('photo')
+                  navigate('results')
                   setShowModal(false)
                 }}
                 alignItems="flex-end"
               >
-                <Text
-                  color="#1AC8FF"
-                  fontSize="22"
-                >
+                <Text color="#1AC8FF" fontSize="22">
                   Continuar
                 </Text>
               </Pressable>

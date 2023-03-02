@@ -1,7 +1,7 @@
-import { MaterialIcons } from '@expo/vector-icons';
-import { Box, Center, Heading, ICardProps, Icon, Text } from 'native-base';
-import { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons'
+import { Box, Center, Heading, ICardProps, Icon, Text } from 'native-base'
+import { useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 
 type Props = ICardProps & {
   title: string
@@ -11,25 +11,31 @@ type Props = ICardProps & {
   onPress: () => void
 }
 
-export default function Card({ title, subtitle, description, action, onPress }: Props) {
-  const [details, setDetails] = useState(false);
+export default function Card({
+  title,
+  subtitle,
+  description,
+  action,
+  onPress,
+}: Props) {
+  const [details, setDetails] = useState(false)
 
   return (
     <Box
-      width='full'
+      width="full"
       mt={4}
       padding="4"
       bg="white"
       borderRadius="8"
-      shadow='6'
-      flexDirection='row'
+      shadow="6"
+      flexDirection="row"
     >
-      <Center flexDirection='column' flex={1}>
-        <Heading fontFamily='heading' fontSize='lg'>
+      <Center flexDirection="column" flex={1}>
+        <Heading fontFamily="heading" fontSize="lg">
           {title}
         </Heading>
 
-        <Heading fontSize='xs' mt='0.5' color='blue.800'>
+        <Heading fontSize="xs" mt="0.5" color="blue.800">
           {subtitle}
         </Heading>
 
@@ -40,7 +46,7 @@ export default function Card({ title, subtitle, description, action, onPress }: 
             fontSize="md"
             fontWeight="medium"
             color="blue.800"
-            opacity='0.7'
+            opacity="0.7"
           >
             {description}
           </Text>
@@ -53,11 +59,13 @@ export default function Card({ title, subtitle, description, action, onPress }: 
         </TouchableOpacity>
       </Center>
 
-      <Box position='absolute' right='0' top='0' padding={4}>
-        <TouchableOpacity onPress={() => setDetails(prevDetails => !prevDetails)}>
+      <Box position="absolute" right="0" top="0" padding={4}>
+        <TouchableOpacity
+          onPress={() => setDetails((prevDetails) => !prevDetails)}
+        >
           <Icon as={MaterialIcons} name="help" color="blue.800" size={7} />
         </TouchableOpacity>
       </Box>
     </Box>
-  );
+  )
 }

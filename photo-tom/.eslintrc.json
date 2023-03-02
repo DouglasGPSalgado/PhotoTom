@@ -1,0 +1,7 @@
+{
+    "extends": "@rocketseat/eslint-config/react",
+    "rules": {
+        "camelcase": 0,
+        "no-unused-vars": 0
+    }
+}

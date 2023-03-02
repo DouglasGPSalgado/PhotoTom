@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 import {
   NativeBaseProvider,
   Box,
@@ -6,34 +6,32 @@ import {
   VStack,
   Center,
   Image,
-} from "native-base";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import { useNavigation } from "@react-navigation/core";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import AuthContext from "../contexts/auth";
-
+} from 'native-base'
+import { Input } from '../components/Input'
+import { Button } from '../components/Button'
+import { useNavigation } from '@react-navigation/core'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import AuthContext from '../contexts/auth'
 
 type FormDataProps = {
-  email: string;
-  password: string;
-};
+  email: string
+  password: string
+}
 
 const signInSchema = yup.object({
-  email: yup.string().required("Informe o e-mail").email("E-mail inválido"),
+  email: yup.string().required('Informe o e-mail').email('E-mail inválido'),
   password: yup
     .string()
-    .required("Informe a senha")
-    .min(6, "A senha deve ter pelo menos 6 dígitos"),
-});
+    .required('Informe a senha')
+    .min(6, 'A senha deve ter pelo menos 6 dígitos'),
+})
 
 export function SignIn() {
+  const { signed, signIn } = useContext(AuthContext)
 
-  const { signed, signIn } = useContext(AuthContext);
-
-console.log(signed);
+  console.log(signed)
 
   const {
     control,
@@ -41,31 +39,31 @@ console.log(signed);
     formState: { errors },
   } = useForm<FormDataProps>({
     resolver: yupResolver(signInSchema),
-  });
+  })
 
   async function handleSignIn(data: FormDataProps) {
-      signIn();
+    signIn()
   }
 
   return (
     <NativeBaseProvider>
-      <VStack flex={1} bgColor={"#C9F2FF"}>
+      <VStack flex={1} bgColor={'#C9F2FF'}>
         <Image
-          source={require("../../assets/icon.png")}
+          source={require('../../assets/icon.png')}
           alt="Icon"
-          alignSelf={"center"}
+          alignSelf={'center'}
           mt={20}
           mb={5}
         />
         <Center
           flex={1}
-          bgColor={"white"}
+          bgColor={'white'}
           mt={5}
           mx={5}
           px={8}
           borderRadius={25}
         >
-          <Heading marginBottom={10} color={"#003E52"} fontSize={48}>
+          <Heading marginBottom={10} color={'#003E52'} fontSize={48}>
             Login
           </Heading>
           <Controller
@@ -95,5 +93,5 @@ console.log(signed);
         </Center>
       </VStack>
     </NativeBaseProvider>
-  );
+  )
 }

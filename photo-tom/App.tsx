@@ -1,12 +1,16 @@
-import { Roboto_400Regular, Roboto_500Medium, useFonts } from '@expo-google-fonts/roboto';
-import { NavigationContainer } from '@react-navigation/native';
-import { NativeBaseProvider, Spinner } from 'native-base';
-import { StatusBar } from 'react-native';
+import {
+  Roboto_400Regular,
+  Roboto_500Medium,
+  useFonts,
+} from '@expo-google-fonts/roboto'
+import { NavigationContainer } from '@react-navigation/native'
+import { NativeBaseProvider, Spinner } from 'native-base'
+import { StatusBar } from 'react-native'
 
-import { AuthProvider } from './src/contexts/auth';
-import ImageProvider from './src/contexts/img';
-import Routes from './src/routes';
-import { THEME } from './src/theme';
+import { AuthProvider } from './src/contexts/auth'
+import ImageProvider from './src/contexts/img'
+import Routes from './src/routes'
+import { THEME } from './src/theme'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -15,7 +19,7 @@ export default function App() {
   })
   return (
     <NativeBaseProvider theme={THEME}>
-       <StatusBar
+      <StatusBar
         barStyle="dark-content"
         backgroundColor="transparent"
         translucent
@@ -28,6 +32,5 @@ export default function App() {
         </AuthProvider>
       </NavigationContainer>
     </NativeBaseProvider>
-  );
-};
-
+  )
+}
