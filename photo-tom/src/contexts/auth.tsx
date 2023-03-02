@@ -23,27 +23,23 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     async function LoadStoragedData() {
       const storagedUser = await AsyncStorage.getItem("@PTAuth:user");
       const storagedToken = await AsyncStorage.getItem("@PTAuth:token");
 
       if (storagedUser && storagedToken) {
-        setLoading(false);
-        api.defaults.headers.Authorization = `Token ${storagedToken}`;
+        // api.defaults.headers.Authorization = `Token ${storagedToken}`;
         setUser(JSON.parse(storagedUser));
         console.log(user);
       }
+      setLoading(false);
     }
     LoadStoragedData();
   }, []);
 
   async function signIn(data: any) {
-
     setUser(data.user);
-
-    api.defaults.headers.Authorization = `Token ${data.token}`;
-
+    // api.defaults.headers.Authorization = `Token ${data.token}`;
     await AsyncStorage.setItem("@PTAuth:user", JSON.stringify(data.user));
     await AsyncStorage.setItem("@PTAuth:token", data.token);
   }
