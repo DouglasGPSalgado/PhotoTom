@@ -1,17 +1,17 @@
-import React from "react";
-import { SignIn } from "../pages/SignIn";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react'
+import { SignIn } from '@screens/SignIn'
+import { createStackNavigator } from '@react-navigation/stack'
 
-const AuthStack = createStackNavigator();
+const AuthStack = createStackNavigator()
 
 const AuthRoutes: React.FC = () => (
-    <AuthStack.Navigator
+  <AuthStack.Navigator
     screenOptions={{
-        headerShown:false
+      headerShown: false,
     }}
-    >
-        <AuthStack.Screen name="SignIn" component={SignIn}/>
-    </AuthStack.Navigator>
-);
+  >
+    <AuthStack.Screen name="SignIn" component={SignIn} />
+  </AuthStack.Navigator>
+)
 
-export default AuthRoutes;
+export default AuthRoutes

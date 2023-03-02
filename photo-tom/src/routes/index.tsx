@@ -1,12 +1,12 @@
-import React from "react";
-import { HStack, Spinner } from "native-base";
+import React from 'react'
+import { HStack, Spinner } from 'native-base'
 
-import { useAuth } from "../contexts/auth";
-import AuthRoutes from "./auth.routes";
-import AppRoutes from "./app.routes";
+import { useAuth } from '../contexts/auth'
+import AuthRoutes from './auth.routes'
+import AppRoutes from './app.routes'
 
 const Routes: React.FC = () => {
-  const { signed, loading } = useAuth();
+  const { signed, loading } = useAuth()
 
   if (loading) {
     return (
@@ -16,7 +16,7 @@ const Routes: React.FC = () => {
     );
   }
 
-  return signed ? <AppRoutes /> : <AuthRoutes />;
-};
+  return signed ? <AppRoutes /> : <AuthRoutes />
+}
 
-export default Routes;
+export default Routes

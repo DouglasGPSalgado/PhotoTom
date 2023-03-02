@@ -1,6 +1,6 @@
-import React from "react";
-import { NativeBaseProvider, Box, Pressable, Text } from "native-base";
-import { TouchableOpacity } from "react-native";
+import React from 'react'
+import { NativeBaseProvider, Box, Pressable, Text } from 'native-base'
+import { TouchableOpacity } from 'react-native'
 function NavigationButton(props) {
   return (
     <NativeBaseProvider>
@@ -16,6 +16,6 @@ function NavigationButton(props) {
         </Text>
       </TouchableOpacity>
     </NativeBaseProvider>
-  );
+  )
 }
-export default NavigationButton;
+export default NavigationButton

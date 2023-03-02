@@ -4,28 +4,29 @@ import React, {
   useEffect,
   useState,
   useContext,
-} from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../services/api";
+} from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import api from '../services/api'
 
 interface AuthContextData {
-  signed: boolean;
-  user: object | null;
-  loading: boolean;
-  signIn: (data) => void;
-  signOut: () => void;
+  signed: boolean
+  user: object | null
+  loading: boolean
+  signIn: (data: any) => void
+  signOut: () => void
 }
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [user, setUser] = useState<object | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<object | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     async function LoadStoragedData() {
-      const storagedUser = await AsyncStorage.getItem("@PTAuth:user");
-      const storagedToken = await AsyncStorage.getItem("@PTAuth:token");
+      const storagedUser = await AsyncStorage.getItem('@PTAuth:user')
+      const storagedToken = await AsyncStorage.getItem('@PTAuth:token')
 
       if (storagedUser && storagedToken) {
         // api.defaults.headers.Authorization = `Token ${storagedToken}`;
@@ -34,8 +35,8 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
       }
       setLoading(false);
     }
-    LoadStoragedData();
-  }, []);
+    LoadStoragedData()
+  }, [])
 
   async function signIn(data: any) {
     setUser(data.user);
@@ -45,8 +46,8 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   }
   function signOut() {
     AsyncStorage.clear().then(() => {
-      setUser(null);
-    });
+      setUser(null)
+    })
   }
 
   return (
@@ -55,11 +56,11 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
 
 export function useAuth() {
-  const context = useContext(AuthContext);
+  const context = useContext(AuthContext)
 
-  return context;
+  return context
 }
