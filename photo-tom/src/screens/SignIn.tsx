@@ -60,7 +60,7 @@ export function SignIn() {
     >
       <VStack flex={1} bgColor={'#C9F2FF'}>
         <Image
-          source={require('../../assets/icon.png')}
+          source={require('@assets/icon.png')}
           alt="Icon"
           alignSelf={'center'}
           mt={20}

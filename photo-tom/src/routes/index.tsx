@@ -8,7 +8,7 @@ import AppRoutes from './app.routes'
 const Routes: React.FC = () => {
   const { signed, loading } = useAuth()
 
-  if (!loading) {
+  if (loading) {
     return (
       <HStack flex={1} justifyContent={'center'} alignItems={'center'}>
         <Spinner size={'lg'} color={'blue.500'} />

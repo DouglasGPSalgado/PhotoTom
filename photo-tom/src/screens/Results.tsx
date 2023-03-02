@@ -1,33 +1,34 @@
-import { Box, Center, Flex, Progress, Text, VStack } from 'native-base'
+import { Box, Center, Divider, Flex, Progress, Text, VStack } from 'native-base'
 
 import { NextPage } from '@components/NextPage'
 import { TitleResults } from '@components/TitleResults'
 
 export default function Results() {
   return (
-    <VStack p={8} flex={1} bg="white">
+    <VStack p={8} flex={1} bg="green">
       <Center>
         <TitleResults title="Resultado:" fontSize="4xl" fontFamily="heading" />
-
         <Box
           rounded="full"
           justifyContent="center"
           alignItems="center"
           mt="4"
           borderWidth="6"
-          borderColor="blue.600"
-          height="48"
-          width="48"
+          borderColor="blue.400"
+          height="56"
+          width="56"
         >
           <Text fontSize="3xl">III</Text>
           <Text fontSize="2xl">Fototipo</Text>
         </Box>
       </Center>
 
+      <Divider mt="6" color="black" shadow="6" />
+
       <TitleResults
         title="Graus de semelhança:"
         textAlign="center"
-        mt="12"
+        mt="8"
         fontSize="2xl"
         fontFamily="heading"
       />
@@ -42,13 +43,7 @@ export default function Results() {
         <Text fontSize="xl" fontFamily="heading">
           IV
         </Text>
-        <Progress
-          value={40}
-          width="56"
-          size="2xl"
-          colorScheme="blue"
-          color="blue.300"
-        />
+        <Progress value={56} width="56" size="2xl" colorScheme="" />
         <Text fontSize="lg" fontFamily="heading">
           85.71%
         </Text>

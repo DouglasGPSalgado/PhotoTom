@@ -29,11 +29,11 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
       const storagedToken = await AsyncStorage.getItem('@PTAuth:token')
 
       if (storagedUser && storagedToken) {
-        setLoading(false)
         api.defaults.headers.Authorization = `Token ${storagedToken}`
         setUser(JSON.parse(storagedUser))
         console.log(user)
       }
+      setLoading(false)
     }
     LoadStoragedData()
   }, [])
