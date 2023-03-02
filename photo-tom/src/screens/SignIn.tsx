@@ -1,19 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
-  NativeBaseProvider,
-  Box,
   Heading,
   VStack,
   Center,
   Image,
+  KeyboardAvoidingView,
+  ScrollView,
 } from 'native-base'
-import { Input } from '@components/Input'
-import { Button } from '@components/Button'
+import { Input } from '../components/Input'
+import { Button } from '../components/Button'
 import { useNavigation } from '@react-navigation/core'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import AuthContext from '../contexts/auth'
+import { useAuth } from '../contexts/auth'
+import { Platform } from 'react-native'
+import api from '../services/api'
 
 type FormDataProps = {
   email: string
@@ -29,7 +31,8 @@ const signInSchema = yup.object({
 })
 
 export function SignIn() {
-  const { signed, signIn } = useContext(AuthContext)
+  const [data, setData] = useState({})
+  const { signed, signIn } = useAuth()
 
   console.log(signed)
 
@@ -41,15 +44,23 @@ export function SignIn() {
     resolver: yupResolver(signInSchema),
   })
 
-  async function handleSignIn(data: FormDataProps) {
-    signIn()
+  async function handleSignIn({ email, password }: FormDataProps) {
+    const respose = api.post('/login', {
+      email,
+      password,
+    })
+    signIn(respose)
   }
 
   return (
-    <NativeBaseProvider>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled
+      flex={1}
+    >
       <VStack flex={1} bgColor={'#C9F2FF'}>
         <Image
-          source={require('@assets/icon.png')}
+          source={require('../../assets/icon.png')}
           alt="Icon"
           alignSelf={'center'}
           mt={20}
@@ -92,6 +103,6 @@ export function SignIn() {
           <Button title="Login" onPress={handleSubmit(handleSignIn)} />
         </Center>
       </VStack>
-    </NativeBaseProvider>
+    </KeyboardAvoidingView>
   )
 }

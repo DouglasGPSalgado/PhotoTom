@@ -49,75 +49,71 @@ export default function Photo() {
     return <Text>No access to camera</Text>
   }
   return (
-    <NativeBaseProvider>
-      <View style={styles.container}>
-        {!image ? (
-          <Camera
-            style={styles.camera}
-            type={type}
-            flashMode={flash}
-            ref={cameraRef}
+    <View style={styles.container}>
+      {!image ? (
+        <Camera
+          style={styles.camera}
+          type={type}
+          flashMode={flash}
+          ref={cameraRef}
+        >
+          <View
+            flexDirection={'row'}
+            justifyContent={'space-between'}
+            padding={30}
           >
-            <View
-              flexDirection={'row'}
-              justifyContent={'space-between'}
-              padding={30}
-            >
-              <ButtonCamera
-                icon={'retweet'}
-                onPress={() => {
-                  setType(
-                    type === CameraType.back
-                      ? CameraType.front
-                      : CameraType.back,
-                  )
-                }}
-              />
-              <ButtonCamera
-                icon={'flash'}
-                onPress={() => {
-                  setFlash(
-                    flash === Camera.Constants.FlashMode.off
-                      ? Camera.Constants.FlashMode.on
-                      : Camera.Constants.FlashMode.off,
-                  )
-                }}
-              />
-            </View>
-          </Camera>
-        ) : (
-          <Image source={{ uri: image }} style={styles.camera} />
-        )}
-        <View>
-          {image ? (
-            <View
-              flexDirection={'row'}
-              justifyContent={'space-between'}
-              paddingX={50}
-            >
-              <ButtonCamera
-                title="Re-take"
-                icon="retweet"
-                onPress={() => setImage(null)}
-                color=""
-              />
-              <ButtonCamera
-                title={'Save'}
-                icon="check"
-                onPress={saveImage}
-                color=""
-              />
-            </View>
-          ) : (
             <ButtonCamera
-              title={'Take a picture'}
-              icon="camera"
-              onPress={takePicture}
+              icon={'retweet'}
+              onPress={() => {
+                setType(
+                  type === CameraType.back ? CameraType.front : CameraType.back,
+                )
+              }}
             />
-          )}
-        </View>
+            <ButtonCamera
+              icon={'flash'}
+              onPress={() => {
+                setFlash(
+                  flash === Camera.Constants.FlashMode.off
+                    ? Camera.Constants.FlashMode.on
+                    : Camera.Constants.FlashMode.off,
+                )
+              }}
+            />
+          </View>
+        </Camera>
+      ) : (
+        <Image source={{ uri: image }} style={styles.camera} />
+      )}
+      <View>
+        {image ? (
+          <View
+            flexDirection={'row'}
+            justifyContent={'space-between'}
+            paddingX={50}
+          >
+            <ButtonCamera
+              title="Re-take"
+              icon="retweet"
+              onPress={() => setImage(null)}
+              color=""
+            />
+            <ButtonCamera
+              title={'Save'}
+              icon="check"
+              onPress={saveImage}
+              color=""
+            />
+          </View>
+        ) : (
+          <ButtonCamera
+            title={'Take a picture'}
+            icon="camera"
+            onPress={takePicture}
+          />
+        )}
       </View>
-    </NativeBaseProvider>
+    </View>
   )
 }
 const styles = StyleSheet.create({

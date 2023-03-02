@@ -65,99 +65,97 @@ export default function Palette() {
   const { height } = Dimensions.get('window')
 
   return (
-    <NativeBaseProvider>
-      <ImageBackground
-        source={require('@assets/Background.png')}
-        style={{ flex: 1 }}
-        resizeMode="cover"
-      >
-        <GradientText
-          style={{ fontSize: 32, alignSelf: 'center' }}
-          text={'Paleta de Cores'}
-        />
-        <GradientText
-          style={{
-            fontSize: 12,
-            alignSelf: 'center',
-            paddingHorizontal: 65,
-            textAlign: 'center',
-          }}
-          text={
-            'Selecione a tonalidade mais aproximada da tonalidade de pele do cliente'
-          }
-        />
-        <Center flex={1} px="3">
-          <VStack space={4} alignItems="center">
-            <Center
-              w={346}
-              h={400}
-              bg="white"
-              rounded="md"
-              shadow={-1}
-              borderRadius={25}
-            >
-              <HStack space={3} justifyContent="center">
-                <Center
-                  w={346}
-                  h={400}
-                  bg="white"
-                  rounded="md"
-                  shadow={3}
-                  borderRadius={25}
-                  alignItems={'baseline'}
-                >
-                  <HStack space={3} justifyContent="center">
-                    <FlatList
-                      h={400}
-                      showsVerticalScrollIndicator={false}
-                      keyExtractor={(item) => item.id}
-                      data={data}
-                      snapToAlignment={'center'}
-                      decelerationRate={'fast'}
-                      snapToOffsets={[...Array()].map(
-                        (x, i) => i * (height - 60),
-                      )}
-                      renderItem={({ item, index }) => (
-                        <TouchableOpacity
-                          onPress={() => onClickItem(item, index)}
-                          style={{
-                            backgroundColor: item.color,
-                            width: 75,
-                            height: 75,
-                            borderRadius: 100,
-                            marginVertical: 4,
-                            marginHorizontal: 10,
-                            borderWidth: item.selected ? 3 : 0,
-                            borderColor: item.selected ? '#003E52' : 'white',
-                          }}
-                        ></TouchableOpacity>
-                      )}
-                      getItemLayout={getItemLayout}
-                    />
-                    <VStack justifyContent={'center'}>
-                      <AntDesign name="caretleft" size={30} color="#003E52" />
-                    </VStack>
+    <ImageBackground
+      source={require('@assets/Background.png')}
+      style={{ flex: 1 }}
+      resizeMode="cover"
+    >
+      <GradientText
+        style={{ fontSize: 32, alignSelf: 'center' }}
+        text={'Paleta de Cores'}
+      />
+      <GradientText
+        style={{
+          fontSize: 12,
+          alignSelf: 'center',
+          paddingHorizontal: 65,
+          textAlign: 'center',
+        }}
+        text={
+          'Selecione a tonalidade mais aproximada da tonalidade de pele do cliente'
+        }
+      />
+      <Center flex={1} px="3">
+        <VStack space={4} alignItems="center">
+          <Center
+            w={346}
+            h={400}
+            bg="white"
+            rounded="md"
+            shadow={-1}
+            borderRadius={25}
+          >
+            <HStack space={3} justifyContent="center">
+              <Center
+                w={346}
+                h={400}
+                bg="white"
+                rounded="md"
+                shadow={3}
+                borderRadius={25}
+                alignItems={'baseline'}
+              >
+                <HStack space={3} justifyContent="center">
+                  <FlatList
+                    h={400}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item) => item.id}
+                    data={data}
+                    snapToAlignment={'center'}
+                    decelerationRate={'fast'}
+                    snapToOffsets={[...Array()].map(
+                      (x, i) => i * (height - 60),
+                    )}
+                    renderItem={({ item, index }) => (
+                      <TouchableOpacity
+                        onPress={() => onClickItem(item, index)}
+                        style={{
+                          backgroundColor: item.color,
+                          width: 75,
+                          height: 75,
+                          borderRadius: 100,
+                          marginVertical: 4,
+                          marginHorizontal: 10,
+                          borderWidth: item.selected ? 3 : 0,
+                          borderColor: item.selected ? '#003E52' : 'white',
+                        }}
+                      ></TouchableOpacity>
+                    )}
+                    getItemLayout={getItemLayout}
+                  />
+                  <VStack justifyContent={'center'}>
+                    <AntDesign name="caretleft" size={30} color="#003E52" />
+                  </VStack>
 
-                    <VStack space={3} justifyContent={'center'}>
-                      <Image
-                        w={180}
-                        h={180}
-                        borderRadius={15}
-                        marginRight={5}
-                        source={{ uri: img.image }}
-                        alt={'Image'}
-                      ></Image>
-                    </VStack>
-                  </HStack>
-                </Center>
-              </HStack>
-            </Center>
-            <TouchableOpacity onPress={() => navigation.navigate('form')}>
-              <Text style={{ fontSize: 32, color: '#00B707' }}>Continuar</Text>
-            </TouchableOpacity>
-          </VStack>
-        </Center>
-      </ImageBackground>
-    </NativeBaseProvider>
+                  <VStack space={3} justifyContent={'center'}>
+                    <Image
+                      w={180}
+                      h={180}
+                      borderRadius={15}
+                      marginRight={5}
+                      source={{ uri: img.image }}
+                      alt={'Image'}
+                    ></Image>
+                  </VStack>
+                </HStack>
+              </Center>
+            </HStack>
+          </Center>
+          <TouchableOpacity onPress={() => navigation.navigate('form')}>
+            <Text style={{ fontSize: 32, color: '#00B707' }}>Continuar</Text>
+          </TouchableOpacity>
+        </VStack>
+      </Center>
+    </ImageBackground>
   )
 }

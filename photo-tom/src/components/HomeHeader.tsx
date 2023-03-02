@@ -3,10 +3,10 @@ import { Heading, HStack, Icon, Text, VStack } from 'native-base'
 import { useContext } from 'react'
 import { TouchableOpacity } from 'react-native'
 
-import AuthContext from '../contexts/auth'
+import { useAuth } from '../contexts/auth'
 
 export function HomeHeader() {
-  const { signOut } = useContext(AuthContext)
+  const { signOut } = useAuth()
 
   return (
     <HStack bg="blue.300" pt={16} pb={5} px={8} alignItems="center">

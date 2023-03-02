@@ -48,74 +48,65 @@ export function SignUp() {
   }
 
   return (
-    <NativeBaseProvider>
-      <VStack flex={1} bgColor={'#C9F2FF'}>
-        <Image
-          source={require('../../assets/icon.png')}
-          alt="Icon"
-          alignSelf={'center'}
-          marginTop={30}
+    <VStack flex={1} bgColor={'#C9F2FF'}>
+      <Image
+        source={require('../../assets/icon.png')}
+        alt="Icon"
+        alignSelf={'center'}
+        marginTop={30}
+      />
+      <Center flex={1} bgColor={'white'} mt={5} mx={5} px={8} borderRadius={25}>
+        <Heading marginBottom={10} color={'#003E52'} fontSize={48}>
+          Cadastro
+        </Heading>
+        <Controller
+          control={control}
+          name="name"
+          render={({ field: { onChange } }) => (
+            <Input
+              placeholder="Nome"
+              onChangeText={onChange}
+              errorMessage={errors.name?.message}
+            />
+          )}
         />
-        <Center
-          flex={1}
-          bgColor={'white'}
-          mt={5}
-          mx={5}
-          px={8}
-          borderRadius={25}
-        >
-          <Heading marginBottom={10} color={'#003E52'} fontSize={48}>
-            Cadastro
-          </Heading>
-          <Controller
-            control={control}
-            name="name"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Nome"
-                onChangeText={onChange}
-                errorMessage={errors.name?.message}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Email"
-                onChangeText={onChange}
-                errorMessage={errors.email?.message}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="password"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Senha"
-                onChangeText={onChange}
-                secureTextEntry
-                errorMessage={errors.password?.message}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="password_confirm"
-            render={({ field: { onChange } }) => (
-              <Input
-                placeholder="Confirmar senha"
-                onChangeText={onChange}
-                secureTextEntry
-                errorMessage={errors.password_confirm?.message}
-              />
-            )}
-          />
-          <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
-        </Center>
-      </VStack>
-    </NativeBaseProvider>
+        <Controller
+          control={control}
+          name="email"
+          render={({ field: { onChange } }) => (
+            <Input
+              placeholder="Email"
+              onChangeText={onChange}
+              errorMessage={errors.email?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange } }) => (
+            <Input
+              placeholder="Senha"
+              onChangeText={onChange}
+              secureTextEntry
+              errorMessage={errors.password?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="password_confirm"
+          render={({ field: { onChange } }) => (
+            <Input
+              placeholder="Confirmar senha"
+              onChangeText={onChange}
+              secureTextEntry
+              errorMessage={errors.password_confirm?.message}
+            />
+          )}
+        />
+        <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
+      </Center>
+    </VStack>
   )
 }
