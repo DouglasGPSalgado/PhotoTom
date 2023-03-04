@@ -4,6 +4,7 @@ import {
   useFonts,
 } from '@expo-google-fonts/roboto'
 import { NavigationContainer } from '@react-navigation/native'
+import { LinearGradient } from 'expo-linear-gradient'
 import { NativeBaseProvider, Spinner } from 'native-base'
 import { StatusBar } from 'react-native'
 
@@ -16,9 +17,16 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
-  });
+  })
+
+  const config = {
+    dependencies: {
+      'linear-gradient': LinearGradient,
+    },
+  }
+
   return (
-    <NativeBaseProvider theme={THEME}>
+    <NativeBaseProvider theme={THEME} config={config}>
       <StatusBar
         barStyle="dark-content"
         backgroundColor="transparent"

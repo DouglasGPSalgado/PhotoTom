@@ -6,7 +6,7 @@ import { StyleSheet, Image } from 'react-native'
 import ButtonCamera from '@components/ButtonCamera'
 import { ImageContext } from '../contexts/img'
 
-export default function Photo() {
+export function Photo() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null)
   const [image, setImage] = useState(null)
   const [type, setType] = useState(Camera.Constants.Type.back)

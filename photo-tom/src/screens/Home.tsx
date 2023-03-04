@@ -18,7 +18,7 @@ import Card from '@components/Card'
 import { HomeHeader } from '@components/HomeHeader'
 import { type AppNavigatorRoutesProps } from '@routes/app.routes'
 
-export default function Home() {
+export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const [showModal, setShowModal] = useState(false)

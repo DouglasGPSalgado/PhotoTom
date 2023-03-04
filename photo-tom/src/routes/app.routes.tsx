@@ -4,6 +4,7 @@ import {
 } from '@react-navigation/stack'
 import React from 'react'
 
+import { SignIn } from '@screens/SignIn'
 import Form from '@screens/Form/Form'
 import Form2 from '@screens/Form/Form2'
 import Form3 from '@screens/Form/Form3'
@@ -12,12 +13,13 @@ import Form5 from '@screens/Form/Form5'
 import Form6 from '@screens/Form/Form6'
 import Form7 from '@screens/Form/Form7'
 import Form8 from '@screens/Form/Form8'
-import Home from '@screens/Home'
-import Palette from '@screens/Palette'
-import Photo from '@screens/Photo'
-import Results from '@screens/Results'
+import { Home } from '@screens/Home'
+import { Palette } from '@screens/Palette'
+import { Photo } from '@screens/Photo'
+import { Results } from '@screens/Results'
 
 type AppRoutesProps = {
+  signIn: undefined
   home: undefined
   Palette: undefined
   photo: undefined
@@ -48,6 +50,11 @@ export default function AppRoutes() {
         headerTitleStyle: { display: 'none' },
       }}
     >
+      <Screen
+        name="signIn"
+        component={SignIn}
+        options={{ headerShown: false }}
+      />
       <Screen name="home" component={Home} options={{ headerShown: false }} />
       <Screen name="Palette" component={Palette} />
       <Screen name="photo" component={Photo} options={{ headerShown: false }} />
