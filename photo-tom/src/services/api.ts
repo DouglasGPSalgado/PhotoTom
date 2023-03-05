@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios'
 
 const api = axios.create({
-  baseURL: "http://192.168.56.1:8000/api/",
-});
-export default api;
+  baseURL: 'https://phototom-test.loophole.site/api/',
+})
+export default api

@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Heading,
   VStack,
   Center,
   Image,
   KeyboardAvoidingView,
-  ScrollView,
 } from 'native-base'
 import { Input } from '../components/Input'
 import { Button } from '../components/Button'
@@ -17,8 +16,6 @@ import { useAuth } from '../contexts/auth'
 import { Platform } from 'react-native'
 import api from '../services/api'
 
-global.Buffer = global.Buffer || require('buffer').Buffer
-
 type FormDataProps = {
   email: string
   passwords: string
@@ -29,7 +26,7 @@ const signInSchema = yup.object({
   passwords: yup
     .string()
     .required('Informe a senha')
-    .min(6, 'A senha deve ter pelo menos 6 dígitos'),
+    .min(8, 'A senha deve ter pelo menos 8 dígitos'),
 })
 
 export function SignIn() {
@@ -46,27 +43,21 @@ export function SignIn() {
   })
 
   async function handleSignIn({ email, passwords }: FormDataProps) {
-    console.log(email, passwords)
-
-    const username = email
-    const password = passwords
-
-    const token = `${username}:${password}`
-    const encodedToken = Buffer.from(token).toString('base64')
-    const session_url = '/auth/login/'
-
-    const config = {
-      method: 'post',
-      url: session_url,
-      headers: { Authorization: encodedToken },
-    }
     try {
-      const response = await api(config).then(function (response) {
-        console.log(JSON.stringify(response.data))
-      })
-      signIn(response)
-    } catch (err) {
-      console.error(err)
+      const response = await api.post(
+        'auth/login',
+        {},
+        {
+          auth: {
+            username: email,
+            password: passwords,
+          },
+        },
+      )
+      console.log(response.data)
+      signIn(response.data)
+    } catch (error) {
+      console.error(error)
     }
   }
   return (
@@ -77,7 +68,7 @@ export function SignIn() {
     >
       <VStack flex={1} bgColor={'#C9F2FF'}>
         <Image
-          source={require('../../assets/icon.png')}
+          source={require('@assets/icon.png')}
           alt="Icon"
           alignSelf={'center'}
           mt={20}
