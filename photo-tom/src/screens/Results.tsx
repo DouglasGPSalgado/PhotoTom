@@ -3,7 +3,7 @@ import { Box, Center, Divider, Flex, Progress, Text, VStack } from 'native-base'
 import { NextPage } from '@components/NextPage'
 import { TitleResults } from '@components/TitleResults'
 
-export default function Results() {
+export function Results() {
   return (
     <VStack p={8} flex={1} bg="green">
       <Center>

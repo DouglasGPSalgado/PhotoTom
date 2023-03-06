@@ -18,7 +18,7 @@ import { ImageContext } from '../contexts/img'
 import { AntDesign } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-export default function Palette() {
+export function Palette() {
   const { img } = useContext(ImageContext)
   const navigation = useNavigation()
   const [data, setData] = useState([
