@@ -9,8 +9,9 @@ export function Button({ title, ...rest }: ButtonProps) {
     <ButtonNativeBase
       bg="white"
       borderWidth={0}
-      height={14}
+      h={14}
       rounded="full"
+      shadow={5}
       _pressed={{
         bgColor: 'light.100',
       }}
