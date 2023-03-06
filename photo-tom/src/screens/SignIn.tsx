@@ -25,7 +25,7 @@ import api from '../services/api'
 
 type FormDataProps = {
   email: string
-  passwords: string
+  password: string
 }
 
 const signInSchema = yup.object({
@@ -47,7 +47,7 @@ export function SignIn() {
     resolver: yupResolver(signInSchema),
   })
 
-  async function handleSignIn({ email, passwords }: FormDataProps) {
+  async function handleSignIn({ email, password }: FormDataProps) {
     try {
       const response = await api.post(
         'auth/login',
@@ -55,7 +55,7 @@ export function SignIn() {
         {
           auth: {
             username: email,
-            password: passwords,
+            password,
           },
         },
       )
@@ -114,7 +114,7 @@ export function SignIn() {
         />
         <Controller
           control={control}
-          name="passwords"
+          name="password"
           render={({ field: { onChange, value } }) => (
             <Input
               mt={4}
@@ -131,7 +131,7 @@ export function SignIn() {
               onChangeText={onChange}
               secureTextEntry
               value={value}
-              errorMessage={errors.passwords?.message}
+              errorMessage={errors.password?.message}
               fontFamily="body"
               returnKeyType="send"
             />
