@@ -134,7 +134,7 @@ export function Home() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('results')
+                  navigate('Palette')
                   setShowModal(false)
                 }}
                 alignItems="flex-end"
