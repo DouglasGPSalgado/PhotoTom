@@ -8,7 +8,7 @@ export function Button({ title, ...rest }: ButtonProps) {
   return (
     <ButtonNativeBase
       bg="white"
-      borderWidth="none"
+      borderWidth={0}
       height={14}
       rounded="full"
       _pressed={{

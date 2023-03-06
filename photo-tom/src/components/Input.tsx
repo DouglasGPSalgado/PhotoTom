@@ -10,7 +10,7 @@ export function Input({ errorMessage = null, isInvalid, ...rest }: InputProps) {
   return (
     <FormControl isInvalid={invalid}>
       <NativeBaseInput
-        borderWidth="none"
+        borderWidth={0}
         bg="white"
         h={14}
         fontSize="md"
