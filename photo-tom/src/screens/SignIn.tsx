@@ -25,6 +25,16 @@ import * as yup from 'yup'
 import { useAuth } from '../contexts/auth'
 import api from '../services/api'
 
+import { encode, decode } from 'js-base64'
+
+if (!global.btoa) {
+  global.btoa = encode
+}
+
+if (!global.atob) {
+  global.atob = decode
+}
+
 type FormDataProps = {
   email: string
   password: string
