@@ -1,4 +1,5 @@
 import { SkinsToneDTO } from '@dtos/PaletteDTO'
+import { useDataDelivery } from '@hooks/useDataDelivery'
 import { Box } from 'native-base'
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 

@@ -1,6 +1,7 @@
 import { NextPage } from '@components/NextPage'
 import { SkinsTonePalette } from '@components/SkinsTonePalette'
 import { SkinsToneDTO } from '@dtos/PaletteDTO'
+import { useDataDelivery } from '@hooks/useDataDelivery'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import api from '@services/api'
@@ -13,7 +14,7 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 
 import { ImageContext } from '../contexts/img'
@@ -41,12 +42,15 @@ export function Palette() {
     { id: '17', color: '#3D2824', value: 6 },
     { id: '18', color: '#341F1C', value: 6 },
   ])
+  const [data, setData] = useState<number>()
 
-  console.log(skinsTone)
-
-  async function handleSkinsTone(value: number) {
-    console.log(value)
+  function handleSkinsTone(value: number) {
+    setData(value)
   }
+
+  useEffect(() => {
+    handleSkinsTone()
+  }, [skinsTone])
 
   return (
     <VStack flex={1} px={8} py={6} bg="white">

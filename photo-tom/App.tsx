@@ -1,3 +1,4 @@
+import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import {
   Roboto_400Regular,
   Roboto_500Medium,
@@ -34,9 +35,11 @@ export default function App() {
       />
       <NavigationContainer>
         <AuthProvider>
-          <ImageProvider>
-            {fontsLoaded ? <Routes /> : <Spinner />}
-          </ImageProvider>
+          <DataDeliveryContext.Provider value={{}}>
+            <ImageProvider>
+              {fontsLoaded ? <Routes /> : <Spinner />}
+            </ImageProvider>
+          </DataDeliveryContext.Provider>
         </AuthProvider>
       </NavigationContainer>
     </NativeBaseProvider>
