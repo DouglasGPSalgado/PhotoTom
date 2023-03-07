@@ -1,161 +1,108 @@
-import {
-  VStack,
-  Center,
-  NativeBaseProvider,
-  HStack,
-  FlatList,
-  Image,
-} from 'native-base'
-import React, { useState, useContext } from 'react'
-import {
-  ImageBackground,
-  TouchableOpacity,
-  Text,
-  Dimensions,
-} from 'react-native'
-import GradientText from '@components/GradientText'
-import { ImageContext } from '../contexts/img'
-import { AntDesign } from '@expo/vector-icons'
+import { NextPage } from '@components/NextPage'
+import { SkinsTonePalette } from '@components/SkinsTonePalette'
+import { SkinsToneDTO } from '@dtos/PaletteDTO'
 import { useNavigation } from '@react-navigation/native'
+import { AppNavigatorRoutesProps } from '@routes/app.routes'
+import api from '@services/api'
+import {
+  Box,
+  Center,
+  FlatList,
+  Heading,
+  Image,
+  Text,
+  VStack,
+} from 'native-base'
+import React, { useContext, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
+
+import { ImageContext } from '../contexts/img'
 
 export function Palette() {
   const { img } = useContext(ImageContext)
-  const navigation = useNavigation()
-  const [data, setData] = useState([
-    { color: '#D3BCA0', id: 1, value: 1 },
-    { color: '#C7B297', id: 2, value: 1 },
-    { color: '#C2A281', id: 3, value: 1 },
-    { color: '#BBA78E', id: 4, value: 2 },
-    { color: '#B8997A', id: 5, value: 2 },
-    { color: '#AF8D70', id: 6, value: 2 },
-    { color: '#AD9073', id: 7, value: 3 },
-    { color: '#A68569', id: 8, value: 3 },
-    { color: '#9C7E63', id: 9, value: 3 },
-    { color: '#986B4A', id: 10, value: 4 },
-    { color: '#906546', id: 11, value: 4 },
-    { color: '#875F42', id: 12, value: 4 },
-    { color: '#845329', id: 13, value: 5 },
-    { color: '#7D4E27', id: 14, value: 5 },
-    { color: '#764A25', id: 15, value: 5 },
-    { color: '#46312B', id: 16, value: 6 },
-    { color: '#3D2824', id: 17, value: 6 },
-    { color: '#341F1C', id: 18, value: 6 },
+  const { navigate } = useNavigation<AppNavigatorRoutesProps>()
+  const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>([
+    { id: '1', color: '#D3BCA0', value: 1 },
+    { id: '2', color: '#C7B297', value: 1 },
+    { id: '3', color: '#C2A281', value: 1 },
+    { id: '4', color: '#BBA78E', value: 2 },
+    { id: '5', color: '#B8997A', value: 2 },
+    { id: '6', color: '#AF8D70', value: 2 },
+    { id: '7', color: '#AD9073', value: 3 },
+    { id: '8', color: '#A68569', value: 3 },
+    { id: '9', color: '#9C7E63', value: 3 },
+    { id: '10', color: '#986B4A', value: 4 },
+    { id: '11', color: '#906546', value: 4 },
+    { id: '12', color: '#875F42', value: 4 },
+    { id: '13', color: '#845329', value: 5 },
+    { id: '14', color: '#7D4E27', value: 5 },
+    { id: '15', color: '#764A25', value: 5 },
+    { id: '16', color: '#46312B', value: 6 },
+    { id: '17', color: '#3D2824', value: 6 },
+    { id: '18', color: '#341F1C', value: 6 },
   ])
 
-  const onClickItem = (item, index) => {
-    const newArrData = data.map((e, index) => {
-      if (item.id === e.id) {
-        return {
-          ...e,
-          selected: true,
-        }
-      }
-      return {
-        ...e,
-        selected: false,
-      }
-    })
-    setData(newArrData)
-  }
+  console.log(skinsTone)
 
-  const getItemLayout = (item, index) => {
-    return { length: 79, offset: 79 * index, index }
+  async function handleSkinsTone(value: number) {
+    console.log(value)
   }
-
-  const { height } = Dimensions.get('window')
 
   return (
-    <ImageBackground
-      source={require('@assets/Background.png')}
-      style={{ flex: 1 }}
-      resizeMode="cover"
-    >
-      <GradientText
-        style={{ fontSize: 32, alignSelf: 'center' }}
-        text={'Paleta de Cores'}
-      />
-      <GradientText
-        style={{
-          fontSize: 12,
-          alignSelf: 'center',
-          paddingHorizontal: 65,
-          textAlign: 'center',
-        }}
-        text={
-          'Selecione a tonalidade mais aproximada da tonalidade de pele do cliente'
-        }
-      />
-      <Center flex={1} px="3">
-        <VStack space={4} alignItems="center">
-          <Center
-            w={346}
-            h={400}
-            bg="white"
-            rounded="md"
-            shadow={-1}
-            borderRadius={25}
-          >
-            <HStack space={3} justifyContent="center">
-              <Center
-                w={346}
-                h={400}
-                bg="white"
-                rounded="md"
-                shadow={3}
-                borderRadius={25}
-                alignItems={'baseline'}
-              >
-                <HStack space={3} justifyContent="center">
-                  <FlatList
-                    h={400}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item) => item.id}
-                    data={data}
-                    snapToAlignment={'center'}
-                    decelerationRate={'fast'}
-                    snapToOffsets={[...Array()].map(
-                      (x, i) => i * (height - 60),
-                    )}
-                    renderItem={({ item, index }) => (
-                      <TouchableOpacity
-                        onPress={() => onClickItem(item, index)}
-                        style={{
-                          backgroundColor: item.color,
-                          width: 75,
-                          height: 75,
-                          borderRadius: 100,
-                          marginVertical: 4,
-                          marginHorizontal: 10,
-                          borderWidth: item.selected ? 3 : 0,
-                          borderColor: item.selected ? '#003E52' : 'white',
-                        }}
-                      ></TouchableOpacity>
-                    )}
-                    getItemLayout={getItemLayout}
-                  />
-                  <VStack justifyContent={'center'}>
-                    <AntDesign name="caretleft" size={30} color="#003E52" />
-                  </VStack>
+    <VStack flex={1} px={8} py={6} bg="white">
+      <Center>
+        <Heading fontSize="3xl" fontFamily="heading">
+          Paleta de Cores
+        </Heading>
 
-                  <VStack space={3} justifyContent={'center'}>
-                    <Image
-                      w={180}
-                      h={180}
-                      borderRadius={15}
-                      marginRight={5}
-                      source={{ uri: img.image }}
-                      alt={'Image'}
-                    ></Image>
-                  </VStack>
-                </HStack>
-              </Center>
-            </HStack>
-          </Center>
-          <TouchableOpacity onPress={() => navigation.navigate('form')}>
-            <Text style={{ fontSize: 32, color: '#00B707' }}>Continuar</Text>
-          </TouchableOpacity>
-        </VStack>
+        <Text textAlign="center" mt={1} fontSize="sm" lineHeight="sm">
+          Selecione a tonalidade mais aproximada da tonalidade de pele do
+          cliente
+        </Text>
+
+        <Box
+          mt={6}
+          width="full"
+          bg="white"
+          rounded="2xl"
+          shadow={3}
+          alignItems="center"
+          flexDirection="row"
+          px={2}
+          style={{
+            height: 492,
+          }}
+        >
+          <FlatList
+            data={skinsTone}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+              <SkinsTonePalette
+                item={item}
+                onPress={() => handleSkinsTone(item.value)}
+              />
+            )}
+          />
+
+          <Image
+            w={48}
+            h={48}
+            rounded="2xl"
+            source={{ uri: img.image }}
+            alt="Image"
+          />
+        </Box>
       </Center>
-    </ImageBackground>
+      <Box mt={16} mb={6} alignItems="center">
+        <NextPage
+          onPress={() => {
+            navigate('form')
+          }}
+          action="Continuar"
+          color="blue.500"
+        />
+      </Box>
+    </VStack>
   )
 }

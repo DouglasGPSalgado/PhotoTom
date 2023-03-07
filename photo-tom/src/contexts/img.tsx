@@ -1,7 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { createContext, ReactNode, useState } from 'react'
 
-type paletteDTO = {}
+type paletteDTO = {
+  image: string | undefined
+}
 
 export type ImagePaletteData = {
   img: paletteDTO
