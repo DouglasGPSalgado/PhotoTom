@@ -101,7 +101,7 @@ export function Palette() {
       <Box mt={16} mb={6} alignItems="center">
         <NextPage
           onPress={() => {
-            navigate('form')
+            navigate('skinColor')
           }}
           action="Continuar"
           color="blue.500"
