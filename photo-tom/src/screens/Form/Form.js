@@ -13,7 +13,7 @@ import { globalStyles } from '../../GlobalStyles'
 import NavigationButton from '@components/NavigationButton'
 
 export default function Form({ navigation }) {
-  const [corPele, setCorPele] = useState(null)
+  const [corPele, setCorPele] = useState(4)
 
   const validacao = () =>
     Alert.alert('Ops', 'Selecione uma das alternativas para continuar!', [

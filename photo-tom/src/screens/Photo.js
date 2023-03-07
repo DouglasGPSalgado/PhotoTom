@@ -83,7 +83,7 @@ export function Photo() {
           </View>
         </Camera>
       ) : (
-        <Image source={{ uri: image }} style={styles.camera} />
+        <Image source={{ uri: image }} style={styles.camera} alt="" />
       )}
       <View>
         {image ? (

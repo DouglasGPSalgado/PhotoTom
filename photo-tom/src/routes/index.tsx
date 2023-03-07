@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HStack, Spinner } from 'native-base'
 
 import { useAuth } from '../contexts/auth'
 import AuthRoutes from './auth.routes'
 import AppRoutes from './app.routes'
+import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 
 const Routes: React.FC = () => {
   const { signed, loading } = useAuth()
+  const contextData = useContext(DataDeliveryContext)
+
+  console.log(contextData)
 
   if (loading) {
     return (
@@ -16,7 +20,7 @@ const Routes: React.FC = () => {
     )
   }
 
-  return signed ? <AppRoutes /> : <AuthRoutes />
+  return <AppRoutes />
 }
 
 export default Routes

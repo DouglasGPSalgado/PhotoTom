@@ -47,12 +47,12 @@ export function Home() {
           resizeMode="contain"
           alt=""
         />
-        <Text fontSize="28" color="blue.800" fontFamily="heading">
+        <Heading fontSize="28" color="blue.800" fontFamily="heading">
           Escolha o tipo de análise
-        </Text>
-        <Heading fontSize="xs" color="blue.800">
-          Caso tenha duvidas clique no botão “?” para mais detalhes
         </Heading>
+        <Text fontSize="xs" color="blue.800">
+          Caso tenha duvidas clique no botão “?” para mais detalhes
+        </Text>
       </Center>
 
       <Box px={10}>
@@ -134,7 +134,7 @@ export function Home() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('Photo')
+                  navigate('photo')
                   setShowModal(false)
                 }}
                 alignItems="flex-end"
