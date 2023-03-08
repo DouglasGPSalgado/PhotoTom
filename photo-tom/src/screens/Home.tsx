@@ -17,14 +17,13 @@ import ImageHome from '@assets/image_home.png'
 import Card from '@components/Card'
 import { HomeHeader } from '@components/HomeHeader'
 import { type AppNavigatorRoutesProps } from '@routes/app.routes'
+import { useDataDelivery } from '@hooks/useDataDelivery'
 
 export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const [showModal, setShowModal] = useState(false)
   const [fototipo, setFototipo] = useState<any>(1)
-
-  console.log(fototipo)
 
   return (
     <VStack flex={1}>
@@ -134,7 +133,7 @@ export function Home() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('photo')
+                  navigate('skinColor')
                   setShowModal(false)
                 }}
                 alignItems="flex-end"

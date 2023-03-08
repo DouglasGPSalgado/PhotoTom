@@ -14,8 +14,8 @@ const Routes: React.FC = () => {
 
   if (loading) {
     return (
-      <HStack flex={1} justifyContent={'center'} alignItems={'center'}>
-        <Spinner size={'lg'} color={'blue.500'} />
+      <HStack flex={1} justifyContent="center" alignItems="center">
+        <Spinner size="lg" color="blue.500" />
       </HStack>
     )
   }

@@ -19,38 +19,42 @@ import { TouchableOpacity } from 'react-native'
 
 import { ImageContext } from '../contexts/img'
 
+const colorPalette = [
+  { id: '1', color: '#D3BCA0', value: 1 },
+  { id: '2', color: '#C7B297', value: 1 },
+  { id: '3', color: '#C2A281', value: 1 },
+  { id: '4', color: '#BBA78E', value: 2 },
+  { id: '5', color: '#B8997A', value: 2 },
+  { id: '6', color: '#AF8D70', value: 2 },
+  { id: '7', color: '#AD9073', value: 3 },
+  { id: '8', color: '#A68569', value: 3 },
+  { id: '9', color: '#9C7E63', value: 3 },
+  { id: '10', color: '#986B4A', value: 4 },
+  { id: '11', color: '#906546', value: 4 },
+  { id: '12', color: '#875F42', value: 4 },
+  { id: '13', color: '#845329', value: 5 },
+  { id: '14', color: '#7D4E27', value: 5 },
+  { id: '15', color: '#764A25', value: 5 },
+  { id: '16', color: '#46312B', value: 6 },
+  { id: '17', color: '#3D2824', value: 6 },
+  { id: '18', color: '#341F1C', value: 6 },
+]
+
 export function Palette() {
   const { img } = useContext(ImageContext)
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
-  const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>([
-    { id: '1', color: '#D3BCA0', value: 1 },
-    { id: '2', color: '#C7B297', value: 1 },
-    { id: '3', color: '#C2A281', value: 1 },
-    { id: '4', color: '#BBA78E', value: 2 },
-    { id: '5', color: '#B8997A', value: 2 },
-    { id: '6', color: '#AF8D70', value: 2 },
-    { id: '7', color: '#AD9073', value: 3 },
-    { id: '8', color: '#A68569', value: 3 },
-    { id: '9', color: '#9C7E63', value: 3 },
-    { id: '10', color: '#986B4A', value: 4 },
-    { id: '11', color: '#906546', value: 4 },
-    { id: '12', color: '#875F42', value: 4 },
-    { id: '13', color: '#845329', value: 5 },
-    { id: '14', color: '#7D4E27', value: 5 },
-    { id: '15', color: '#764A25', value: 5 },
-    { id: '16', color: '#46312B', value: 6 },
-    { id: '17', color: '#3D2824', value: 6 },
-    { id: '18', color: '#341F1C', value: 6 },
-  ])
+  const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>(colorPalette)
   const [data, setData] = useState<number>()
 
-  function handleSkinsTone(value: number) {
+  function handleSkinsTone(value: number | undefined) {
     setData(value)
   }
 
   useEffect(() => {
-    handleSkinsTone()
-  }, [skinsTone])
+    handleSkinsTone(0)
+  }, [])
+
+  console.log(data)
 
   return (
     <VStack flex={1} px={8} py={6} bg="white">
@@ -84,7 +88,9 @@ export function Palette() {
             renderItem={({ item }) => (
               <SkinsTonePalette
                 item={item}
-                onPress={() => handleSkinsTone(item.value)}
+                onPress={() => {
+                  handleSkinsTone(item.value)
+                }}
               />
             )}
           />
@@ -98,7 +104,7 @@ export function Palette() {
           />
         </Box>
       </Center>
-      <Box mt={16} mb={6} alignItems="center">
+      <Box mt={16} alignItems="center">
         <NextPage
           onPress={() => {
             navigate('skinColor')

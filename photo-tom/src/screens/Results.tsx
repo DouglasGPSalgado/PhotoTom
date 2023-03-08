@@ -1,13 +1,18 @@
 import { Box, Center, Divider, Flex, Progress, Text, VStack } from 'native-base'
 
 import { NextPage } from '@components/NextPage'
-import { TitleResults } from '@components/TitleResults'
+import { Title } from '@components/Title'
 
 export function Results() {
   return (
     <VStack p={8} flex={1} bg="green">
       <Center>
-        <TitleResults title="Resultado:" fontSize="4xl" fontFamily="heading" />
+        <Title
+          title="Resultado:"
+          fontSize="4xl"
+          fontFamily="heading"
+          color="blue.800"
+        />
         <Box
           rounded="full"
           justifyContent="center"
@@ -25,12 +30,13 @@ export function Results() {
 
       <Divider mt="6" color="black" shadow="6" />
 
-      <TitleResults
+      <Title
         title="Graus de semelhança:"
         textAlign="center"
         mt="8"
         fontSize="2xl"
         fontFamily="heading"
+        color="blue.800"
       />
 
       <Flex
