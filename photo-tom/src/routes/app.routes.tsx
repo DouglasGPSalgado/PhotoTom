@@ -4,7 +4,7 @@ import {
 } from '@react-navigation/stack'
 import { Home } from '@screens/Home'
 import { Palette } from '@screens/Palette'
-import { Photo } from '@screens/Photo'
+import Photo from '@screens/Photo'
 import { Results } from '@screens/Results'
 import { SkinColor } from '@screens/QueryForm/SkinColor'
 import { HairColor } from '@screens/QueryForm/HairColor'

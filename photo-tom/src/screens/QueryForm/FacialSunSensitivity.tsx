@@ -17,7 +17,10 @@ export function FacialSunSensitivity() {
   function validationForNextPage() {
     if (facialSunSensitivity === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
+      return
     }
+
+    navigate('results')
   }
 
   return (

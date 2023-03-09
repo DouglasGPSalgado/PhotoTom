@@ -11,10 +11,10 @@ import { Alert } from 'react-native'
 export function AmountFreckles() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { AmountFreckles, setAmountFreckles } = useContext(DataDeliveryContext)
+  const { amountFreckles, setAmountFreckles } = useContext(DataDeliveryContext)
 
   function validationForNextPage() {
-    if (AmountFreckles === null) {
+    if (amountFreckles === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
@@ -36,32 +36,32 @@ export function AmountFreckles() {
         <FormButton
           text="Muitas"
           onPress={() => setAmountFreckles(0)}
-          borderWidth={AmountFreckles === 0 ? 2 : 0}
-          textColor={AmountFreckles === 0 ? 'blue.500' : 'black'}
+          borderWidth={amountFreckles === 0 ? 2 : 0}
+          textColor={amountFreckles === 0 ? 'blue.500' : 'black'}
         />
         <FormButton
           text="Várias"
           onPress={() => setAmountFreckles(1)}
-          borderWidth={AmountFreckles === 1 ? 2 : 0}
-          textColor={AmountFreckles === 1 ? 'blue.500' : 'black'}
+          borderWidth={amountFreckles === 1 ? 2 : 0}
+          textColor={amountFreckles === 1 ? 'blue.500' : 'black'}
         />
         <FormButton
           text="Algumas"
           onPress={() => setAmountFreckles(2)}
-          borderWidth={AmountFreckles === 2 ? 2 : 0}
-          textColor={AmountFreckles === 2 ? 'blue.500' : 'black'}
+          borderWidth={amountFreckles === 2 ? 2 : 0}
+          textColor={amountFreckles === 2 ? 'blue.500' : 'black'}
         />
         <FormButton
           text="Muito poucas"
           onPress={() => setAmountFreckles(3)}
-          borderWidth={AmountFreckles === 3 ? 2 : 0}
-          textColor={AmountFreckles === 3 ? 'blue.500' : 'black'}
+          borderWidth={amountFreckles === 3 ? 2 : 0}
+          textColor={amountFreckles === 3 ? 'blue.500' : 'black'}
         />
         <FormButton
           text="Nenhuma"
           onPress={() => setAmountFreckles(4)}
-          borderWidth={AmountFreckles === 4 ? 2 : 0}
-          textColor={AmountFreckles === 4 ? 'blue.500' : 'black'}
+          borderWidth={amountFreckles === 4 ? 2 : 0}
+          textColor={amountFreckles === 4 ? 'blue.500' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>

@@ -55,7 +55,7 @@ export function Results() {
         </Text>
       </Flex>
 
-      <Center position="absolute" bottom="0" left="0" right="0" p={8}>
+      <Center justifyContent="flex-end" flex={1}>
         <Text
           fontSize="xs"
           fontFamily="heading"

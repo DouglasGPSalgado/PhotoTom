@@ -133,7 +133,7 @@ export function Home() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('skinColor')
+                  navigate('photo')
                   setShowModal(false)
                 }}
                 alignItems="flex-end"

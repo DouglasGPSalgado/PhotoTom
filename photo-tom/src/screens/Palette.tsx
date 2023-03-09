@@ -44,17 +44,23 @@ export function Palette() {
   const { img } = useContext(ImageContext)
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>(colorPalette)
-  const [data, setData] = useState<number>()
+  const { handleSkinsTone } = useDataDelivery()
 
-  function handleSkinsTone(value: number | undefined) {
-    setData(value)
+  const onClickItem = (item: SkinsToneDTO) => {
+    const newArrData = skinsTone.map((e) => {
+      if (item.id === e.id) {
+        return {
+          ...e,
+          selected: true,
+        }
+      }
+      return {
+        ...e,
+        selected: false,
+      }
+    })
+    setSkinsTone(newArrData)
   }
-
-  useEffect(() => {
-    handleSkinsTone(0)
-  }, [])
-
-  console.log(data)
 
   return (
     <VStack flex={1} px={8} py={6} bg="white">
@@ -89,8 +95,11 @@ export function Palette() {
               <SkinsTonePalette
                 item={item}
                 onPress={() => {
+                  onClickItem(item)
                   handleSkinsTone(item.value)
                 }}
+                borderWidth={item.selected ? 3 : 0}
+                borderColor={item.selected ? 'blue.400' : 'white'}
               />
             )}
           />
@@ -104,7 +113,7 @@ export function Palette() {
           />
         </Box>
       </Center>
-      <Box mt={16} alignItems="center">
+      <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage
           onPress={() => {
             navigate('skinColor')

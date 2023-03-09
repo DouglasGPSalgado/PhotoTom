@@ -7,7 +7,7 @@ type DataDeliveryContextProps = {
   setHairColor: (value: number) => void
   eyeColor: number | null
   setEyeColor: (value: number) => void
-  AmountFreckles: number | null
+  amountFreckles: number | null
   setAmountFreckles: (value: number) => void
   tannedSkin: number | null
   setTannedSkin: (value: number) => void
@@ -17,6 +17,7 @@ type DataDeliveryContextProps = {
   setSunReaction: (value: number) => void
   facialSunSensitivity: number | null
   setFacialSunSensitivity: (value: number) => void
+  handleSkinsTone: (value: number | null) => void
 }
 
 type ContextProviderProps = {
@@ -31,13 +32,18 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [skinColor, setSkinColor] = useState<number | null>(null)
   const [hairColor, setHairColor] = useState<number | null>(null)
   const [eyeColor, setEyeColor] = useState<number | null>(null)
-  const [AmountFreckles, setAmountFreckles] = useState<number | null>(null)
+  const [amountFreckles, setAmountFreckles] = useState<number | null>(null)
   const [tannedSkin, setTannedSkin] = useState<number | null>(null)
   const [bronzeIntensity, setBronzeIntensity] = useState<number | null>(null)
   const [sunReaction, setSunReaction] = useState<number | null>(null)
   const [facialSunSensitivity, setFacialSunSensitivity] = useState<
     number | null
   >(null)
+  const [palette, setPalette] = useState<number | null>(null)
+
+  function handleSkinsTone(value: number | null) {
+    setPalette(value)
+  }
 
   return (
     <DataDeliveryContext.Provider
@@ -48,7 +54,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         setHairColor,
         eyeColor,
         setEyeColor,
-        AmountFreckles,
+        amountFreckles,
         setAmountFreckles,
         tannedSkin,
         setTannedSkin,
@@ -58,6 +64,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         setSunReaction,
         facialSunSensitivity,
         setFacialSunSensitivity,
+        handleSkinsTone,
       }}
     >
       {children}
