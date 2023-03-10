@@ -28,39 +28,40 @@ export function BronzeIntensity() {
         title="Com que intensidade a pele do paciente fica bronzeada?"
         fontSize="2xl"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="A pele é naturalmente escura"
           onPress={() => setTannedSkin(0)}
           borderWidth={tannedSkin === 0 ? 2 : 0}
-          textColor={tannedSkin === 0 ? 'blue.500' : 'black'}
+          textColor={tannedSkin === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Profundamente"
           onPress={() => setTannedSkin(1)}
           borderWidth={tannedSkin === 1 ? 2 : 0}
-          textColor={tannedSkin === 1 ? 'blue.500' : 'black'}
+          textColor={tannedSkin === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Moderadamente"
           onPress={() => setTannedSkin(2)}
           borderWidth={tannedSkin === 2 ? 2 : 0}
-          textColor={tannedSkin === 2 ? 'blue.500' : 'black'}
+          textColor={tannedSkin === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Levemente"
           onPress={() => setTannedSkin(3)}
           borderWidth={tannedSkin === 3 ? 2 : 0}
-          textColor={tannedSkin === 3 ? 'blue.500' : 'black'}
+          textColor={tannedSkin === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Pouco ou muito pouco"
           onPress={() => setTannedSkin(4)}
           borderWidth={tannedSkin === 4 ? 2 : 0}
-          textColor={tannedSkin === 4 ? 'blue.500' : 'black'}
+          textColor={tannedSkin === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -69,7 +70,7 @@ export function BronzeIntensity() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

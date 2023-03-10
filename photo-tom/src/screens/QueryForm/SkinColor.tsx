@@ -28,39 +28,40 @@ export function SkinColor() {
         title="Qual a cor da pele do paciente antes da exposição solar ?"
         fontSize="2xl"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="Branco Marfim"
           onPress={() => setSkinColor(0)}
           borderWidth={skinColor === 0 ? 2 : 0}
-          textColor={skinColor === 0 ? 'blue.500' : 'black'}
+          textColor={skinColor === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Pele Clara ou Pálida"
           onPress={() => setSkinColor(1)}
           borderWidth={skinColor === 1 ? 2 : 0}
-          textColor={skinColor === 1 ? 'blue.500' : 'black'}
+          textColor={skinColor === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Pele com Tom de Ouro"
           onPress={() => setSkinColor(2)}
           borderWidth={skinColor === 2 ? 2 : 0}
-          textColor={skinColor === 2 ? 'blue.500' : 'black'}
+          textColor={skinColor === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Castanho Claro"
           onPress={() => setSkinColor(3)}
           borderWidth={skinColor === 3 ? 2 : 0}
-          textColor={skinColor === 3 ? 'blue.500' : 'black'}
+          textColor={skinColor === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Castanho Escuro ou Preto"
           onPress={() => setSkinColor(4)}
           borderWidth={skinColor === 4 ? 2 : 0}
-          textColor={skinColor === 4 ? 'blue.500' : 'black'}
+          textColor={skinColor === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -69,7 +70,7 @@ export function SkinColor() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

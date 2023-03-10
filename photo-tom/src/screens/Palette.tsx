@@ -65,11 +65,17 @@ export function Palette() {
   return (
     <VStack flex={1} px={8} py={6} bg="white">
       <Center>
-        <Heading fontSize="3xl" fontFamily="heading">
+        <Heading color="brown.500" fontSize="3xl" fontFamily="heading">
           Paleta de Cores
         </Heading>
 
-        <Text textAlign="center" mt={1} fontSize="sm" lineHeight="sm">
+        <Text
+          color="brown.500"
+          textAlign="center"
+          mt={1}
+          fontSize="sm"
+          lineHeight="sm"
+        >
           Selecione a tonalidade mais aproximada da tonalidade de pele do
           cliente
         </Text>
@@ -79,7 +85,7 @@ export function Palette() {
           width="full"
           bg="white"
           rounded="2xl"
-          shadow={3}
+          shadow={7}
           alignItems="center"
           flexDirection="row"
           px={2}
@@ -99,7 +105,7 @@ export function Palette() {
                   handleSkinsTone(item.value)
                 }}
                 borderWidth={item.selected ? 3 : 0}
-                borderColor={item.selected ? 'blue.400' : 'white'}
+                borderColor={item.selected ? 'brown.500' : 'white'}
               />
             )}
           />
@@ -119,7 +125,7 @@ export function Palette() {
             navigate('skinColor')
           }}
           action="Continuar"
-          color="blue.500"
+          color="brown.500"
         />
       </Box>
     </VStack>

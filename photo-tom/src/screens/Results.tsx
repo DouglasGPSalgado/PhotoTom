@@ -11,7 +11,7 @@ export function Results() {
           title="Resultado:"
           fontSize="4xl"
           fontFamily="heading"
-          color="blue.800"
+          color="brown.500"
         />
         <Box
           rounded="full"
@@ -19,12 +19,16 @@ export function Results() {
           alignItems="center"
           mt="4"
           borderWidth="6"
-          borderColor="blue.400"
+          borderColor="brown.500"
           height="56"
           width="56"
         >
-          <Text fontSize="3xl">III</Text>
-          <Text fontSize="2xl">Fototipo</Text>
+          <Text fontSize="3xl" color="brown.300">
+            III
+          </Text>
+          <Text fontSize="2xl" color="brown.300">
+            Fototipo
+          </Text>
         </Box>
       </Center>
 
@@ -36,7 +40,7 @@ export function Results() {
         mt="8"
         fontSize="2xl"
         fontFamily="heading"
-        color="blue.800"
+        color="brown.500"
       />
 
       <Flex
@@ -46,11 +50,11 @@ export function Results() {
         justifyContent="space-between"
         mt={6}
       >
-        <Text fontSize="xl" fontFamily="heading">
+        <Text color="black" fontSize="xl" fontFamily="heading">
           IV
         </Text>
         <Progress value={56} width="56" size="2xl" colorScheme="" />
-        <Text fontSize="lg" fontFamily="heading">
+        <Text color="black" fontSize="lg" fontFamily="heading">
           85.71%
         </Text>
       </Flex>
@@ -60,13 +64,13 @@ export function Results() {
           fontSize="xs"
           fontFamily="heading"
           textAlign="center"
-          color="blue.800"
+          color="brown.500"
           mb={2}
         >
           *Este tipo de análise não substitui a consulta médica, ele apenas
           complementa a avaliação de um especialista*
         </Text>
-        <NextPage action="Continuar" onPress={() => {}} />
+        <NextPage color="brown.500" action="Continuar" onPress={() => {}} />
       </Center>
     </VStack>
   )

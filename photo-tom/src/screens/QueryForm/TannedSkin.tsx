@@ -29,39 +29,40 @@ export function TannedSkin() {
         title="A pele do paciente fica bronzeada?"
         fontSize="2xl"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="Nunca"
           onPress={() => setBronzeIntensity(0)}
           borderWidth={bronzeIntensity === 0 ? 2 : 0}
-          textColor={bronzeIntensity === 0 ? 'blue.500' : 'black'}
+          textColor={bronzeIntensity === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Raramente"
           onPress={() => setBronzeIntensity(1)}
           borderWidth={bronzeIntensity === 1 ? 2 : 0}
-          textColor={bronzeIntensity === 1 ? 'blue.500' : 'black'}
+          textColor={bronzeIntensity === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Às vezes"
           onPress={() => setBronzeIntensity(2)}
           borderWidth={bronzeIntensity === 2 ? 2 : 0}
-          textColor={bronzeIntensity === 2 ? 'blue.500' : 'black'}
+          textColor={bronzeIntensity === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Frequentemente"
           onPress={() => setBronzeIntensity(3)}
           borderWidth={bronzeIntensity === 3 ? 2 : 0}
-          textColor={bronzeIntensity === 3 ? 'blue.500' : 'black'}
+          textColor={bronzeIntensity === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Sempre"
           onPress={() => setBronzeIntensity(4)}
           borderWidth={bronzeIntensity === 4 ? 2 : 0}
-          textColor={bronzeIntensity === 4 ? 'blue.500' : 'black'}
+          textColor={bronzeIntensity === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -70,7 +71,7 @@ export function TannedSkin() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

@@ -18,7 +18,7 @@ export function FormButton({
       mb={6}
       bg="white"
       shadow="5"
-      borderColor="blue.300"
+      borderColor="brown.300"
       _pressed={{
         bg: 'light.100',
       }}

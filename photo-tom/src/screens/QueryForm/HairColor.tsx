@@ -28,39 +28,40 @@ export function HairColor() {
         title="Qual a cor natural do cabelo?"
         fontSize="2xl"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="Ruivo ou Loiro Claro"
           onPress={() => setHairColor(0)}
           borderWidth={hairColor === 0 ? 2 : 0}
-          textColor={hairColor === 0 ? 'blue.500' : 'black'}
+          textColor={hairColor === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Loiro"
           onPress={() => setHairColor(1)}
           borderWidth={hairColor === 1 ? 2 : 0}
-          textColor={hairColor === 1 ? 'blue.500' : 'black'}
+          textColor={hairColor === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Loiro Escuro ou Castanho Claro"
           onPress={() => setHairColor(2)}
           borderWidth={hairColor === 2 ? 2 : 0}
-          textColor={hairColor === 2 ? 'blue.500' : 'black'}
+          textColor={hairColor === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Castanho"
           onPress={() => setHairColor(3)}
           borderWidth={hairColor === 3 ? 2 : 0}
-          textColor={hairColor === 3 ? 'blue.500' : 'black'}
+          textColor={hairColor === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Preto"
           onPress={() => setHairColor(4)}
           borderWidth={hairColor === 4 ? 2 : 0}
-          textColor={hairColor === 4 ? 'blue.500' : 'black'}
+          textColor={hairColor === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -69,7 +70,7 @@ export function HairColor() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

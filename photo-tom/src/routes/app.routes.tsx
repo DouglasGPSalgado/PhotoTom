@@ -41,7 +41,7 @@ export default function AppRoutes() {
     <Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#37859E',
+          backgroundColor: '#C39D7C',
           height: 100,
         },
         headerTintColor: '#fff',

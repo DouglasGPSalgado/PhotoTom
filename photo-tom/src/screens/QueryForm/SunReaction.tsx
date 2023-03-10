@@ -28,39 +28,40 @@ export function SunReaction() {
         title="Como a pele reage ao Sol?"
         fontSize="2xl"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="Sempre queima, forma bolhas e descama"
           onPress={() => setSunReaction(0)}
           borderWidth={sunReaction === 0 ? 2 : 0}
-          textColor={sunReaction === 0 ? 'blue.500' : 'black'}
+          textColor={sunReaction === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Quase sempre queima, forma bolhas e descama"
           onPress={() => setSunReaction(1)}
           borderWidth={sunReaction === 1 ? 2 : 0}
-          textColor={sunReaction === 1 ? 'blue.500' : 'black'}
+          textColor={sunReaction === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="De vez em quando queima"
           onPress={() => setSunReaction(2)}
           borderWidth={sunReaction === 2 ? 2 : 0}
-          textColor={sunReaction === 2 ? 'blue.500' : 'black'}
+          textColor={sunReaction === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Raramente queima"
           onPress={() => setSunReaction(3)}
           borderWidth={sunReaction === 3 ? 2 : 0}
-          textColor={sunReaction === 3 ? 'blue.500' : 'black'}
+          textColor={sunReaction === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Nunca queima"
           onPress={() => setSunReaction(4)}
           borderWidth={sunReaction === 4 ? 2 : 0}
-          textColor={sunReaction === 4 ? 'blue.500' : 'black'}
+          textColor={sunReaction === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -69,7 +70,7 @@ export function SunReaction() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

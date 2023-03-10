@@ -28,39 +28,40 @@ export function EyeColor() {
         title="Qual a cor dos olhos?"
         fontSize="2xl"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="Azul Claro, Cinza Claro ou Verde Claro"
           onPress={() => setEyeColor(0)}
           borderWidth={eyeColor === 0 ? 2 : 0}
-          textColor={eyeColor === 0 ? 'blue.500' : 'black'}
+          textColor={eyeColor === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Azul, Cinza ou Verde"
           onPress={() => setEyeColor(1)}
           borderWidth={eyeColor === 1 ? 2 : 0}
-          textColor={eyeColor === 1 ? 'blue.500' : 'black'}
+          textColor={eyeColor === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Castanho Claro ou Mel"
           onPress={() => setEyeColor(2)}
           borderWidth={eyeColor === 2 ? 2 : 0}
-          textColor={eyeColor === 2 ? 'blue.500' : 'black'}
+          textColor={eyeColor === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Castanho"
           onPress={() => setEyeColor(3)}
           borderWidth={eyeColor === 3 ? 2 : 0}
-          textColor={eyeColor === 3 ? 'blue.500' : 'black'}
+          textColor={eyeColor === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Marrom Escuro/Preto"
           onPress={() => setEyeColor(4)}
           borderWidth={eyeColor === 4 ? 2 : 0}
-          textColor={eyeColor === 4 ? 'blue.500' : 'black'}
+          textColor={eyeColor === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -69,7 +70,7 @@ export function EyeColor() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

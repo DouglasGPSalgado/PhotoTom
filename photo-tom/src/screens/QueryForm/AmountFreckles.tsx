@@ -25,43 +25,43 @@ export function AmountFreckles() {
   return (
     <VStack flex={1} p={8} bg="white">
       <Title
-        title=" Qual é a quantidade de sardas na pele em áreas que não estão
-        expostas?"
-        fontSize="2xl"
+        title="Quantidade de sardas na pele em áreas que não estão expostas?"
+        fontSize={20}
+        color="brown.500"
         textAlign="center"
-        color="black"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
           text="Muitas"
           onPress={() => setAmountFreckles(0)}
           borderWidth={amountFreckles === 0 ? 2 : 0}
-          textColor={amountFreckles === 0 ? 'blue.500' : 'black'}
+          textColor={amountFreckles === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Várias"
           onPress={() => setAmountFreckles(1)}
           borderWidth={amountFreckles === 1 ? 2 : 0}
-          textColor={amountFreckles === 1 ? 'blue.500' : 'black'}
+          textColor={amountFreckles === 1 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Algumas"
           onPress={() => setAmountFreckles(2)}
           borderWidth={amountFreckles === 2 ? 2 : 0}
-          textColor={amountFreckles === 2 ? 'blue.500' : 'black'}
+          textColor={amountFreckles === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Muito poucas"
           onPress={() => setAmountFreckles(3)}
           borderWidth={amountFreckles === 3 ? 2 : 0}
-          textColor={amountFreckles === 3 ? 'blue.500' : 'black'}
+          textColor={amountFreckles === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
           text="Nenhuma"
           onPress={() => setAmountFreckles(4)}
           borderWidth={amountFreckles === 4 ? 2 : 0}
-          textColor={amountFreckles === 4 ? 'blue.500' : 'black'}
+          textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
@@ -70,7 +70,7 @@ export function AmountFreckles() {
             validationForNextPage()
           }}
           action="Continuar"
-          color="black"
+          color="brown.400"
         />
       </Box>
     </VStack>

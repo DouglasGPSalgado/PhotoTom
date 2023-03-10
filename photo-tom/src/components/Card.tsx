@@ -17,27 +17,34 @@ export default function Card({
   description,
   action,
   onPress,
+  ...rest
 }: Props) {
   const [details, setDetails] = useState(false)
 
   return (
     <Box
       width="full"
-      mt={4}
       padding="4"
       bg="white"
       borderRadius="8"
       shadow="6"
       flexDirection="row"
+      {...rest}
     >
-      <Center flexDirection="column" flex={1}>
-        <Heading fontFamily="heading" fontSize="lg">
+      <Center flex={1}>
+        <Heading
+          fontFamily="heading"
+          fontSize="lg"
+          textAlign="center"
+          width={40}
+          color="brown.500"
+        >
           {title}
         </Heading>
 
-        <Heading fontSize="xs" mt="0.5" color="blue.800">
+        <Text fontSize="xs" mt="0.5" color="brown.500">
           {subtitle}
-        </Heading>
+        </Text>
 
         {details && (
           <Text
@@ -45,7 +52,7 @@ export default function Card({
             textAlign="center"
             fontSize="md"
             fontWeight="medium"
-            color="blue.800"
+            color="brown.500"
             opacity="0.7"
           >
             {description}
@@ -53,7 +60,7 @@ export default function Card({
         )}
 
         <TouchableOpacity onPress={onPress}>
-          <Text mt={5} fontSize="22" color="#19C8FF">
+          <Text mt={5} fontSize="22" color="brown.300">
             {action}
           </Text>
         </TouchableOpacity>
@@ -63,7 +70,7 @@ export default function Card({
         <TouchableOpacity
           onPress={() => setDetails((prevDetails) => !prevDetails)}
         >
-          <Icon as={MaterialIcons} name="help" color="blue.800" size={7} />
+          <Icon as={MaterialIcons} name="help" color="brown.500" size={7} />
         </TouchableOpacity>
       </Box>
     </Box>

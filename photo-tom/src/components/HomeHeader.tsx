@@ -9,14 +9,14 @@ export function HomeHeader() {
   const { signOut } = useAuth()
 
   return (
-    <HStack bg="blue.500" pt={16} pb={5} px={8} alignItems="center">
+    <HStack bg="brown.300" pt={16} pb={5} px={8} alignItems="center">
       <VStack flex={1}>
         <Text color="white" fontSize="md">
           Olá,
         </Text>
-        <Heading color="white" fontSize="md" fontFamily="heading">
+        <Text color="white" fontSize="md">
           User Name
-        </Heading>
+        </Text>
       </VStack>
       <TouchableOpacity onPress={signOut}>
         <Icon as={MaterialIcons} name="logout" color="white" size={7} />
