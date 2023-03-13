@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://phototom-test.loophole.site/api/',
+  baseURL: 'http://ncanit.unievangelica.edu.br/api/',
 })
 export default api

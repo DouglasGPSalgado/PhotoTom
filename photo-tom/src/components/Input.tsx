@@ -11,7 +11,7 @@ export function Input({ errorMessage = null, isInvalid, ...rest }: InputProps) {
     <FormControl isInvalid={invalid}>
       <NativeBaseInput
         borderWidth={1}
-        borderColor="blue.500"
+        borderColor="brown.300"
         bg="white"
         h={14}
         fontSize="md"

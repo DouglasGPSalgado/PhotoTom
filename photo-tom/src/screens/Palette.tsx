@@ -98,22 +98,26 @@ export function Palette() {
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
-              <SkinsTonePalette
-                item={item}
-                onPress={() => {
-                  onClickItem(item)
-                  handleSkinsTone(item.value)
-                }}
-                borderWidth={item.selected ? 3 : 0}
-                borderColor={item.selected ? 'brown.500' : 'white'}
-              />
+              <Box alignItems="center">
+                <SkinsTonePalette
+                  item={item}
+                  onPress={() => {
+                    onClickItem(item)
+                    handleSkinsTone(item.value)
+                  }}
+                  width={item.selected ? 24 : 20}
+                  height={item.selected ? 24 : 20}
+                  // borderWidth={item.selected ? 3 : 0}
+                  // borderColor={item.selected ? 'brown.500' : 'white'}
+                />
+              </Box>
             )}
           />
 
           <Image
-            w={48}
-            h={48}
+            style={{ height: 170, width: 170 }}
             rounded="2xl"
+            ml={5}
             source={{ uri: img.image }}
             alt="Image"
           />

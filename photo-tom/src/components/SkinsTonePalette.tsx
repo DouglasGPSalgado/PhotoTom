@@ -11,14 +11,7 @@ type SkinsToneProps = IBoxProps & {
 export function SkinsTonePalette({ item, onPress, ...rest }: SkinsToneProps) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Box
-        width={20}
-        height={20}
-        rounded="full"
-        bg={item.color}
-        my={1}
-        {...rest}
-      />
+      <Box rounded="full" bg={item.color} my={1} {...rest} />
     </TouchableOpacity>
   )
 }

@@ -1,5 +1,5 @@
 import GoogleIcon from '@assets/google.png'
-import IconSignIn from '@assets/icon.png'
+import IconSignIn from '@assets/IconSignIn.png'
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -89,7 +89,7 @@ export function SignIn() {
           <Box
             bg={{
               linearGradient: {
-                colors: ['#429FBC', '#0F5C75'],
+                colors: ['#D8B490', '#ebd4be'],
                 start: [1, 0],
                 end: [1, 1],
               },
@@ -166,7 +166,7 @@ export function SignIn() {
                 textAlign="right"
                 fontFamily="body"
                 fontSize="sm"
-                color="blue.500"
+                color="brown.500"
               >
                 Esqueceu a senha ?
               </Text>
@@ -179,9 +179,9 @@ export function SignIn() {
             />
 
             <Flex direction="row" align="center" justifyContent="center" mt={8}>
-              <Divider color="blue.500" opacity="0.7" width={24} />
+              <Divider color="brown.500" opacity="0.7" width={24} />
               <Text px="6">ou</Text>
-              <Divider color="blue.500" opacity="0.7" width={24} />
+              <Divider color="brown.500" opacity="0.7" width={24} />
             </Flex>
 
             <Center mt={6}>
@@ -202,7 +202,7 @@ export function SignIn() {
 
             <Center mt="16" mb={6}>
               <TouchableOpacity>
-                <Text color="blue.500">Não possui conta? cadastre-se</Text>
+                <Text color="brown.500">Não possui conta? cadastre-se</Text>
               </TouchableOpacity>
             </Center>
           </Box>

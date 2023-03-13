@@ -20,7 +20,7 @@ const Routes: React.FC = () => {
     )
   }
 
-  return <AppRoutes />
+  return signed ? <AuthRoutes /> : <AppRoutes />
 }
 
 export default Routes

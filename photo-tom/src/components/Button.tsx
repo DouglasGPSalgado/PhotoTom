@@ -17,7 +17,7 @@ export function Button({ title, ...rest }: ButtonProps) {
       }}
       {...rest}
     >
-      <Text fontSize="lg" color="blue.500">
+      <Text fontSize="lg" color="brown.300">
         {title}
       </Text>
     </ButtonNativeBase>
