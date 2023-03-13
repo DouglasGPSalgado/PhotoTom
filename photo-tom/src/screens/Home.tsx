@@ -23,6 +23,8 @@ import { Alert } from 'react-native'
 export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
+  const { initialGuess, setInitialGuess } = useDataDelivery()
+
   const [showModal, setShowModal] = useState(false)
   const [fototipo, setFototipo] = useState<any>(0)
 
@@ -126,9 +128,9 @@ export function Home() {
                       step={1}
                       arrows={true}
                       color="#986B4A"
-                      value={fototipo}
-                      onChange={(fototipo) => {
-                        setFototipo(fototipo)
+                      value={initialGuess}
+                      onChange={(initialGuess: number) => {
+                        setInitialGuess(initialGuess)
                       }}
                     />
                   </Box>

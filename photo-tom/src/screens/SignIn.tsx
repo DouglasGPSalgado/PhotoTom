@@ -26,6 +26,8 @@ import { useAuth } from '../contexts/auth'
 import api from '../services/api'
 
 import { encode, decode } from 'js-base64'
+import { useNavigation } from '@react-navigation/native'
+import { AppNavigatorRoutesProps } from '@routes/app.routes'
 
 if (!global.btoa) {
   global.btoa = encode
@@ -50,6 +52,7 @@ const signInSchema = yup.object({
 
 export function SignIn() {
   const { signed, signIn } = useAuth()
+  const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const {
     control,
@@ -71,7 +74,6 @@ export function SignIn() {
           },
         },
       )
-      console.log(response.data)
       signIn(response.data)
     } catch (error) {
       console.error(error)

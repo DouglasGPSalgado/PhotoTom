@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import api from '@services/api'
 import { createContext, ReactNode, useState } from 'react'
 
 type DataDeliveryContextProps = {
@@ -17,7 +19,10 @@ type DataDeliveryContextProps = {
   setSunReaction: (value: number) => void
   facialSunSensitivity: number | null
   setFacialSunSensitivity: (value: number) => void
+  initialGuess: number
+  setInitialGuess: (value: number) => void
   handleSkinsTone: (value: number | null) => void
+  postResults: () => Promise<void>
 }
 
 type ContextProviderProps = {
@@ -39,10 +44,44 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [facialSunSensitivity, setFacialSunSensitivity] = useState<
     number | null
   >(null)
+  const [initialGuess, setInitialGuess] = useState<number>(1)
   const [palette, setPalette] = useState<number | null>(null)
 
   function handleSkinsTone(value: number | null) {
     setPalette(value)
+  }
+
+  async function postResults() {
+    try {
+      const token = await AsyncStorage.getItem('@PTAuth:token')
+      const response = await api.post(
+        'analysis/',
+        {
+          method: 'POST',
+          body: {
+            initial_guess: initialGuess,
+            tech_rating: palette,
+            skin_c: skinColor,
+            hair_c: hairColor,
+            eye_c: eyeColor,
+            freckles: amountFreckles,
+            tan_rate: tannedSkin,
+            tan_intensity: bronzeIntensity,
+            exp_reaction: sunReaction,
+            facial_exp_sensibility: facialSunSensitivity,
+          },
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -65,6 +104,9 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         facialSunSensitivity,
         setFacialSunSensitivity,
         handleSkinsTone,
+        postResults,
+        initialGuess,
+        setInitialGuess,
       }}
     >
       {children}
