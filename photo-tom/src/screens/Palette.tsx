@@ -107,8 +107,8 @@ export function Palette() {
                   }}
                   width={item.selected ? 24 : 20}
                   height={item.selected ? 24 : 20}
-                  // borderWidth={item.selected ? 3 : 0}
-                  // borderColor={item.selected ? 'brown.500' : 'white'}
+                  borderWidth={item.selected ? 3 : 0}
+                  borderColor={item.selected ? 'yellow.500' : 'white'}
                 />
               </Box>
             )}

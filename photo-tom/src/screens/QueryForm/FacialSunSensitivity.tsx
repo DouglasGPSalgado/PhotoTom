@@ -11,7 +11,6 @@ import { Alert } from 'react-native'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
-  const { loading } = useAuth()
 
   const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
@@ -21,25 +20,30 @@ export function FacialSunSensitivity() {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
-    if (loading) {
-      return (
-        <HStack flex={1} justifyContent="center" alignItems="center">
-          <Spinner size="lg" color="blue.500" />
-        </HStack>
-      )
-    }
-    postResults()
-    navigate('results')
+
+    Alert.alert('Atenção', 'Deseja enviar os dados para análise ?', [
+      {
+        text: 'Não',
+      },
+      {
+        text: 'Sim',
+        onPress: () => {
+          postResults()
+          navigate('results')
+        },
+      },
+    ])
   }
 
   return (
     <VStack flex={1} p={8} bg="white">
       <Title
         title="Qual é o grau de sensibilidade do rosto quando exposto ao sol?"
-        fontSize="2xl"
+        fontSize="22"
         textAlign="center"
-        color="black"
+        color="brown.500"
         fontFamily="heading"
+        h={16}
       />
       <Box mt={6}>
         <FormButton
@@ -78,8 +82,8 @@ export function FacialSunSensitivity() {
           onPress={() => {
             validationForNextPage()
           }}
+          color="brown.500"
           action="Resultados"
-          color="black"
         />
       </Box>
     </VStack>

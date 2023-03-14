@@ -1,4 +1,5 @@
 import { Button as ButtonNativeBase, IButtonProps, Text } from 'native-base'
+import { Platform } from 'react-native'
 
 type FormButtonProps = IButtonProps & {
   onPress: () => void
@@ -26,7 +27,11 @@ export function FormButton({
       rounded="2xl"
       {...rest}
     >
-      <Text color={textColor} fontSize="md" fontFamily="body">
+      <Text
+        color={textColor}
+        fontSize={Platform.OS === 'ios' ? 'md' : 'sm'}
+        fontFamily="body"
+      >
         {text}
       </Text>
     </ButtonNativeBase>

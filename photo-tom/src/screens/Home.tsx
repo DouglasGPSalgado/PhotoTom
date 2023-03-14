@@ -10,6 +10,8 @@ import {
 } from 'native-base'
 import React, { useState } from 'react'
 import InputSpinner from 'react-native-input-spinner'
+import NumericInput from 'react-native-numeric-input'
+import { MaterialIcons } from '@expo/vector-icons'
 
 import Circle from '@assets/Circle.png'
 import ImageHome from '@assets/image_home.png'
@@ -119,15 +121,20 @@ export function Home() {
                     análise.
                   </Text>
                   <Box py="8">
-                    <InputSpinner
-                      fontSize={28}
-                      width="80%"
-                      skin="round"
-                      max={6}
-                      min={1}
-                      step={1}
-                      arrows={true}
-                      color="#986B4A"
+                    <NumericInput
+                      type="plus-minus"
+                      editable={false}
+                      totalHeight={48}
+                      totalWidth={180}
+                      minValue={1}
+                      maxValue={6}
+                      borderColor="transparent"
+                      rounded
+                      rightButtonBackgroundColor="#EAD1B2"
+                      leftButtonBackgroundColor="#EAD1B2"
+                      containerStyle={{
+                        borderRadius: 50,
+                      }}
                       value={initialGuess}
                       onChange={(initialGuess: number) => {
                         setInitialGuess(initialGuess)

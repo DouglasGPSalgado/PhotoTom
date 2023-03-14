@@ -25,12 +25,11 @@ export function AmountFreckles() {
   return (
     <VStack flex={1} p={8} bg="white">
       <Title
-        title="Quantidade de sardas na pele em áreas que não estão expostas?"
-        fontSize={20}
+        title="Quantidade de sardas ou pintas na pele em áreas não expostas?"
+        fontSize={21}
         color="brown.500"
         textAlign="center"
         fontFamily="heading"
-        h={16}
       />
       <Box mt={6}>
         <FormButton

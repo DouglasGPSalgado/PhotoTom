@@ -31,7 +31,6 @@ export function TannedSkin() {
         textAlign="center"
         color="brown.500"
         fontFamily="heading"
-        h={16}
       />
       <Box mt={6}>
         <FormButton

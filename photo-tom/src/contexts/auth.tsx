@@ -10,7 +10,9 @@ import api from '../services/api'
 
 interface AuthContextData {
   signed: boolean
-  user: object | null
+  user: {
+    email: string
+  } | null
   loading: boolean
   signIn: (data: any) => void
   signOut: () => void
@@ -19,7 +21,7 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [user, setUser] = useState<object | null>(null)
+  const [user, setUser] = useState<null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

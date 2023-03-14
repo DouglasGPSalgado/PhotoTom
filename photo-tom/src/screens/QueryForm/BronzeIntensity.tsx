@@ -30,17 +30,16 @@ export function BronzeIntensity() {
         textAlign="center"
         color="brown.500"
         fontFamily="heading"
-        h={16}
       />
       <Box mt={6}>
         <FormButton
-          text="A pele é naturalmente escura"
+          text="Pouco ou muito pouco"
           onPress={() => setTannedSkin(0)}
           borderWidth={tannedSkin === 0 ? 2 : 0}
           textColor={tannedSkin === 0 ? 'brown.400' : 'black'}
         />
         <FormButton
-          text="Profundamente"
+          text="Levemente"
           onPress={() => setTannedSkin(1)}
           borderWidth={tannedSkin === 1 ? 2 : 0}
           textColor={tannedSkin === 1 ? 'brown.400' : 'black'}
@@ -52,13 +51,13 @@ export function BronzeIntensity() {
           textColor={tannedSkin === 2 ? 'brown.400' : 'black'}
         />
         <FormButton
-          text="Levemente"
+          text="Profundamente"
           onPress={() => setTannedSkin(3)}
           borderWidth={tannedSkin === 3 ? 2 : 0}
           textColor={tannedSkin === 3 ? 'brown.400' : 'black'}
         />
         <FormButton
-          text="Pouco ou muito pouco"
+          text="A pele é naturalmente escura"
           onPress={() => setTannedSkin(4)}
           borderWidth={tannedSkin === 4 ? 2 : 0}
           textColor={tannedSkin === 4 ? 'brown.400' : 'black'}

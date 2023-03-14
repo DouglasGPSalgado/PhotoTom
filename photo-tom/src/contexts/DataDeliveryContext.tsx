@@ -21,6 +21,8 @@ type DataDeliveryContextProps = {
   setFacialSunSensitivity: (value: number) => void
   initialGuess: number
   setInitialGuess: (value: number) => void
+  results: number[]
+  setResults: (value: number[]) => void
   handleSkinsTone: (value: number | null) => void
   postResults: () => Promise<void>
 }
@@ -47,6 +49,10 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [initialGuess, setInitialGuess] = useState<number>(1)
   const [palette, setPalette] = useState<number | null>(null)
 
+  const [results, setResults] = useState<number[]>([])
+
+  console.log(results)
+
   function handleSkinsTone(value: number | null) {
     setPalette(value)
   }
@@ -57,19 +63,16 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       const response = await api.post(
         'analysis/',
         {
-          method: 'POST',
-          body: {
-            initial_guess: initialGuess,
-            tech_rating: palette,
-            skin_c: skinColor,
-            hair_c: hairColor,
-            eye_c: eyeColor,
-            freckles: amountFreckles,
-            tan_rate: tannedSkin,
-            tan_intensity: bronzeIntensity,
-            exp_reaction: sunReaction,
-            facial_exp_sensibility: facialSunSensitivity,
-          },
+          initial_guess: initialGuess,
+          tech_rating: palette,
+          skin_c: skinColor,
+          hair_c: hairColor,
+          eye_c: eyeColor,
+          freckles: amountFreckles,
+          tan_rate: tannedSkin,
+          tan_intensity: bronzeIntensity,
+          exp_reaction: sunReaction,
+          facial_exp_sensibility: facialSunSensitivity,
         },
         {
           headers: {
@@ -78,7 +81,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      console.log(response.data)
+      setResults(response.data.results)
     } catch (error) {
       console.log(error)
     }
@@ -107,6 +110,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         postResults,
         initialGuess,
         setInitialGuess,
+        results,
+        setResults,
       }}
     >
       {children}

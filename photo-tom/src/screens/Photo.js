@@ -106,11 +106,7 @@ export default function Photo() {
             />
           </View>
         ) : (
-          <ButtonCamera
-            title={'Take a picture'}
-            icon="camera"
-            onPress={takePicture}
-          />
+          <ButtonCamera icon="camera" onPress={takePicture} />
         )}
       </View>
     </View>

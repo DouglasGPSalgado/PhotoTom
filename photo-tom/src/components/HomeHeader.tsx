@@ -6,7 +6,10 @@ import { TouchableOpacity } from 'react-native'
 import { useAuth } from '../contexts/auth'
 
 export function HomeHeader() {
-  const { signOut } = useAuth()
+  const { signOut, user } = useAuth()
+
+  const userEmail = user?.email.split('@')[0]
+  const userName = `${userEmail?.charAt(0).toUpperCase()}${userEmail?.slice(1)}`
 
   return (
     <HStack bg="brown.300" pt={16} pb={5} px={8} alignItems="center">
@@ -15,7 +18,7 @@ export function HomeHeader() {
           Olá,
         </Text>
         <Text color="white" fontSize="md">
-          User Name
+          {userName}
         </Text>
       </VStack>
       <TouchableOpacity onPress={signOut}>
