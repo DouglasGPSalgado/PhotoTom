@@ -94,7 +94,9 @@ export function Results() {
                 value={data[1]}
                 width="56"
                 size="2xl"
-                colorScheme="cyan"
+                _filledTrack={{
+                  bg: 'brown.500',
+                }}
               />
 
               <Text color="black" fontSize="lg" fontFamily="heading">
