@@ -1,4 +1,5 @@
 import { FormButton } from '@components/FormButton'
+import FormProgress from '@components/FormProgress'
 import { NextPage } from '@components/NextPage'
 import { Title } from '@components/Title'
 import { useAuth } from '@contexts/auth'
@@ -72,6 +73,9 @@ export function FacialSunSensitivity() {
           onPress={() => setFacialSunSensitivity(4)}
           borderWidth={facialSunSensitivity === 4 ? 2 : 0}
           textColor={facialSunSensitivity === 4 ? 'brown.500' : 'black'}
+        />
+        <FormProgress
+          index={100}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>

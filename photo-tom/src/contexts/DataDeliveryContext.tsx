@@ -3,6 +3,7 @@ import api from '@services/api'
 import { createContext, ReactNode, useState } from 'react'
 
 type DataDeliveryContextProps = {
+
   skinColor: number | null
   setSkinColor: (value: number) => void
   hairColor: number | null
@@ -50,8 +51,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [palette, setPalette] = useState<number | null>(null)
 
   const [results, setResults] = useState<number[][]>([[]])
-
-  console.log(results)
 
   function handleSkinsTone(value: number | null) {
     setPalette(value)

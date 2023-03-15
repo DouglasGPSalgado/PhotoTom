@@ -35,7 +35,8 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "package": "com.warwolfone.phototom"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

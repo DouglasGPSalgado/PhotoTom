@@ -1,4 +1,5 @@
 import { FormButton } from '@components/FormButton'
+import FormProgress from '@components/FormProgress'
 import { NextPage } from '@components/NextPage'
 import { Title } from '@components/Title'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
@@ -61,6 +62,9 @@ export function BronzeIntensity() {
           onPress={() => setTannedSkin(4)}
           borderWidth={tannedSkin === 4 ? 2 : 0}
           textColor={tannedSkin === 4 ? 'brown.400' : 'black'}
+        />
+        <FormProgress
+          index={70}
         />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
