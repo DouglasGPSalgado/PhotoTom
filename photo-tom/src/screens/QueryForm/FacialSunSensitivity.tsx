@@ -6,33 +6,30 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, HStack, Spinner, VStack } from 'native-base'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
+  const [isLoading, setIsLoading] = useState(false)
 
   const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
 
-  function validationForNextPage() {
-    if (facialSunSensitivity === null) {
-      Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-      return
-    }
+  async function validationForNextPage() {
+    try {
+      setIsLoading(true)
 
-    Alert.alert('Atenção', 'Deseja enviar os dados para análise ?', [
-      {
-        text: 'Não',
-      },
-      {
-        text: 'Sim',
-        onPress: () => {
-          postResults()
-          navigate('results')
-        },
-      },
-    ])
+      if (facialSunSensitivity === null) {
+        Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
+        return
+      }
+
+      await postResults()
+      navigate('results')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

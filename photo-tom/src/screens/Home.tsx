@@ -28,7 +28,6 @@ export function Home() {
   const { initialGuess, setInitialGuess } = useDataDelivery()
 
   const [showModal, setShowModal] = useState(false)
-  const [fototipo, setFototipo] = useState<any>(0)
 
   return (
     <VStack flex={1} bg="white">

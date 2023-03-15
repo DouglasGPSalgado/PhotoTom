@@ -21,8 +21,8 @@ type DataDeliveryContextProps = {
   setFacialSunSensitivity: (value: number) => void
   initialGuess: number
   setInitialGuess: (value: number) => void
-  results: number[]
-  setResults: (value: number[]) => void
+  results: number[][]
+  setResults: (value: number[][]) => void
   handleSkinsTone: (value: number | null) => void
   postResults: () => Promise<void>
 }
@@ -49,7 +49,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [initialGuess, setInitialGuess] = useState<number>(1)
   const [palette, setPalette] = useState<number | null>(null)
 
-  const [results, setResults] = useState<number[]>([])
+  const [results, setResults] = useState<number[][]>([[]])
 
   console.log(results)
 
@@ -81,7 +81,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      setResults(response.data.results)
+      await setResults(response.data.results)
     } catch (error) {
       console.log(error)
     }

@@ -15,7 +15,7 @@ import {
   VStack,
 } from 'native-base'
 import React, { useContext, useEffect, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Alert, TouchableOpacity } from 'react-native'
 
 import { ImageContext } from '../contexts/img'
 
@@ -44,7 +44,17 @@ export function Palette() {
   const { img } = useContext(ImageContext)
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>(colorPalette)
+  const [nextPage, setNextPage] = useState<number | null>(null)
   const { handleSkinsTone } = useDataDelivery()
+
+  function validationForNextPage() {
+    if (nextPage === null) {
+      Alert.alert('Ops', 'Selecione uma cor da paleta para continuar!')
+      return
+    }
+
+    navigate('skinColor')
+  }
 
   const onClickItem = (item: SkinsToneDTO) => {
     const newArrData = skinsTone.map((e) => {
@@ -104,6 +114,7 @@ export function Palette() {
                   onPress={() => {
                     onClickItem(item)
                     handleSkinsTone(item.value)
+                    setNextPage(item.value)
                   }}
                   width={item.selected ? 24 : 20}
                   height={item.selected ? 24 : 20}
@@ -126,7 +137,7 @@ export function Palette() {
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage
           onPress={() => {
-            navigate('skinColor')
+            validationForNextPage()
           }}
           action="Continuar"
           color="brown.500"

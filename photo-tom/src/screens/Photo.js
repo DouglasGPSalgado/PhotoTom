@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import { Camera, CameraType } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 import { View, NativeBaseProvider, Text } from 'native-base'
-import { StyleSheet, Image } from 'react-native'
+import { StyleSheet, Image, Alert } from 'react-native'
 import ButtonCamera from '@components/ButtonCamera'
 import { ImageContext } from '../contexts/img'
 
@@ -36,7 +36,7 @@ export default function Photo() {
     if (image) {
       try {
         await MediaLibrary.createAssetAsync(image)
-        alert('Picture save!')
+        Alert.alert('Sucesso!', 'foto salva na sua galeria!')
         signIn(image)
         setImage(null)
       } catch (e) {
@@ -93,13 +93,13 @@ export default function Photo() {
             paddingX={50}
           >
             <ButtonCamera
-              title="Re-take"
+              title="Refazer foto"
               icon="retweet"
               onPress={() => setImage(null)}
               color=""
             />
             <ButtonCamera
-              title={'Save'}
+              title="salvar"
               icon="check"
               onPress={saveImage}
               color=""
