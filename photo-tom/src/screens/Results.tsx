@@ -1,3 +1,4 @@
+import { FormButton } from '@components/FormButton'
 import { NextPage } from '@components/NextPage'
 import { Title } from '@components/Title'
 import { useDataDelivery } from '@hooks/useDataDelivery'
@@ -5,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import {
   Box,
+  Button,
   Center,
   Divider,
   Flex,
@@ -16,7 +18,6 @@ import {
   VStack,
 } from 'native-base'
 import { useState } from 'react'
-import NumericInput from 'react-native-numeric-input'
 
 export function Results() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
@@ -94,7 +95,9 @@ export function Results() {
                 value={data[1]}
                 width="56"
                 size="2xl"
-                colorScheme="cyan"
+                _filledTrack={{
+                  bg: 'brown.500',
+                }}
               />
 
               <Text color="black" fontSize="lg" fontFamily="heading">
@@ -143,44 +146,80 @@ export function Results() {
                   <Text
                     marginBottom="2"
                     textAlign="center"
-                    fontSize="22"
+                    fontSize="20"
                     color="brown.500"
                     fontFamily="body"
                   >
-                    Antes de começar, indique o fototipo que você identifica na
-                    pessoa analisada.
+                    Com base em sua experiência, o fototipo resultante da
+                    análise está:
                   </Text>
                   <Text
-                    marginBottom="2"
                     textAlign="center"
-                    fontSize="14"
+                    fontSize="12"
                     color="brown.500"
                     fontFamily="body"
+                    mb={6}
                   >
-                    Utilizamos esses dados para melhorar nosso método de
-                    análise.
+                    Utilizamos esses dados para melhorar nosso método de análise
                   </Text>
-                  <Box py="8">
-                    <NumericInput
-                      type="plus-minus"
-                      editable={false}
-                      totalHeight={48}
-                      totalWidth={180}
-                      minValue={1}
-                      maxValue={6}
-                      borderColor="transparent"
-                      rounded
-                      rightButtonBackgroundColor="#EAD1B2"
-                      leftButtonBackgroundColor="#EAD1B2"
-                      containerStyle={{
-                        borderRadius: 50,
-                      }}
-                      value={finalGuess}
-                      onChange={(finalGuess: number) => {
-                        setFinalGuess(finalGuess)
-                      }}
-                    />
-                  </Box>
+                  <Button
+                    onPress={() => setFinalGuess(2)}
+                    borderWidth={finalGuess === 0 ? 2 : 0}
+                    borderColor="brown.500"
+                    color="brown.500"
+                    w="full"
+                    fontSize="lg"
+                    fontFamily="body"
+                    rounded="md"
+                    mb={4}
+                    bg={'white'}
+                    _pressed={{
+                      bg: 'light.100',
+                    }}
+                  >
+                    <Text color={finalGuess === 0 ? 'brown.400' : 'black'}>
+                      Acima do esperado
+                    </Text>
+                  </Button>
+                  <Button
+                    onPress={() => setFinalGuess(1)}
+                    borderWidth={finalGuess === 0 ? 2 : 0}
+                    borderColor="brown.500"
+                    color="brown.500"
+                    w="full"
+                    fontSize="lg"
+                    fontFamily="body"
+                    rounded="md"
+                    bg={'white'}
+                    _pressed={{
+                      bg: 'light.100',
+                    }}
+                    mb={4}
+                  >
+                    <Text color={finalGuess === 0 ? 'brown.400' : 'black'}>
+                      Correto
+                    </Text>
+                  </Button>
+                  <Button
+                    onPress={() => setFinalGuess(0)}
+                    borderWidth={finalGuess === 0 ? 2 : 0}
+                    borderColor="brown.500"
+                    color="brown.500"
+                    w="full"
+                    fontSize="lg"
+                    fontFamily="body"
+                    rounded="md"
+                    bg={'white'}
+                    _pressed={{
+                      bg: 'light.100',
+                    }}
+                  >
+                    <Text color={finalGuess === 0 ? 'brown.400' : 'black'}>
+                      Abaixo do esperado
+                    </Text>
+                  </Button>
+
+                  <Box py="8"></Box>
                 </Center>
               </VStack>
             </Modal.Body>
@@ -188,7 +227,7 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('photo')
+                  navigate('home')
                   setShowModal(false)
                 }}
                 alignItems="flex-end"

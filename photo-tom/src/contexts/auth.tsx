@@ -33,6 +33,18 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
       if (storagedUser && storagedToken) {
         setUser(JSON.parse(storagedUser))
       }
+
+      await api
+        .get('auth/user/', {
+          headers: { Authorization: 'Token ' + storagedToken },
+        })
+        .then((resp) => {})
+        .catch((error) => {
+          if (error.response.status === 401) {
+            console.log(error.response)
+            signOut()
+          }
+        })
       setLoading(false)
     }
     LoadStoragedData()
