@@ -18,6 +18,7 @@ import {
   VStack,
 } from 'native-base'
 import { useState } from 'react'
+import { Alert } from 'react-native'
 
 export function Results() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
@@ -25,6 +26,15 @@ export function Results() {
   const [showModal, setShowModal] = useState(false)
   const [finalGuess, setFinalGuess] = useState(0)
   const phototypeResults = results[0][0]
+
+  function validationForNextPage() {
+    if (finalGuess === null) {
+      Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
+      return
+    }
+
+    navigate('home')
+  }
 
   return (
     <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
@@ -47,12 +57,12 @@ export function Results() {
             width="56"
           >
             <Text fontSize="3xl" color="brown.300">
-              {(phototypeResults === 1 && 'I') ||
-                (phototypeResults === 2 && 'II') ||
-                (phototypeResults === 3 && 'III') ||
-                (phototypeResults === 4 && 'IV') ||
-                (phototypeResults === 5 && 'V') ||
-                (phototypeResults === 6 && 'VI')}
+              {(phototypeResults === 0 && 'I') ||
+                (phototypeResults === 1 && 'II') ||
+                (phototypeResults === 2 && 'III') ||
+                (phototypeResults === 3 && 'IV') ||
+                (phototypeResults === 4 && 'V') ||
+                (phototypeResults === 5 && 'VI')}
             </Text>
 
             <Text fontSize="2xl" color="brown.300">
@@ -83,12 +93,12 @@ export function Results() {
               mt={6}
             >
               <Text color="black" fontSize="xl" fontFamily="heading">
-                {(data[0] === 1 && 'I') ||
-                  (data[0] === 2 && 'II') ||
-                  (data[0] === 3 && 'III') ||
-                  (data[0] === 4 && 'IV') ||
-                  (data[0] === 5 && 'V') ||
-                  (data[0] === 6 && 'VI')}
+                {(data[0] === 0 && 'I') ||
+                  (data[0] === 1 && 'II') ||
+                  (data[0] === 2 && 'III') ||
+                  (data[0] === 3 && 'IV') ||
+                  (data[0] === 4 && 'V') ||
+                  (data[0] === 5 && 'VI')}
               </Text>
 
               <Progress
@@ -162,63 +172,24 @@ export function Results() {
                   >
                     Utilizamos esses dados para melhorar nosso método de análise
                   </Text>
-                  <Button
+                  <FormButton
+                    text="Acima do esperado"
                     onPress={() => setFinalGuess(2)}
-                    borderWidth={finalGuess === 0 ? 2 : 0}
-                    borderColor="brown.500"
-                    color="brown.500"
-                    w="full"
-                    fontSize="lg"
-                    fontFamily="body"
-                    rounded="md"
-                    mb={4}
-                    bg={'white'}
-                    _pressed={{
-                      bg: 'light.100',
-                    }}
-                  >
-                    <Text color={finalGuess === 0 ? 'brown.400' : 'black'}>
-                      Acima do esperado
-                    </Text>
-                  </Button>
-                  <Button
+                    borderWidth={finalGuess === 2 ? 2 : 0}
+                    textColor={finalGuess === 2 ? 'brown.400' : 'black'}
+                  />
+                  <FormButton
+                    text="Correto"
                     onPress={() => setFinalGuess(1)}
-                    borderWidth={finalGuess === 0 ? 2 : 0}
-                    borderColor="brown.500"
-                    color="brown.500"
-                    w="full"
-                    fontSize="lg"
-                    fontFamily="body"
-                    rounded="md"
-                    bg={'white'}
-                    _pressed={{
-                      bg: 'light.100',
-                    }}
-                    mb={4}
-                  >
-                    <Text color={finalGuess === 0 ? 'brown.400' : 'black'}>
-                      Correto
-                    </Text>
-                  </Button>
-                  <Button
+                    borderWidth={finalGuess === 1 ? 2 : 0}
+                    textColor={finalGuess === 1 ? 'brown.400' : 'black'}
+                  />
+                  <FormButton
+                    text="Abaixo do esperado"
                     onPress={() => setFinalGuess(0)}
                     borderWidth={finalGuess === 0 ? 2 : 0}
-                    borderColor="brown.500"
-                    color="brown.500"
-                    w="full"
-                    fontSize="lg"
-                    fontFamily="body"
-                    rounded="md"
-                    bg={'white'}
-                    _pressed={{
-                      bg: 'light.100',
-                    }}
-                  >
-                    <Text color={finalGuess === 0 ? 'brown.400' : 'black'}>
-                      Abaixo do esperado
-                    </Text>
-                  </Button>
-
+                    textColor={finalGuess === 0 ? 'brown.400' : 'black'}
+                  />
                   <Box py="8"></Box>
                 </Center>
               </VStack>
@@ -227,7 +198,7 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  navigate('home')
+                  validationForNextPage()
                   setShowModal(false)
                 }}
                 alignItems="flex-end"

@@ -64,9 +64,7 @@ export function TannedSkin() {
           borderWidth={bronzeIntensity === 4 ? 2 : 0}
           textColor={bronzeIntensity === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress
-          index={56}
-        />
+        <FormProgress index={56} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

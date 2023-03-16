@@ -63,9 +63,7 @@ export function HairColor() {
           borderWidth={hairColor === 4 ? 2 : 0}
           textColor={hairColor === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress
-          index={14}
-        />
+        <FormProgress index={14} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

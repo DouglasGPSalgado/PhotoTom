@@ -63,9 +63,7 @@ export function SkinColor() {
           borderWidth={skinColor === 4 ? 2 : 0}
           textColor={skinColor === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress
-          index={1}
-        />
+        <FormProgress index={1} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

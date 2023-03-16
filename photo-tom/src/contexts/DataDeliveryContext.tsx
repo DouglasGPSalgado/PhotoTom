@@ -3,7 +3,6 @@ import api from '@services/api'
 import { createContext, ReactNode, useState } from 'react'
 
 type DataDeliveryContextProps = {
-
   skinColor: number | null
   setSkinColor: (value: number) => void
   hairColor: number | null
@@ -24,7 +23,8 @@ type DataDeliveryContextProps = {
   setInitialGuess: (value: number) => void
   results: number[][]
   setResults: (value: number[][]) => void
-  handleSkinsTone: (value: number | null) => void
+  palette: number
+  setPalette: (value: number) => void
   postResults: () => Promise<void>
 }
 
@@ -48,13 +48,9 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
     number | null
   >(null)
   const [initialGuess, setInitialGuess] = useState<number>(1)
-  const [palette, setPalette] = useState<number | null>(null)
+  const [palette, setPalette] = useState<number>(1)
 
   const [results, setResults] = useState<number[][]>([[]])
-
-  function handleSkinsTone(value: number | null) {
-    setPalette(value)
-  }
 
   async function postResults() {
     try {
@@ -105,7 +101,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         setSunReaction,
         facialSunSensitivity,
         setFacialSunSensitivity,
-        handleSkinsTone,
+        palette,
+        setPalette,
         postResults,
         initialGuess,
         setInitialGuess,

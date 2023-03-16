@@ -74,9 +74,7 @@ export function FacialSunSensitivity() {
           borderWidth={facialSunSensitivity === 4 ? 2 : 0}
           textColor={facialSunSensitivity === 4 ? 'brown.500' : 'black'}
         />
-        <FormProgress
-          index={100}
-        />
+        <FormProgress index={100} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

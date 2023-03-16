@@ -63,9 +63,7 @@ export function EyeColor() {
           borderWidth={eyeColor === 4 ? 2 : 0}
           textColor={eyeColor === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress
-          index={28}
-        />
+        <FormProgress index={28} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

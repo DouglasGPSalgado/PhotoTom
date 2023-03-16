@@ -63,9 +63,7 @@ export function AmountFreckles() {
           borderWidth={amountFreckles === 4 ? 2 : 0}
           textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress
-          index={42}
-        />
+        <FormProgress index={42} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

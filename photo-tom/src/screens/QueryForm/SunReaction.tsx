@@ -63,9 +63,7 @@ export function SunReaction() {
           borderWidth={sunReaction === 4 ? 2 : 0}
           textColor={sunReaction === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress
-          index={84}
-        />
+        <FormProgress index={84} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
         <NextPage

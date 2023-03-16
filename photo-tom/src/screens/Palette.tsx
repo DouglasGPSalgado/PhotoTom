@@ -45,7 +45,7 @@ export function Palette() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>(colorPalette)
   const [nextPage, setNextPage] = useState<number | null>(null)
-  const { handleSkinsTone } = useDataDelivery()
+  const { setPalette } = useDataDelivery()
 
   function validationForNextPage() {
     if (nextPage === null) {
@@ -113,7 +113,7 @@ export function Palette() {
                   item={item}
                   onPress={() => {
                     onClickItem(item)
-                    handleSkinsTone(item.value)
+                    setPalette(item.value)
                     setNextPage(item.value)
                   }}
                   width={item.selected ? 24 : 20}
