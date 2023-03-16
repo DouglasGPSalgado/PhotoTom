@@ -1,5 +1,6 @@
 import GoogleIcon from '@assets/google.png'
 import IconSignIn from '@assets/IconSignIn.png'
+import favicon from '@assets/favicon.png'
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -100,7 +101,7 @@ export function SignIn() {
             px={8}
           >
             <Center mt={6}>
-              <Image source={IconSignIn} alt="Icon" />
+              <Image source={favicon} alt="Icon" w={120} h={120} />
             </Center>
             <Heading
               textAlign="right"
