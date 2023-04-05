@@ -22,6 +22,7 @@ import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Platform, TouchableOpacity } from 'react-native'
 import * as yup from 'yup'
+import { useNavigation } from '@react-navigation/native'
 
 import { useAuth } from '../contexts/auth'
 import api from '../services/api'
@@ -50,6 +51,7 @@ const signInSchema = yup.object({
 })
 
 export function SignIn() {
+  const navigation = useNavigation()
   const { signed, signIn } = useAuth()
 
   const {
@@ -202,7 +204,7 @@ export function SignIn() {
             </Center>
 
             <Center mt="16" mb={6}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                 <Text color="brown.500">Não possui conta? cadastre-se</Text>
               </TouchableOpacity>
             </Center>

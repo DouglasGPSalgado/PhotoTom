@@ -42,7 +42,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
         .catch((error) => {
           if (error.response.status === 401) {
             console.log(error.response)
-            signOut()
+            signOutLater()
           }
         })
       setLoading(false)
@@ -67,6 +67,15 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
           },
         },
       )
+      AsyncStorage.clear().then(() => {
+        setUser(null)
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  async function signOutLater() {
+    try {
       AsyncStorage.clear().then(() => {
         setUser(null)
       })
