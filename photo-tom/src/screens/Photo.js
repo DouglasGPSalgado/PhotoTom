@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import { Camera, CameraType } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
-import { View, NativeBaseProvider, Text } from 'native-base'
+import { View, Text } from 'native-base'
 import { StyleSheet, Image, Alert } from 'react-native'
 import ButtonCamera from '@components/ButtonCamera'
 import { ImageContext } from '../contexts/img'
@@ -27,21 +27,15 @@ export default function Photo() {
       try {
         const data = await cameraRef.current.takePictureAsync()
         setImage(data.uri)
-      } catch (e) {
-        console.log(e)
-      }
+      } catch (e) {}
     }
   }
   const saveImage = async () => {
     if (image) {
       try {
-        await MediaLibrary.createAssetAsync(image)
-        Alert.alert('Sucesso!', 'foto salva na sua galeria!')
         signIn(image)
         setImage(null)
-      } catch (e) {
-        console.log(e)
-      }
+      } catch (e) {}
     }
   }
 
@@ -99,7 +93,7 @@ export default function Photo() {
               color=""
             />
             <ButtonCamera
-              title="salvar"
+              title="continuar"
               icon="check"
               onPress={saveImage}
               color=""

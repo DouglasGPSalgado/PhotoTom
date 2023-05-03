@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import api from '@services/api'
 import { createContext, ReactNode, useState } from 'react'
+import { useImg } from './img'
 
 type DataDeliveryContextProps = {
   skinColor: number | null
@@ -37,6 +38,7 @@ export const DataDeliveryContext = createContext<DataDeliveryContextProps>(
 )
 
 export function DataDeliveryProvider({ children }: ContextProviderProps) {
+  const { img } = useImg()
   const [skinColor, setSkinColor] = useState<number | null>(null)
   const [hairColor, setHairColor] = useState<number | null>(null)
   const [eyeColor, setEyeColor] = useState<number | null>(null)
@@ -58,8 +60,9 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       const response = await api.post(
         'analysis/',
         {
-          initial_guess: initialGuess,
-          tech_rating: palette,
+          initial_guess: palette,
+          tech_guess: initialGuess,
+          sample: img,
           skin_c: skinColor,
           hair_c: hairColor,
           eye_c: eyeColor,
@@ -76,7 +79,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      await setResults(response.data.results)
+      setResults(response.data.results)
     } catch (error) {
       console.log(error)
     }

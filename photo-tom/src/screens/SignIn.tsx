@@ -52,7 +52,7 @@ const signInSchema = yup.object({
 
 export function SignIn() {
   const navigation = useNavigation()
-  const { signed, signIn } = useAuth()
+  const { signIn } = useAuth()
 
   const {
     control,
@@ -74,7 +74,6 @@ export function SignIn() {
           },
         },
       )
-      console.log(response.data)
       signIn(response.data)
     } catch (error) {
       console.error(error)

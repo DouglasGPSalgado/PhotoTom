@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { createContext, ReactNode, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
 
 type paletteDTO = {
   image: string | undefined
@@ -36,4 +36,10 @@ export default function ImageProvider({ children }: PaletteProviderProps) {
       {children}
     </ImageContext.Provider>
   )
+}
+
+export function useImg() {
+  const context = useContext(ImageContext)
+
+  return context
 }

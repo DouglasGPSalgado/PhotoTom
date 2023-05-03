@@ -9,17 +9,12 @@ import {
   VStack,
 } from 'native-base'
 import React, { useState } from 'react'
-import InputSpinner from 'react-native-input-spinner'
 import NumericInput from 'react-native-numeric-input'
-import { MaterialIcons } from '@expo/vector-icons'
 
-import Circle from '@assets/Circle.png'
-import ImageHome from '@assets/image_home.png'
 import Card from '@components/Card'
 import { HomeHeader } from '@components/HomeHeader'
 import { type AppNavigatorRoutesProps } from '@routes/app.routes'
 import { useDataDelivery } from '@hooks/useDataDelivery'
-import { border } from 'native-base/lib/typescript/theme/styled-system'
 import { Alert } from 'react-native'
 
 export function Home() {

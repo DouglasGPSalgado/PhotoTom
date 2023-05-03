@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import {
   Box,
-  Button,
   Center,
   Divider,
   Flex,
@@ -134,7 +133,7 @@ export function Results() {
             onPress={() => setShowModal(true)}
           />
         </Center>
-
+        {/* Modal feedback */}
         <Modal
           isOpen={showModal}
           onClose={() => {

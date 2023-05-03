@@ -4,7 +4,6 @@ import { SkinsToneDTO } from '@dtos/PaletteDTO'
 import { useDataDelivery } from '@hooks/useDataDelivery'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import api from '@services/api'
 import {
   Box,
   Center,

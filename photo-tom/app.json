@@ -16,7 +16,8 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ]
+      ],
+      "react-native-vision-camera"
     ],
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -30,9 +31,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/favicon.png",
-        "backgroundColor": "#FFFFFF",
-        "package": "com.nca.phototom",
-        "versionCode": 1
+        "backgroundColor": "#FFFFFF"
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"

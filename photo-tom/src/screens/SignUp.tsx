@@ -57,7 +57,7 @@ const signInSchema = yup.object({
 })
 
 export function SignUp() {
-  const { signed, signIn } = useAuth()
+  const { signIn } = useAuth()
 
   const {
     control,
@@ -88,7 +88,6 @@ export function SignUp() {
           },
         },
       )
-      console.log(response.data)
       signIn(response.data)
     } catch (error) {
       console.error(error)
