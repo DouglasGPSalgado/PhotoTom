@@ -20,7 +20,7 @@ import {
 } from 'native-base'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { Platform, TouchableOpacity } from 'react-native'
+import { Alert, Platform, TouchableOpacity } from 'react-native'
 import * as yup from 'yup'
 import { useNavigation } from '@react-navigation/native'
 
@@ -77,6 +77,9 @@ export function SignIn() {
       signIn(response.data)
     } catch (error) {
       console.error(error)
+      if (error) {
+        Alert.alert('Ops', 'Usuario ou senha incorretos')
+      }
     }
   }
 
@@ -162,18 +165,6 @@ export function SignIn() {
                 />
               )}
             />
-            <TouchableOpacity>
-              <Text
-                mt={2}
-                textAlign="right"
-                fontFamily="body"
-                fontSize="sm"
-                color="brown.500"
-              >
-                Esqueceu a senha ?
-              </Text>
-            </TouchableOpacity>
-
             <Button
               title="Entrar"
               mt={12}
@@ -182,28 +173,15 @@ export function SignIn() {
 
             <Flex direction="row" align="center" justifyContent="center" mt={8}>
               <Divider color="brown.500" opacity="0.7" width={24} />
-              <Text px="6">ou</Text>
               <Divider color="brown.500" opacity="0.7" width={24} />
             </Flex>
 
-            <Center mt={6}>
-              <TouchableOpacity>
-                <Flex direction="row" align="center">
-                  <Image
-                    source={GoogleIcon}
-                    height={5}
-                    width={5}
-                    alt="ícone google"
-                  />
-                  <Text color="gray.300" fontSize="sm" ml={2}>
-                    Conectar com Google
-                  </Text>
-                </Flex>
-              </TouchableOpacity>
-            </Center>
-
             <Center mt="16" mb={6}>
-              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <TouchableOpacity
+                onPress={() =>
+                  Alert.alert('Ops', 'Esta função está em desenvolvimento')
+                }
+              >
                 <Text color="brown.500">Não possui conta? cadastre-se</Text>
               </TouchableOpacity>
             </Center>

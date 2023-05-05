@@ -38,7 +38,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
       }
 
       await api
-        .get('auth/user/', {
+        .get('auth/user', {
           headers: { Authorization: 'Token ' + storagedToken },
         })
         .then((resp) => {
