@@ -32,7 +32,7 @@ export function SunReaction() {
         color="brown.500"
         fontFamily="heading"
       />
-      <Box mt={6}>
+      <Box my={6} alignItems="center" justifyContent="center">
         <FormButton
           text="Sempre queima, forma bolhas e descama"
           onPress={() => setSunReaction(0)}
@@ -63,9 +63,9 @@ export function SunReaction() {
           borderWidth={sunReaction === 4 ? 2 : 0}
           textColor={sunReaction === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={84} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <FormProgress index={84} />
         <NextPage
           onPress={() => {
             validationForNextPage()

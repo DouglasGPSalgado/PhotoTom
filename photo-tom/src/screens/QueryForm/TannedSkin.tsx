@@ -33,7 +33,7 @@ export function TannedSkin() {
         color="brown.500"
         fontFamily="heading"
       />
-      <Box mt={6}>
+      <Box my={6} alignItems="center" justifyContent="center">
         <FormButton
           text="Nunca"
           onPress={() => setBronzeIntensity(0)}
@@ -64,9 +64,9 @@ export function TannedSkin() {
           borderWidth={bronzeIntensity === 4 ? 2 : 0}
           textColor={bronzeIntensity === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={56} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <FormProgress index={56} />
         <NextPage
           onPress={() => {
             validationForNextPage()

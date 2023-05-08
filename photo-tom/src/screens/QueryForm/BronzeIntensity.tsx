@@ -32,7 +32,7 @@ export function BronzeIntensity() {
         color="brown.500"
         fontFamily="heading"
       />
-      <Box mt={6}>
+      <Box my={6} alignItems="center" justifyContent="center">
         <FormButton
           text="Pouco ou muito pouco"
           onPress={() => setTannedSkin(0)}
@@ -63,9 +63,9 @@ export function BronzeIntensity() {
           borderWidth={tannedSkin === 4 ? 2 : 0}
           textColor={tannedSkin === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={70} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <FormProgress index={70} />
         <NextPage
           onPress={() => {
             validationForNextPage()

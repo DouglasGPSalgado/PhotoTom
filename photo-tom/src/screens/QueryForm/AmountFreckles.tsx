@@ -32,7 +32,7 @@ export function AmountFreckles() {
         textAlign="center"
         fontFamily="heading"
       />
-      <Box mt={6}>
+      <Box my={6} alignItems="center" justifyContent="center">
         <FormButton
           text="Muitas"
           onPress={() => setAmountFreckles(0)}
@@ -63,9 +63,9 @@ export function AmountFreckles() {
           borderWidth={amountFreckles === 4 ? 2 : 0}
           textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={42} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <FormProgress index={42} />
         <NextPage
           onPress={() => {
             validationForNextPage()

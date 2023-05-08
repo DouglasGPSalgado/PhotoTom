@@ -32,7 +32,7 @@ export function HairColor() {
         color="brown.500"
         fontFamily="heading"
       />
-      <Box mt={6}>
+      <Box my={6} alignItems="center" justifyContent="center">
         <FormButton
           text="Ruivo ou Loiro Claro"
           onPress={() => setHairColor(0)}
@@ -63,9 +63,9 @@ export function HairColor() {
           borderWidth={hairColor === 4 ? 2 : 0}
           textColor={hairColor === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={14} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <FormProgress index={14} />
         <NextPage
           onPress={() => {
             validationForNextPage()

@@ -43,7 +43,7 @@ export function FacialSunSensitivity() {
         fontFamily="heading"
         h={16}
       />
-      <Box mt={6}>
+      <Box my={6} alignItems="center" justifyContent="center">
         <FormButton
           text="Muito sensível"
           onPress={() => setFacialSunSensitivity(0)}
@@ -74,9 +74,9 @@ export function FacialSunSensitivity() {
           borderWidth={facialSunSensitivity === 4 ? 2 : 0}
           textColor={facialSunSensitivity === 4 ? 'brown.500' : 'black'}
         />
-        <FormProgress index={100} />
       </Box>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <FormProgress index={100} />
         <NextPage
           onPress={() => {
             validationForNextPage()
