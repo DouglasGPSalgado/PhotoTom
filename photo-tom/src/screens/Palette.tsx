@@ -13,11 +13,13 @@ import {
   Image,
   Text,
   VStack,
+  ScrollView
 } from 'native-base'
 import React, { useContext, useEffect, useState } from 'react'
 import { Alert, TouchableOpacity } from 'react-native'
 
 import { ImageContext } from '../contexts/img'
+import TestID from '@components/TestID'
 
 const colorPalette = [
   { id: '1', color: '#D3BCA0', value: 1 },
@@ -90,6 +92,10 @@ export function Palette() {
           cliente
         </Text>
 
+        <>
+          <TestID />
+        </>
+
         <Box
           mt={6}
           width="full"
@@ -134,15 +140,17 @@ export function Palette() {
           />
         </Box>
       </Center>
-      <Box alignItems="center" justifyContent="flex-end" flex={1}>
-        <NextPage
-          onPress={() => {
-            validationForNextPage()
-          }}
-          action="Continuar"
-          color="brown.500"
-        />
-      </Box>
+      <ScrollView>
+        <Box alignItems="center" justifyContent="flex-end" flex={1}>
+          <NextPage
+            onPress={() => {
+              validationForNextPage()
+            }}
+            action="Continuar"
+            color="brown.500"
+          />
+        </Box>
+      </ScrollView>
     </VStack>
   )
 }

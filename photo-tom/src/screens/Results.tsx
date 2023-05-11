@@ -1,5 +1,6 @@
 import { FormButton } from '@components/FormButton'
 import { NextPage } from '@components/NextPage'
+import TestID from '@components/TestID'
 import { Title } from '@components/Title'
 import { useDataDelivery } from '@hooks/useDataDelivery'
 import { useNavigation } from '@react-navigation/native'
@@ -38,7 +39,7 @@ export function Results() {
 
   return (
     <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
-      <VStack p={8} flex={1} bg="green">
+      <VStack p={8} flex={1} bg="white">
         <Center>
           <Title
             title="Resultado:"
@@ -71,7 +72,7 @@ export function Results() {
           </Box>
         </Center>
 
-        <Divider mt="6" color="black" shadow="6" />
+        <Divider mt="6" color="black" shadow="1" />
 
         <Title
           title="Graus de semelhança:"
@@ -81,6 +82,10 @@ export function Results() {
           fontFamily="heading"
           color="brown.500"
         />
+
+        <>
+          <TestID />
+        </>
 
         {results.map((data: any, index) => {
           return (

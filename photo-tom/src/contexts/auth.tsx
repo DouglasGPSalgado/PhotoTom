@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
   useContext,
+  PureComponent,
 } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import api from '../services/api'
@@ -16,13 +17,15 @@ interface AuthContextData {
   loading: boolean
   signIn: (data: any) => void
   signOut: () => void
+  userId: number | null
 }
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData)
+export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<null>(null)
   const [loading, setLoading] = useState(true)
+  const [userId, setUserId] = useState<number | null>(null)
 
   useEffect(() => {
     setLoading(true)
@@ -35,13 +38,14 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
       }
 
       await api
-        .get('auth/user/', {
+        .get('auth/user', {
           headers: { Authorization: 'Token ' + storagedToken },
         })
-        .then((resp) => {})
+        .then((resp) => {
+          setUserId(resp.data.id)
+        })
         .catch((error) => {
           if (error.response.status === 401) {
-            console.log(error.response)
             signOutLater()
           }
         })
@@ -75,18 +79,14 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     }
   }
   async function signOutLater() {
-    try {
-      AsyncStorage.clear().then(() => {
-        setUser(null)
-      })
-    } catch (error) {
-      console.error(error)
-    }
+    AsyncStorage.clear().then(() => {
+      setUser(null)
+    })
   }
 
   return (
     <AuthContext.Provider
-      value={{ signed: !!user, user, signIn, loading, signOut }}
+      value={{ signed: !!user, user, signIn, loading, signOut, userId }}
     >
       {children}
     </AuthContext.Provider>

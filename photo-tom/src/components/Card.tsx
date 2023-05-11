@@ -26,6 +26,7 @@ export default function Card({
       width="full"
       padding="4"
       bg="white"
+      my="2"
       borderRadius="8"
       shadow="6"
       flexDirection="row"
