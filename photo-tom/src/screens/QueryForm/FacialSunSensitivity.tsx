@@ -49,7 +49,6 @@ export function FacialSunSensitivity() {
           textAlign="center"
           color="brown.500"
           fontFamily="heading"
-          h={16}
         />
         <TestID />
         <Box my={6} alignItems="center" justifyContent="center">
