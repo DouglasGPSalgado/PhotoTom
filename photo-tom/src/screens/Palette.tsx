@@ -92,10 +92,6 @@ export function Palette() {
           cliente
         </Text>
 
-        <>
-          <TestID />
-        </>
-
         <Box
           mt={6}
           width="full"
@@ -140,17 +136,15 @@ export function Palette() {
           />
         </Box>
       </Center>
-      <ScrollView>
-        <Box alignItems="center" justifyContent="flex-end" flex={1}>
-          <NextPage
-            onPress={() => {
-              validationForNextPage()
-            }}
-            action="Continuar"
-            color="brown.500"
-          />
-        </Box>
-      </ScrollView>
+      <Box alignItems="center" justifyContent="flex-end" flex={1}>
+        <NextPage
+          onPress={() => {
+            validationForNextPage()
+          }}
+          action="Continuar"
+          color="brown.500"
+        />
+      </Box>
     </VStack>
   )
 }
