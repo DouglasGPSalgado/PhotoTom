@@ -30,7 +30,7 @@ export function HairColor() {
 
   return (
     <VStack flex={1} p={8} bg="white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title
           title="Qual a cor natural do cabelo?"
           fontSize="2xl"
@@ -39,7 +39,7 @@ export function HairColor() {
           fontFamily="heading"
         />
         <TestID />
-        <Box my={6} alignItems="center" justifyContent="center">
+        <Box mt={6} alignItems="center" justifyContent="center">
           <FormButton
             text="Ruivo ou Loiro Claro"
             onPress={() => setHairColor(0)}

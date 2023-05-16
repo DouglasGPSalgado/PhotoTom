@@ -126,14 +126,16 @@ export function Palette() {
               </Box>
             )}
           />
-
-          <Image
-            style={{ height: 170, width: 170 }}
-            rounded="2xl"
-            ml={5}
-            source={{ uri: img.image }}
-            alt="Image"
-          />
+          <Box>
+            <Image
+              style={{ height: 170, width: 170 }}
+              rounded="2xl"
+              ml={5}
+              source={{ uri: img.image }}
+              alt="Image"
+            />
+            <TestID />
+          </Box>
         </Box>
       </Center>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>

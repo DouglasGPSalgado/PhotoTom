@@ -30,7 +30,7 @@ export function AmountFreckles() {
 
   return (
     <VStack flex={1} p={8} bg="white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title
           title="Quantidade de sardas ou pintas na pele em áreas não expostas?"
           fontSize={21}
@@ -38,10 +38,8 @@ export function AmountFreckles() {
           textAlign="center"
           fontFamily="heading"
         />
-        <TestID
-          id="10"
-        />
-        <Box my={6} alignItems="center" justifyContent="center">
+        <TestID />
+        <Box mt={6} alignItems="center" justifyContent="center">
           <FormButton
             text="Muitas"
             onPress={() => setAmountFreckles(0)}

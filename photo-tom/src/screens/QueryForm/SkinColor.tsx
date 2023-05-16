@@ -30,7 +30,7 @@ export function SkinColor() {
 
   return (
     <VStack flex={1} p={8} bg="white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title
           title="Qual a cor da pele do paciente antes da exposição solar ?"
           fontSize="2xl"
@@ -39,7 +39,7 @@ export function SkinColor() {
           fontFamily="heading"
         />
         <TestID />
-        <Box my={6} alignItems="center" justifyContent="center">
+        <Box mt={6} alignItems="center" justifyContent="center">
           <FormButton
             text="Branco Marfim"
             onPress={() => setSkinColor(0)}

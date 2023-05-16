@@ -30,7 +30,7 @@ export function BronzeIntensity() {
 
   return (
     <VStack flex={1} p={8} bg="white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title
           title="Com que intensidade a pele do paciente fica bronzeada?"
           fontSize="2xl"
@@ -39,7 +39,7 @@ export function BronzeIntensity() {
           fontFamily="heading"
         />
         <TestID />
-        <Box my={6} alignItems="center" justifyContent="center">
+        <Box mt={6} alignItems="center" justifyContent="center">
           <FormButton
             text="Pouco ou muito pouco"
             onPress={() => setTannedSkin(0)}

@@ -42,7 +42,7 @@ export function FacialSunSensitivity() {
 
   return (
     <VStack flex={1} p={8} bg="white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title
           title="Qual é o grau de sensibilidade do rosto quando exposto ao sol?"
           fontSize="22"
@@ -51,7 +51,7 @@ export function FacialSunSensitivity() {
           fontFamily="heading"
         />
         <TestID />
-        <Box my={6} alignItems="center" justifyContent="center">
+        <Box mt={6} alignItems="center" justifyContent="center">
           <FormButton
             text="Muito sensível"
             onPress={() => setFacialSunSensitivity(0)}

@@ -31,7 +31,7 @@ export function TannedSkin() {
 
   return (
     <VStack flex={1} p={8} bg="white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title
           title="A pele do paciente fica bronzeada?"
           fontSize="2xl"
@@ -40,7 +40,7 @@ export function TannedSkin() {
           fontFamily="heading"
         />
         <TestID />
-        <Box my={6} alignItems="center" justifyContent="center">
+        <Box mt={6} alignItems="center" justifyContent="center">
           <FormButton
             text="Nunca"
             onPress={() => setBronzeIntensity(0)}
