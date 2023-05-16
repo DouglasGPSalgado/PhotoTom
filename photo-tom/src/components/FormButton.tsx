@@ -16,6 +16,7 @@ export function FormButton({
   return (
     <ButtonNativeBase
       onPress={onPress}
+      width="95%"
       mb={6}
       bg="white"
       shadow="5"

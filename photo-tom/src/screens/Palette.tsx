@@ -12,11 +12,13 @@ import {
   Image,
   Text,
   VStack,
+  ScrollView
 } from 'native-base'
 import React, { useContext, useEffect, useState } from 'react'
 import { Alert, TouchableOpacity } from 'react-native'
 
 import { ImageContext } from '../contexts/img'
+import TestID from '@components/TestID'
 
 const colorPalette = [
   { id: '1', color: '#D3BCA0', value: 1 },
@@ -123,14 +125,16 @@ export function Palette() {
               </Box>
             )}
           />
-
-          <Image
-            style={{ height: 170, width: 170 }}
-            rounded="2xl"
-            ml={5}
-            source={{ uri: img.image }}
-            alt="Image"
-          />
+          <Box>
+            <Image
+              style={{ height: 170, width: 170 }}
+              rounded="2xl"
+              ml={5}
+              source={{ uri: img.image }}
+              alt="Image"
+            />
+            <TestID />
+          </Box>
         </Box>
       </Center>
       <Box alignItems="center" justifyContent="flex-end" flex={1}>

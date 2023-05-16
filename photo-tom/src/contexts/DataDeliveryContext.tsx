@@ -79,7 +79,15 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      setResults(response.data.results)
+      await setResults(response.data.results)
+      setAmountFreckles(null)
+      setBronzeIntensity(null)
+      setEyeColor(null)
+      setFacialSunSensitivity(null)
+      setHairColor(null)
+      setSkinColor(null)
+      setSunReaction(null)
+      setTannedSkin(null)
     } catch (error) {
       console.log(error)
     }

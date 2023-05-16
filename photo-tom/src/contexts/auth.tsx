@@ -20,7 +20,7 @@ interface AuthContextData {
   userId: number | null
 }
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData)
+export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<null>(null)

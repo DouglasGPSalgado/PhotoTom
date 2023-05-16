@@ -124,6 +124,7 @@ export function SignIn() {
               render={({ field: { onChange, value } }) => (
                 <Input
                   placeholder="Email"
+                  keyboardType="email-address"
                   InputLeftElement={
                     <Icon
                       as={MaterialIcons}
