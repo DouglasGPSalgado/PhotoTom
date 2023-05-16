@@ -12,7 +12,7 @@ import {
   Image,
   Text,
   VStack,
-  ScrollView
+  ScrollView,
 } from 'native-base'
 import React, { useContext, useEffect, useState } from 'react'
 import { Alert, TouchableOpacity } from 'react-native'

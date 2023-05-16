@@ -7,7 +7,7 @@ import {
   Pressable,
   Text,
   VStack,
-  ScrollView
+  ScrollView,
 } from 'native-base'
 import React, { useState } from 'react'
 import NumericInput from 'react-native-numeric-input'
@@ -105,8 +105,8 @@ export function Home() {
                       color="brown.500"
                       fontFamily="body"
                     >
-                      Antes de começar, indique o fototipo que você identifica na
-                      pessoa analisada.
+                      Antes de começar, indique o fototipo que você identifica
+                      na pessoa analisada.
                     </Text>
                     <Text
                       marginBottom="2"

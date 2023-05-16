@@ -5,11 +5,7 @@ import { Title } from '@components/Title'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import {
-  Box,
-  VStack,
-  ScrollView
-} from 'native-base'
+import { Box, VStack, ScrollView } from 'native-base'
 import { useContext } from 'react'
 import { Alert } from 'react-native'
 import TestID from '@components/TestID'
@@ -39,7 +35,7 @@ export function AmountFreckles() {
           fontFamily="heading"
         />
         <TestID />
-        <Box mt={6} alignItems="center" justifyContent="center">
+        <Box mt={6}>
           <FormButton
             text="Muitas"
             onPress={() => setAmountFreckles(0)}
@@ -70,9 +66,9 @@ export function AmountFreckles() {
             borderWidth={amountFreckles === 4 ? 2 : 0}
             textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
           />
+          <FormProgress index={42} />
         </Box>
         <Box alignItems="center" justifyContent="flex-end" flex={1}>
-          <FormProgress index={42} />
           <NextPage
             onPress={() => {
               validationForNextPage()

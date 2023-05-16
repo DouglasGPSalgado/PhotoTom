@@ -79,7 +79,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      await setResults(response.data.results)
+      setResults(response.data.results)
       setAmountFreckles(null)
       setBronzeIntensity(null)
       setEyeColor(null)

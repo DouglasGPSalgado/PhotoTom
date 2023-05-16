@@ -51,7 +51,6 @@ const signInSchema = yup.object({
 })
 
 export function SignIn() {
-  const navigation = useNavigation()
   const { signIn } = useAuth()
 
   const {
@@ -124,7 +123,6 @@ export function SignIn() {
               render={({ field: { onChange, value } }) => (
                 <Input
                   placeholder="Email"
-                  keyboardType="email-address"
                   InputLeftElement={
                     <Icon
                       as={MaterialIcons}

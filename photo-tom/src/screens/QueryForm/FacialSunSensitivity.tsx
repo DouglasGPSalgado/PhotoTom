@@ -7,13 +7,7 @@ import { useAuth } from '@contexts/auth'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import {
-  Box,
-  HStack,
-  Spinner,
-  VStack,
-  ScrollView
-} from 'native-base'
+import { Box, HStack, Spinner, VStack, ScrollView } from 'native-base'
 import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
@@ -51,7 +45,7 @@ export function FacialSunSensitivity() {
           fontFamily="heading"
         />
         <TestID />
-        <Box mt={6} alignItems="center" justifyContent="center">
+        <Box mt={6}>
           <FormButton
             text="Muito sensível"
             onPress={() => setFacialSunSensitivity(0)}
@@ -82,9 +76,9 @@ export function FacialSunSensitivity() {
             borderWidth={facialSunSensitivity === 4 ? 2 : 0}
             textColor={facialSunSensitivity === 4 ? 'brown.500' : 'black'}
           />
+          <FormProgress index={100} />
         </Box>
         <Box alignItems="center" justifyContent="flex-end" flex={1}>
-          <FormProgress index={100} />
           <NextPage
             onPress={() => {
               validationForNextPage()

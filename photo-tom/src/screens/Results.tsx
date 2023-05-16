@@ -71,7 +71,7 @@ export function Results() {
           </Box>
         </Center>
 
-        <Divider mt="6" color="black" shadow="1" />
+        <Divider mt="6" color="black" shadow="2" />
 
         <Title
           title="Graus de semelhança:"
