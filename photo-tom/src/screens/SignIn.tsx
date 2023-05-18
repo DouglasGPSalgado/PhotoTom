@@ -1,5 +1,3 @@
-import GoogleIcon from '@assets/google.png'
-import IconSignIn from '@assets/IconSignIn.png'
 import favicon from '@assets/favicon.png'
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
@@ -18,11 +16,10 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import React, { useState } from 'react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Alert, Platform, TouchableOpacity } from 'react-native'
 import * as yup from 'yup'
-import { useNavigation } from '@react-navigation/native'
 
 import { useAuth } from '../contexts/auth'
 import api from '../services/api'

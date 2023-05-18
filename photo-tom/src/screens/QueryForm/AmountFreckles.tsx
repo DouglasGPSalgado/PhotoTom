@@ -25,59 +25,57 @@ export function AmountFreckles() {
   }
 
   return (
-    <VStack flex={1} p={8} bg="white">
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Title
-          title="Quantidade de sardas ou pintas na pele em áreas não expostas?"
-          fontSize={21}
-          color="brown.500"
-          textAlign="center"
-          fontFamily="heading"
+    <VStack flex={1} p={6} bg="white">
+      <Title
+        title="Quantidade de sardas ou pintas na pele em áreas não expostas?"
+        fontSize={21}
+        color="brown.500"
+        textAlign="center"
+        fontFamily="heading"
+      />
+      <TestID />
+      <Box mt={6}>
+        <FormButton
+          text="Muitas"
+          onPress={() => setAmountFreckles(0)}
+          borderWidth={amountFreckles === 0 ? 2 : 0}
+          textColor={amountFreckles === 0 ? 'brown.400' : 'black'}
         />
-        <TestID />
-        <Box mt={6}>
-          <FormButton
-            text="Muitas"
-            onPress={() => setAmountFreckles(0)}
-            borderWidth={amountFreckles === 0 ? 2 : 0}
-            textColor={amountFreckles === 0 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Várias"
-            onPress={() => setAmountFreckles(1)}
-            borderWidth={amountFreckles === 1 ? 2 : 0}
-            textColor={amountFreckles === 1 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Algumas"
-            onPress={() => setAmountFreckles(2)}
-            borderWidth={amountFreckles === 2 ? 2 : 0}
-            textColor={amountFreckles === 2 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Muito poucas"
-            onPress={() => setAmountFreckles(3)}
-            borderWidth={amountFreckles === 3 ? 2 : 0}
-            textColor={amountFreckles === 3 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Nenhuma"
-            onPress={() => setAmountFreckles(4)}
-            borderWidth={amountFreckles === 4 ? 2 : 0}
-            textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
-          />
-          <FormProgress index={42} />
-        </Box>
-        <Box alignItems="center" justifyContent="flex-end" flex={1}>
-          <NextPage
-            onPress={() => {
-              validationForNextPage()
-            }}
-            action="Continuar"
-            color="brown.400"
-          />
-        </Box>
-      </ScrollView>
+        <FormButton
+          text="Várias"
+          onPress={() => setAmountFreckles(1)}
+          borderWidth={amountFreckles === 1 ? 2 : 0}
+          textColor={amountFreckles === 1 ? 'brown.400' : 'black'}
+        />
+        <FormButton
+          text="Algumas"
+          onPress={() => setAmountFreckles(2)}
+          borderWidth={amountFreckles === 2 ? 2 : 0}
+          textColor={amountFreckles === 2 ? 'brown.400' : 'black'}
+        />
+        <FormButton
+          text="Muito poucas"
+          onPress={() => setAmountFreckles(3)}
+          borderWidth={amountFreckles === 3 ? 2 : 0}
+          textColor={amountFreckles === 3 ? 'brown.400' : 'black'}
+        />
+        <FormButton
+          text="Nenhuma"
+          onPress={() => setAmountFreckles(4)}
+          borderWidth={amountFreckles === 4 ? 2 : 0}
+          textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
+        />
+        <FormProgress index={42} />
+        <NextPage
+          onPress={() => {
+            validationForNextPage()
+          }}
+          action="Continuar"
+          color="brown.400"
+          alignSelf={'center'}
+          marginY={2}
+        />
+      </Box>
     </VStack>
   )
 }

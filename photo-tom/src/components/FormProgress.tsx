@@ -1,5 +1,4 @@
 import { Center, Box, Progress } from 'native-base'
-import { useState } from 'react'
 
 type FormProgressProps = {
   index: number

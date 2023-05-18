@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import api from '@services/api'
 import { createContext, ReactNode, useState } from 'react'
 import { useImg } from './img'
+import { useNavigation } from '@react-navigation/native'
+import { AppNavigatorRoutesProps } from '@routes/app.routes'
 
 type DataDeliveryContextProps = {
   skinColor: number | null
@@ -21,12 +23,15 @@ type DataDeliveryContextProps = {
   facialSunSensitivity: number | null
   setFacialSunSensitivity: (value: number) => void
   initialGuess: number
+  techRating: number
   setInitialGuess: (value: number) => void
+  setTechRating: (value: number) => void
   results: number[][]
   setResults: (value: number[][]) => void
   palette: number
   setPalette: (value: number) => void
   postResults: () => Promise<void>
+  putResults: () => Promise<void>
 }
 
 type ContextProviderProps = {
@@ -38,6 +43,7 @@ export const DataDeliveryContext = createContext<DataDeliveryContextProps>(
 )
 
 export function DataDeliveryProvider({ children }: ContextProviderProps) {
+  const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const { img } = useImg()
   const [skinColor, setSkinColor] = useState<number | null>(null)
   const [hairColor, setHairColor] = useState<number | null>(null)
@@ -50,7 +56,9 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
     number | null
   >(null)
   const [initialGuess, setInitialGuess] = useState<number>(1)
-  const [palette, setPalette] = useState<number>(1)
+  const [techRating, setTechRating] = useState<number>(0)
+  const [palette, setPalette] = useState<number>(0)
+  const [analysis_Id, setAnalysis_Id] = useState<number>(0)
 
   const [results, setResults] = useState<number[][]>([[]])
 
@@ -88,7 +96,30 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       setSkinColor(null)
       setSunReaction(null)
       setTannedSkin(null)
+      setAnalysis_Id(response.data.id)
+      navigate('results')
     } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function putResults() {
+    try {
+      const token = await AsyncStorage.getItem('@PTAuth:token')
+      await api.put(
+        `analysis/${analysis_Id}/`,
+        {
+          tech_rating: techRating,
+        },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      )
+      navigate('home')
+    } catch (error) {
+      navigate('home')
       console.log(error)
     }
   }
@@ -115,10 +146,13 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         palette,
         setPalette,
         postResults,
+        putResults,
         initialGuess,
         setInitialGuess,
         results,
         setResults,
+        techRating,
+        setTechRating,
       }}
     >
       {children}

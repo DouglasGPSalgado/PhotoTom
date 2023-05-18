@@ -12,10 +12,9 @@ import {
   Image,
   Text,
   VStack,
-  ScrollView,
 } from 'native-base'
-import React, { useContext, useEffect, useState } from 'react'
-import { Alert, TouchableOpacity } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { Alert } from 'react-native'
 
 import { ImageContext } from '../contexts/img'
 import TestID from '@components/TestID'

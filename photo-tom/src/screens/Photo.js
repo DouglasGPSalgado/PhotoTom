@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import { Camera, CameraType } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 import { View, Text } from 'native-base'
-import { StyleSheet, Image, Alert } from 'react-native'
+import { StyleSheet, Image } from 'react-native'
 import ButtonCamera from '@components/ButtonCamera'
 import { ImageContext } from '../contexts/img'
 

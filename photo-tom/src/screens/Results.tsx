@@ -22,7 +22,7 @@ import { Alert } from 'react-native'
 
 export function Results() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
-  const { results } = useDataDelivery()
+  const { results, putResults } = useDataDelivery()
   const [showModal, setShowModal] = useState(false)
   const [finalGuess, setFinalGuess] = useState(0)
   const phototypeResults = results[0][0]
@@ -33,7 +33,7 @@ export function Results() {
       return
     }
 
-    navigate('home')
+    putResults()
   }
 
   return (

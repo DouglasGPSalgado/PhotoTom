@@ -4,7 +4,6 @@ import React, {
   useEffect,
   useState,
   useContext,
-  PureComponent,
 } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import api from '../services/api'

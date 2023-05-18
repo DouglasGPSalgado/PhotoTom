@@ -25,59 +25,57 @@ export function BronzeIntensity() {
   }
 
   return (
-    <VStack flex={1} p={8} bg="white">
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Title
-          title="Com que intensidade a pele do paciente fica bronzeada?"
-          fontSize="2xl"
-          textAlign="center"
-          color="brown.500"
-          fontFamily="heading"
+    <VStack flex={1} p={6} bg="white">
+      <Title
+        title="Com que intensidade a pele do paciente fica bronzeada?"
+        fontSize="2xl"
+        textAlign="center"
+        color="brown.500"
+        fontFamily="heading"
+      />
+      <TestID />
+      <Box mt={6}>
+        <FormButton
+          text="Pouco ou muito pouco"
+          onPress={() => setTannedSkin(0)}
+          borderWidth={tannedSkin === 0 ? 2 : 0}
+          textColor={tannedSkin === 0 ? 'brown.400' : 'black'}
         />
-        <TestID />
-        <Box mt={6}>
-          <FormButton
-            text="Pouco ou muito pouco"
-            onPress={() => setTannedSkin(0)}
-            borderWidth={tannedSkin === 0 ? 2 : 0}
-            textColor={tannedSkin === 0 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Levemente"
-            onPress={() => setTannedSkin(1)}
-            borderWidth={tannedSkin === 1 ? 2 : 0}
-            textColor={tannedSkin === 1 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Moderadamente"
-            onPress={() => setTannedSkin(2)}
-            borderWidth={tannedSkin === 2 ? 2 : 0}
-            textColor={tannedSkin === 2 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="Profundamente"
-            onPress={() => setTannedSkin(3)}
-            borderWidth={tannedSkin === 3 ? 2 : 0}
-            textColor={tannedSkin === 3 ? 'brown.400' : 'black'}
-          />
-          <FormButton
-            text="A pele é naturalmente escura"
-            onPress={() => setTannedSkin(4)}
-            borderWidth={tannedSkin === 4 ? 2 : 0}
-            textColor={tannedSkin === 4 ? 'brown.400' : 'black'}
-          />
-          <FormProgress index={70} />
-        </Box>
-        <Box alignItems="center" justifyContent="flex-end" flex={1}>
-          <NextPage
-            onPress={() => {
-              validationForNextPage()
-            }}
-            action="Continuar"
-            color="brown.400"
-          />
-        </Box>
-      </ScrollView>
+        <FormButton
+          text="Levemente"
+          onPress={() => setTannedSkin(1)}
+          borderWidth={tannedSkin === 1 ? 2 : 0}
+          textColor={tannedSkin === 1 ? 'brown.400' : 'black'}
+        />
+        <FormButton
+          text="Moderadamente"
+          onPress={() => setTannedSkin(2)}
+          borderWidth={tannedSkin === 2 ? 2 : 0}
+          textColor={tannedSkin === 2 ? 'brown.400' : 'black'}
+        />
+        <FormButton
+          text="Profundamente"
+          onPress={() => setTannedSkin(3)}
+          borderWidth={tannedSkin === 3 ? 2 : 0}
+          textColor={tannedSkin === 3 ? 'brown.400' : 'black'}
+        />
+        <FormButton
+          text="A pele é naturalmente escura"
+          onPress={() => setTannedSkin(4)}
+          borderWidth={tannedSkin === 4 ? 2 : 0}
+          textColor={tannedSkin === 4 ? 'brown.400' : 'black'}
+        />
+        <FormProgress index={70} />
+        <NextPage
+          onPress={() => {
+            validationForNextPage()
+          }}
+          action="Continuar"
+          color="brown.400"
+          alignSelf={'center'}
+          marginY={2}
+        />
+      </Box>
     </VStack>
   )
 }
