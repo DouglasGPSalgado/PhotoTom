@@ -4,6 +4,7 @@ import TestID from '@components/TestID'
 import { Title } from '@components/Title'
 import { useDataDelivery } from '@hooks/useDataDelivery'
 import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect } from '@react-navigation/native';
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import {
   Box,
@@ -17,8 +18,8 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import { useState } from 'react'
-import { Alert } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { Alert, BackHandler } from 'react-native'
 
 export function Results() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
@@ -36,6 +37,22 @@ export function Results() {
     putResults()
   }
 
+  useEffect(()=> {
+    const backAction = () => {
+      Alert.alert("", "Não é possível retornar ao formulário!.",[
+        {
+          text: "Continuar Análise",
+          onPress:() => null,
+        }
+      ]);
+      return true;
+    }
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    )
+  },[])
   return (
     <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
       <VStack p={8} flex={1} bg="white">

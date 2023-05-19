@@ -51,7 +51,15 @@ export default function AppRoutes() {
       <Screen name="home" component={Home} options={{ headerShown: false }} />
       <Screen name="Palette" component={Palette} />
       <Screen name="photo" component={Photo} options={{ headerShown: false }} />
-      <Screen name="results" component={Results} />
+      <Screen 
+        name="results" 
+        component={Results} 
+        options={{
+          gestureEnabled:false, 
+          detachPreviousScreen:false, 
+          headerLeft: false,
+        }}
+      />
       <Screen name="skinColor" component={SkinColor} />
       <Screen name="hairColor" component={HairColor} />
       <Screen name="eyeColor" component={EyeColor} />

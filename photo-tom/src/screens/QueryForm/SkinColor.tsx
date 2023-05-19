@@ -65,7 +65,7 @@ export function SkinColor() {
           borderWidth={skinColor === 4 ? 2 : 0}
           textColor={skinColor === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={0} />
+        <FormProgress index={1} />
         <NextPage
           onPress={() => {
             validationForNextPage()
@@ -73,7 +73,6 @@ export function SkinColor() {
           action="Continuar"
           color="brown.400"
           alignSelf={'center'}
-          marginY={2}
         />
       </Box>
     </VStack>

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "photo-tom",
+    "name": "Photo-Tom",
     "slug": "photo-tom",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -35,7 +35,7 @@
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.warwolfone.phototom"
+      "package": "com.nca.phototom"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

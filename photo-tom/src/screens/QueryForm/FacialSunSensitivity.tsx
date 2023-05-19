@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, HStack, Spinner, VStack, ScrollView } from 'native-base'
 import { useContext, useState } from 'react'
-import { Alert } from 'react-native'
+import { Alert, BackHandler } from 'react-native'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
@@ -28,7 +28,6 @@ export function FacialSunSensitivity() {
       }
 
       await postResults()
-      navigate('results')
     } catch (error) {
       console.log(error)
     }
@@ -75,7 +74,7 @@ export function FacialSunSensitivity() {
           borderWidth={facialSunSensitivity === 4 ? 2 : 0}
           textColor={facialSunSensitivity === 4 ? 'brown.500' : 'black'}
         />
-        <FormProgress index={100} />
+        <FormProgress index={95} />
         <NextPage
           onPress={() => {
             validationForNextPage()
