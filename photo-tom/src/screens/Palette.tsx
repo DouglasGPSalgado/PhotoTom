@@ -100,7 +100,7 @@ export function Palette() {
           flexDirection="row"
           px={2}
           style={{
-            height: 492,
+            height: '70%',
           }}
         >
           <FlatList
@@ -116,8 +116,8 @@ export function Palette() {
                     setPalette(item.value)
                     setNextPage(item.value)
                   }}
-                  width={item.selected ? 24 : 20}
-                  height={item.selected ? 24 : 20}
+                  width={item.selected ? 20 : 16}
+                  height={item.selected ? 20 : 16}
                   borderWidth={item.selected ? 3 : 0}
                   borderColor={item.selected ? 'yellow.500' : 'white'}
                 />

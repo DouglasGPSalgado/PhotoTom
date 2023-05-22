@@ -23,8 +23,9 @@ export function FormButton({
       _pressed={{
         bg: 'light.100',
       }}
-      height={16}
+      height="11%"
       rounded="2xl"
+      padding={1.5}
       {...rest}
     >
       <Text

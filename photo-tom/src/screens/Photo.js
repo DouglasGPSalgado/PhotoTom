@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState, useContext } from 'react'
 import { Camera, CameraType } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 import { View, Text } from 'native-base'
-import { StyleSheet, Image } from 'react-native'
+import { StyleSheet, Image, BackHandler, Alert } from 'react-native'
 import ButtonCamera from '@components/ButtonCamera'
 import { ImageContext } from '../contexts/img'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Photo() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null)
@@ -13,6 +14,7 @@ export default function Photo() {
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off)
   const cameraRef = useRef(null)
   const { signIn } = useContext(ImageContext)
+  const navigation = useNavigation()
 
   useEffect(() => {
     ;(async () => {
@@ -20,6 +22,24 @@ export default function Photo() {
       const cameraStatus = await Camera.requestCameraPermissionsAsync()
       setHasCameraPermission(cameraStatus.status === 'granted')
     })()
+    const backAction = () => {
+      Alert.alert('', 'Deseja voltar para a tela principal?', [
+        {
+          text: 'Continuar Análise',
+          onPress: () => null,
+        },
+        {
+          text: 'voltar',
+          onPress: () => navigation.navigate('home'),
+        },
+      ])
+      return true
+    }
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    )
   }, [])
 
   const takePicture = async () => {

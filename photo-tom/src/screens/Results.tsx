@@ -3,8 +3,8 @@ import { NextPage } from '@components/NextPage'
 import TestID from '@components/TestID'
 import { Title } from '@components/Title'
 import { useDataDelivery } from '@hooks/useDataDelivery'
-import { useNavigation } from '@react-navigation/native'
-import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native'
+
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import {
   Box,
@@ -37,22 +37,23 @@ export function Results() {
     putResults()
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     const backAction = () => {
-      Alert.alert("", "Não é possível retornar ao formulário!.",[
+      Alert.alert('', 'Não é possível retornar ao formulário!.', [
         {
-          text: "Continuar Análise",
-          onPress:() => null,
-        }
-      ]);
-      return true;
+          text: 'Continuar Análise',
+          onPress: () => null,
+        },
+      ])
+      return true
     }
 
     const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
+      'hardwareBackPress',
+      backAction,
     )
-  },[])
+  }, [])
+
   return (
     <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
       <VStack p={8} flex={1} bg="white">

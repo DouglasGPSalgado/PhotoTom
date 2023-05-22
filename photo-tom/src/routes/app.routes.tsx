@@ -49,14 +49,18 @@ export default function AppRoutes() {
       }}
     >
       <Screen name="home" component={Home} options={{ headerShown: false }} />
-      <Screen name="Palette" component={Palette} />
+      <Screen
+        name="Palette"
+        component={Palette}
+        options={{ headerLeft: false }}
+      />
       <Screen name="photo" component={Photo} options={{ headerShown: false }} />
-      <Screen 
-        name="results" 
-        component={Results} 
+      <Screen
+        name="results"
+        component={Results}
         options={{
-          gestureEnabled:false, 
-          detachPreviousScreen:false, 
+          gestureEnabled: false,
+          detachPreviousScreen: false,
           headerLeft: false,
         }}
       />

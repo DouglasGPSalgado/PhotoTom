@@ -34,7 +34,7 @@ export function SkinColor() {
         fontFamily="heading"
       />
       <TestID />
-      <Box mt={6}>
+      <Box mt={5}>
         <FormButton
           text="Branco Marfim"
           onPress={() => setSkinColor(0)}
@@ -65,7 +65,7 @@ export function SkinColor() {
           borderWidth={skinColor === 4 ? 2 : 0}
           textColor={skinColor === 4 ? 'brown.400' : 'black'}
         />
-        <FormProgress index={1} />
+        <FormProgress index={0} />
         <NextPage
           onPress={() => {
             validationForNextPage()
