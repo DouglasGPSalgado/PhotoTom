@@ -1,5 +1,5 @@
 ### Photo-Tom
-
+```bash
 # Clone este repositório
 $ git clone <https://github.com/DouglasGPSalgado/PhotoTom.git>
 
@@ -13,3 +13,5 @@ $ npm install
 $ npm run start
 
 # Use um emulador como o Android Studio ou use seu celular com o Expo Go.
+
+```
