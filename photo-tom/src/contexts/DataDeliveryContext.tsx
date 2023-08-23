@@ -1,11 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import api from '@services/api'
 import { createContext, ReactNode, useState } from 'react'
-import { useImg } from './img'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
+import LoadingComponent from '@components/LoadingComponent'
 
-type DataDeliveryContextProps = {
+type paletteDTO = {
+  image: string | undefined
+}
+
+export type DataDeliveryContextProps = {
   skinColor: number | null
   setSkinColor: (value: number) => void
   hairColor: number | null
@@ -32,6 +36,8 @@ type DataDeliveryContextProps = {
   setPalette: (value: number) => void
   postResults: () => Promise<void>
   putResults: () => Promise<void>
+  img: paletteDTO
+  signIn: (image: string) => Promise<void>
 }
 
 type ContextProviderProps = {
@@ -44,7 +50,7 @@ export const DataDeliveryContext = createContext<DataDeliveryContextProps>(
 
 export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
-  const { img } = useImg()
+  const [img, setImg] = useState<paletteDTO>({} as paletteDTO)
   const [skinColor, setSkinColor] = useState<number | null>(null)
   const [hairColor, setHairColor] = useState<number | null>(null)
   const [eyeColor, setEyeColor] = useState<number | null>(null)
@@ -55,38 +61,58 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [facialSunSensitivity, setFacialSunSensitivity] = useState<
     number | null
   >(null)
+  const navigation = useNavigation()
   const [initialGuess, setInitialGuess] = useState<number>(1)
   const [techRating, setTechRating] = useState<number>(0)
   const [palette, setPalette] = useState<number>(0)
   const [analysis_Id, setAnalysis_Id] = useState<number>(0)
-
   const [results, setResults] = useState<number[][]>([[]])
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function signIn(image: string) {
+    if (image !== null) {
+      setImg({
+        image,
+      })
+
+      navigation.navigate('Palette')
+    }
+  }
 
   async function postResults() {
+    // ImagePicker saves the taken photo to disk and returns a local URI to it
+    const localUri = img.image.uri
+    const filename = localUri.split('/').pop()
+    // Infer the type of the image
+    const match = /.(\w+)$/.exec(filename)
+    const type = match ? `image/${match[1]}` : `image`
+    // Upload the image using the fetch and FormData APIs
+    const formData = new FormData()
+    // Assume "photo" is the name of the form field the server expects
+    formData.append('sample', {
+      uri: localUri,
+      name: filename,
+      type,
+    })
+    formData.append('initial_guess', palette)
+    formData.append('tech_guess', initialGuess)
+    formData.append('skin_c', skinColor)
+    formData.append('hair_c', hairColor)
+    formData.append('eye_c', eyeColor)
+    formData.append('freckles', amountFreckles)
+    formData.append('tan_rate', tannedSkin)
+    formData.append('tan_intensity', bronzeIntensity)
+    formData.append('exp_reaction', sunReaction)
+    formData.append('facial_exp_sensibility', facialSunSensitivity)
+
     try {
+      setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
-      const response = await api.post(
-        'analysis/',
-        {
-          initial_guess: palette,
-          tech_guess: initialGuess,
-          sample: img,
-          skin_c: skinColor,
-          hair_c: hairColor,
-          eye_c: eyeColor,
-          freckles: amountFreckles,
-          tan_rate: tannedSkin,
-          tan_intensity: bronzeIntensity,
-          exp_reaction: sunReaction,
-          facial_exp_sensibility: facialSunSensitivity,
+      const response = await api.postForm('analysis/', formData, {
+        headers: {
+          Authorization: `Token ${token}`,
         },
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Token ${token}`,
-          },
-        },
-      )
+      })
       setResults(response.data.results)
       setAmountFreckles(null)
       setBronzeIntensity(null)
@@ -97,14 +123,18 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       setSunReaction(null)
       setTannedSkin(null)
       setAnalysis_Id(response.data.id)
+
+      setIsLoading(false)
       navigate('results')
     } catch (error) {
+      setIsLoading(false)
       console.log(error)
     }
   }
 
   async function putResults() {
     try {
+      setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
       await api.put(
         `analysis/${analysis_Id}/`,
@@ -117,8 +147,10 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
+      setIsLoading(false)
       navigate('home')
     } catch (error) {
+      setIsLoading(false)
       navigate('home')
       console.log(error)
     }
@@ -153,9 +185,11 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         setResults,
         techRating,
         setTechRating,
+        img,
+        signIn,
       }}
     >
-      {children}
+      {isLoading ? <LoadingComponent /> : children}
     </DataDeliveryContext.Provider>
   )
 }

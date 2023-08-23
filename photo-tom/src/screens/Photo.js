@@ -4,7 +4,7 @@ import * as MediaLibrary from 'expo-media-library'
 import { View, Text } from 'native-base'
 import { StyleSheet, Image, BackHandler, Alert } from 'react-native'
 import ButtonCamera from '@components/ButtonCamera'
-import { ImageContext } from '../contexts/img'
+import { useDataDelivery } from '@hooks/useDataDelivery'
 import { useNavigation } from '@react-navigation/native'
 
 export default function Photo() {
@@ -12,8 +12,8 @@ export default function Photo() {
   const [image, setImage] = useState(null)
   const [type, setType] = useState(Camera.Constants.Type.back)
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off)
+  const { signIn } = useDataDelivery()
   const cameraRef = useRef(null)
-  const { signIn } = useContext(ImageContext)
   const navigation = useNavigation()
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Photo() {
     if (cameraRef) {
       try {
         const data = await cameraRef.current.takePictureAsync()
-        setImage(data.uri)
+        setImage(data)
       } catch (e) {}
     }
   }
@@ -97,7 +97,7 @@ export default function Photo() {
           </View>
         </Camera>
       ) : (
-        <Image source={{ uri: image }} style={styles.camera} alt="" />
+        <Image source={{ uri: image.uri }} style={styles.camera} alt="" />
       )}
       <View>
         {image ? (
