@@ -44,7 +44,7 @@ export function HairColor() {
           borderWidth={select === 0 ? 2 : 0}
           textColor={select === 0 ? 'brown.400' : 'black'}
         />
-        
+
         <FormButton
           text="Loiro"
           onPress={() => setSelect(1)}

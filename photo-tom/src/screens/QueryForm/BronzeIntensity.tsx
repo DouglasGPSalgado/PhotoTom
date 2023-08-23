@@ -13,7 +13,8 @@ import { Alert } from 'react-native'
 export function BronzeIntensity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { bronzeIntensity, setBronzeIntensity} = useContext(DataDeliveryContext)
+  const { bronzeIntensity, setBronzeIntensity } =
+    useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
   function validationForNextPage() {

@@ -13,9 +13,8 @@ import { Alert } from 'react-native'
 export function TannedSkin() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { tannedSkin, setTannedSkin } =
-    useContext(DataDeliveryContext)
-    const [select, setSelect] = useState(null)
+  const { tannedSkin, setTannedSkin } = useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
     if (select === null) {

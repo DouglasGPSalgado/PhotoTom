@@ -124,8 +124,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       setTannedSkin(null)
       setAnalysis_Id(response.data.id)
 
-      setIsLoading(false)
       navigate('results')
+      setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
       console.log(error)
@@ -147,11 +147,10 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      setIsLoading(false)
       navigate('home')
+      setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
-      navigate('home')
       console.log(error)
     }
   }

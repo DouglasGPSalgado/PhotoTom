@@ -40,11 +40,11 @@ export function SunReaction() {
       <Box mt={6}>
         <FormButton
           text="Sempre queima, forma bolhas e descama"
-          onPress={() => (0)}
+          onPress={() => 0}
           borderWidth={select === 0 ? 2 : 0}
           textColor={select === 0 ? 'brown.400' : 'black'}
         />
-        
+
         <FormButton
           text="Quase sempre queima, forma bolhas e descama"
           onPress={() => setSelect(1)}

@@ -2,6 +2,7 @@ import { FormButton } from '@components/FormButton'
 import { NextPage } from '@components/NextPage'
 import TestID from '@components/TestID'
 import { Title } from '@components/Title'
+import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useDataDelivery } from '@hooks/useDataDelivery'
 import { useNavigation, useFocusEffect } from '@react-navigation/native'
 
@@ -18,14 +19,14 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Alert, BackHandler } from 'react-native'
 
 export function Results() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const { results, putResults } = useDataDelivery()
   const [showModal, setShowModal] = useState(false)
-  const [finalGuess, setFinalGuess] = useState(0)
+  const { techRating, setTechRating } = useContext(DataDeliveryContext)
   const phototypeResults = results[0][0]
   const [select, setSelect] = useState(null)
 
@@ -221,7 +222,7 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  setFinalGuess(select)
+                  setTechRating(select)
                   validationForNextPage()
                   setShowModal(false)
                 }}
