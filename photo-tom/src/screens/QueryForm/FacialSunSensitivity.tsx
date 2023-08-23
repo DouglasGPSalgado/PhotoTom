@@ -17,12 +17,14 @@ export function FacialSunSensitivity() {
 
   const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
+  // console.log(DataDeliveryContext)
 
   async function validationForNextPage() {
     try {
       setIsLoading(true)
 
-      if (facialSunSensitivity === null) {
+      if (select === null) {
         Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
         return
       }
@@ -42,41 +44,53 @@ export function FacialSunSensitivity() {
         color="brown.500"
         fontFamily="heading"
       />
+
       <TestID />
+
       <Box mt={6}>
         <FormButton
           text="Muito sensível"
-          onPress={() => setFacialSunSensitivity(0)}
-          borderWidth={facialSunSensitivity === 0 ? 2 : 0}
-          textColor={facialSunSensitivity === 0 ? 'brown.500' : 'black'}
+          onPress={() => setSelect(0)}
+          borderWidth={select === 0 ? 2 : 0}
+          textColor={select === 0 ? 'brown.500' : 'black'}
         />
+
         <FormButton
           text="Sensível"
-          onPress={() => setFacialSunSensitivity(1)}
-          borderWidth={facialSunSensitivity === 1 ? 2 : 0}
-          textColor={facialSunSensitivity === 1 ? 'brown.500' : 'black'}
+          onPress={() => setSelect(1)}
+          borderWidth={select === 1 ? 2 : 0}
+          textColor={select === 1 ? 'brown.500' : 'black'}
         />
+
         <FormButton
           text="Normal"
-          onPress={() => setFacialSunSensitivity(2)}
-          borderWidth={facialSunSensitivity === 2 ? 2 : 0}
-          textColor={facialSunSensitivity === 2 ? 'brown.500' : 'black'}
+          onPress={() => setSelect(2)}
+          borderWidth={select === 2 ? 2 : 0}
+          textColor={select === 2 ? 'brown.500' : 'black'}
         />
+
         <FormButton
           text="Resistente"
-          onPress={() => setFacialSunSensitivity(3)}
-          borderWidth={facialSunSensitivity === 3 ? 2 : 0}
-          textColor={facialSunSensitivity === 3 ? 'brown.500' : 'black'}
+          onPress={() => setSelect(3)}
+          borderWidth={select === 3 ? 2 : 0}
+          textColor={select === 3 ? 'brown.500' : 'black'}
         />
+
         <FormButton
           text="Muito resistente (nunca queimou)"
-          onPress={() => setFacialSunSensitivity(4)}
-          borderWidth={facialSunSensitivity === 4 ? 2 : 0}
-          textColor={facialSunSensitivity === 4 ? 'brown.500' : 'black'}
+          onPress={() => setSelect(4)}
+          borderWidth={select === 4 ? 2 : 0}
+          textColor={select === 4 ? 'brown.500' : 'black'}
         />
-        <FormProgress index={95} />
+
+        {
+          (select === null) ? <FormProgress index={95} />
+          :  <FormProgress index={100} />
+        }
+
         <NextPage
           onPress={() => {
+            setFacialSunSensitivity(select)
             validationForNextPage()
           }}
           action="Resultados"

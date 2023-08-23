@@ -27,9 +27,10 @@ export function Results() {
   const [showModal, setShowModal] = useState(false)
   const [finalGuess, setFinalGuess] = useState(0)
   const phototypeResults = results[0][0]
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
-    if (finalGuess === null) {
+    if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
@@ -156,6 +157,7 @@ export function Results() {
             onPress={() => setShowModal(true)}
           />
         </Center>
+
         {/* Modal feedback */}
         <Modal
           isOpen={showModal}
@@ -196,23 +198,22 @@ export function Results() {
                   </Text>
                   <FormButton
                     text="Acima do esperado"
-                    onPress={() => setFinalGuess(2)}
-                    borderWidth={finalGuess === 2 ? 2 : 0}
-                    textColor={finalGuess === 2 ? 'brown.400' : 'black'}
+                    onPress={() => setSelect(2)}
+                    borderWidth={select === 2 ? 2 : 0}
+                    textColor={select === 2 ? 'brown.400' : 'black'}
                   />
                   <FormButton
                     text="Correto"
-                    onPress={() => setFinalGuess(1)}
-                    borderWidth={finalGuess === 1 ? 2 : 0}
-                    textColor={finalGuess === 1 ? 'brown.400' : 'black'}
+                    onPress={() => setSelect(1)}
+                    borderWidth={select === 1 ? 2 : 0}
+                    textColor={select === 1 ? 'brown.400' : 'black'}
                   />
                   <FormButton
                     text="Abaixo do esperado"
-                    onPress={() => setFinalGuess(0)}
-                    borderWidth={finalGuess === 0 ? 2 : 0}
-                    textColor={finalGuess === 0 ? 'brown.400' : 'black'}
+                    onPress={() => setSelect(0)}
+                    borderWidth={select === 0 ? 2 : 0}
+                    textColor={select === 0 ? 'brown.400' : 'black'}
                   />
-                  <Box py="8"></Box>
                 </Center>
               </VStack>
             </Modal.Body>
@@ -220,6 +221,7 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
+                  setFinalGuess(select)
                   validationForNextPage()
                   setShowModal(false)
                 }}

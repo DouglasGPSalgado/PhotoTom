@@ -7,20 +7,20 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack, ScrollView } from 'native-base'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function SkinColor() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const { skinColor, setSkinColor } = useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
-    if (skinColor === null) {
+    if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
-
     navigate('hairColor')
   }
 
@@ -33,41 +33,50 @@ export function SkinColor() {
         color="brown.500"
         fontFamily="heading"
       />
+
       <TestID />
+
       <Box mt={5}>
         <FormButton
           text="Branco Marfim"
-          onPress={() => setSkinColor(0)}
-          borderWidth={skinColor === 0 ? 2 : 0}
-          textColor={skinColor === 0 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(0)}
+          borderWidth={select === 0 ? 2 : 0}
+          textColor={select === 0 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Pele Clara ou Pálida"
-          onPress={() => setSkinColor(1)}
-          borderWidth={skinColor === 1 ? 2 : 0}
-          textColor={skinColor === 1 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(1)}
+          borderWidth={select === 1 ? 2 : 0}
+          textColor={select === 1 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Pele com Tom de Ouro"
-          onPress={() => setSkinColor(2)}
-          borderWidth={skinColor === 2 ? 2 : 0}
-          textColor={skinColor === 2 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(2)}
+          borderWidth={select === 2 ? 2 : 0}
+          textColor={select === 2 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Castanho Claro"
-          onPress={() => setSkinColor(3)}
-          borderWidth={skinColor === 3 ? 2 : 0}
-          textColor={skinColor === 3 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(3)}
+          borderWidth={select === 3 ? 2 : 0}
+          textColor={select === 3 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Castanho Escuro ou Preto"
-          onPress={() => setSkinColor(4)}
-          borderWidth={skinColor === 4 ? 2 : 0}
-          textColor={skinColor === 4 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(4)}
+          borderWidth={select === 4 ? 2 : 0}
+          textColor={select === 4 ? 'brown.400' : 'black'}
         />
+
         <FormProgress index={0} />
+
         <NextPage
           onPress={() => {
+            setSkinColor(select)
             validationForNextPage()
           }}
           action="Continuar"

@@ -6,7 +6,7 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack, ScrollView } from 'native-base'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 import TestID from '@components/TestID'
 
@@ -14,9 +14,10 @@ export function AmountFreckles() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const { amountFreckles, setAmountFreckles } = useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
-    if (amountFreckles === null) {
+    if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
@@ -33,41 +34,50 @@ export function AmountFreckles() {
         textAlign="center"
         fontFamily="heading"
       />
+
       <TestID />
+
       <Box mt={6}>
         <FormButton
           text="Muitas"
-          onPress={() => setAmountFreckles(0)}
-          borderWidth={amountFreckles === 0 ? 2 : 0}
-          textColor={amountFreckles === 0 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(0)}
+          borderWidth={select === 0 ? 2 : 0}
+          textColor={select === 0 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Várias"
-          onPress={() => setAmountFreckles(1)}
-          borderWidth={amountFreckles === 1 ? 2 : 0}
-          textColor={amountFreckles === 1 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(1)}
+          borderWidth={select === 1 ? 2 : 0}
+          textColor={select === 1 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Algumas"
-          onPress={() => setAmountFreckles(2)}
-          borderWidth={amountFreckles === 2 ? 2 : 0}
-          textColor={amountFreckles === 2 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(2)}
+          borderWidth={select === 2 ? 2 : 0}
+          textColor={select === 2 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Muito poucas"
-          onPress={() => setAmountFreckles(3)}
-          borderWidth={amountFreckles === 3 ? 2 : 0}
-          textColor={amountFreckles === 3 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(3)}
+          borderWidth={select === 3 ? 2 : 0}
+          textColor={select === 3 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Nenhuma"
-          onPress={() => setAmountFreckles(4)}
-          borderWidth={amountFreckles === 4 ? 2 : 0}
-          textColor={amountFreckles === 4 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(4)}
+          borderWidth={select === 4 ? 2 : 0}
+          textColor={select === 4 ? 'brown.400' : 'black'}
         />
+
         <FormProgress index={42} />
+
         <NextPage
           onPress={() => {
+            setAmountFreckles(select)
             validationForNextPage()
           }}
           action="Continuar"

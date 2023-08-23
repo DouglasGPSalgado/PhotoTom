@@ -1,11 +1,17 @@
-# Photo-Tom
+### Photo-Tom
+```bash
+# Clone este repositório.
+$ git clone <https://github.com/DouglasGPSalgado/PhotoTom.git>
 
-1 - Para rodar o App abra o terminal no diretório `photo-tom` ou abra no VS Code e acesse o terminal.
+# Acesse a pasta do projeto no terminal/cmd ou abra o VS code já no diretório.
+$ cd photo-tom
 
-2 - Use o comando `yarn install` ou `npm install` para instalar as dependências necessárias no projeto.
+# Instale as dependências.
+$ npm install
 
-3 - Abra o Android Stuido ou instale o Expo Go no seu celular.
+# Execute a aplicação.
+$ npm run start
 
-4 - Para rodar o App use o comando `expo start` caso queira rodar direto no emulador use o comando `expo start --android` para abrir diretamente no Android Studio.
+# Use um emulador como o Android Studio ou use seu celular com o Expo Go.
 
-5 - Para rodar o App no Expo GO, escaneie o QR Code no terminal.
+```
