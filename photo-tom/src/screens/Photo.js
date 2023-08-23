@@ -107,13 +107,13 @@ export default function Photo() {
             paddingX={50}
           >
             <ButtonCamera
-              title="Refazer foto"
+              title="Refazer Foto"
               icon="retweet"
               onPress={() => setImage(null)}
               color=""
             />
             <ButtonCamera
-              title="continuar"
+              title="Continuar"
               icon="check"
               onPress={saveImage}
               color=""

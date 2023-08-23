@@ -7,16 +7,17 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack, ScrollView } from 'native-base'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function SunReaction() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const { sunReaction, setSunReaction } = useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
-    if (sunReaction === null) {
+    if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
@@ -33,41 +34,50 @@ export function SunReaction() {
         color="brown.500"
         fontFamily="heading"
       />
+
       <TestID />
+
       <Box mt={6}>
         <FormButton
           text="Sempre queima, forma bolhas e descama"
-          onPress={() => setSunReaction(0)}
-          borderWidth={sunReaction === 0 ? 2 : 0}
-          textColor={sunReaction === 0 ? 'brown.400' : 'black'}
+          onPress={() => (0)}
+          borderWidth={select === 0 ? 2 : 0}
+          textColor={select === 0 ? 'brown.400' : 'black'}
         />
+        
         <FormButton
           text="Quase sempre queima, forma bolhas e descama"
-          onPress={() => setSunReaction(1)}
-          borderWidth={sunReaction === 1 ? 2 : 0}
-          textColor={sunReaction === 1 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(1)}
+          borderWidth={select === 1 ? 2 : 0}
+          textColor={select === 1 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="De vez em quando queima"
-          onPress={() => setSunReaction(2)}
-          borderWidth={sunReaction === 2 ? 2 : 0}
-          textColor={sunReaction === 2 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(2)}
+          borderWidth={select === 2 ? 2 : 0}
+          textColor={select === 2 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Raramente queima"
-          onPress={() => setSunReaction(3)}
-          borderWidth={sunReaction === 3 ? 2 : 0}
-          textColor={sunReaction === 3 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(3)}
+          borderWidth={select === 3 ? 2 : 0}
+          textColor={select === 3 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Nunca queima"
-          onPress={() => setSunReaction(4)}
-          borderWidth={sunReaction === 4 ? 2 : 0}
-          textColor={sunReaction === 4 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(4)}
+          borderWidth={select === 4 ? 2 : 0}
+          textColor={select === 4 ? 'brown.400' : 'black'}
         />
+
         <FormProgress index={84} />
+
         <NextPage
           onPress={() => {
+            setSunReaction(select)
             validationForNextPage()
           }}
           action="Continuar"

@@ -7,16 +7,17 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack, ScrollView } from 'native-base'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function BronzeIntensity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { tannedSkin, setTannedSkin } = useContext(DataDeliveryContext)
+  const { bronzeIntensity, setBronzeIntensity} = useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
-    if (tannedSkin === null) {
+    if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
@@ -37,37 +38,44 @@ export function BronzeIntensity() {
       <Box mt={6}>
         <FormButton
           text="Pouco ou muito pouco"
-          onPress={() => setTannedSkin(0)}
-          borderWidth={tannedSkin === 0 ? 2 : 0}
-          textColor={tannedSkin === 0 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(0)}
+          borderWidth={select === 0 ? 2 : 0}
+          textColor={select === 0 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Levemente"
-          onPress={() => setTannedSkin(1)}
-          borderWidth={tannedSkin === 1 ? 2 : 0}
-          textColor={tannedSkin === 1 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(1)}
+          borderWidth={select === 1 ? 2 : 0}
+          textColor={select === 1 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Moderadamente"
-          onPress={() => setTannedSkin(2)}
-          borderWidth={tannedSkin === 2 ? 2 : 0}
-          textColor={tannedSkin === 2 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(2)}
+          borderWidth={select === 2 ? 2 : 0}
+          textColor={select === 2 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Profundamente"
-          onPress={() => setTannedSkin(3)}
-          borderWidth={tannedSkin === 3 ? 2 : 0}
-          textColor={tannedSkin === 3 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(3)}
+          borderWidth={select === 3 ? 2 : 0}
+          textColor={select === 3 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="A pele é naturalmente escura"
-          onPress={() => setTannedSkin(4)}
-          borderWidth={tannedSkin === 4 ? 2 : 0}
-          textColor={tannedSkin === 4 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(4)}
+          borderWidth={select === 4 ? 2 : 0}
+          textColor={select === 4 ? 'brown.400' : 'black'}
         />
+
         <FormProgress index={70} />
+
         <NextPage
           onPress={() => {
+            setBronzeIntensity(select)
             validationForNextPage()
           }}
           action="Continuar"

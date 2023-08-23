@@ -7,16 +7,17 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack, ScrollView } from 'native-base'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function EyeColor() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const { eyeColor, setEyeColor } = useContext(DataDeliveryContext)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
-    if (eyeColor === null) {
+    if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
@@ -33,41 +34,50 @@ export function EyeColor() {
         color="brown.500"
         fontFamily="heading"
       />
+
       <TestID />
+
       <Box mt={6}>
         <FormButton
           text="Azul Claro, Cinza Claro ou Verde Claro"
-          onPress={() => setEyeColor(0)}
-          borderWidth={eyeColor === 0 ? 2 : 0}
-          textColor={eyeColor === 0 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(0)}
+          borderWidth={select === 0 ? 2 : 0}
+          textColor={select === 0 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Azul, Cinza ou Verde"
-          onPress={() => setEyeColor(1)}
-          borderWidth={eyeColor === 1 ? 2 : 0}
-          textColor={eyeColor === 1 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(1)}
+          borderWidth={select === 1 ? 2 : 0}
+          textColor={select === 1 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Castanho Claro ou Mel"
-          onPress={() => setEyeColor(2)}
-          borderWidth={eyeColor === 2 ? 2 : 0}
-          textColor={eyeColor === 2 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(2)}
+          borderWidth={select === 2 ? 2 : 0}
+          textColor={select === 2 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Castanho"
-          onPress={() => setEyeColor(3)}
-          borderWidth={eyeColor === 3 ? 2 : 0}
-          textColor={eyeColor === 3 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(3)}
+          borderWidth={select === 3 ? 2 : 0}
+          textColor={select === 3 ? 'brown.400' : 'black'}
         />
+
         <FormButton
           text="Marrom Escuro/Preto"
-          onPress={() => setEyeColor(4)}
-          borderWidth={eyeColor === 4 ? 2 : 0}
-          textColor={eyeColor === 4 ? 'brown.400' : 'black'}
+          onPress={() => setSelect(4)}
+          borderWidth={select === 4 ? 2 : 0}
+          textColor={select === 4 ? 'brown.400' : 'black'}
         />
+
         <FormProgress index={28} />
+
         <NextPage
           onPress={() => {
+            setEyeColor(select)
             validationForNextPage()
           }}
           action="Continuar"
