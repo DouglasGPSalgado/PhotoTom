@@ -123,9 +123,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       setSunReaction(null)
       setTannedSkin(null)
       setAnalysis_Id(response.data.id)
-
-      navigate('results')
       setIsLoading(false)
+      navigate('results')
     } catch (error) {
       setIsLoading(false)
       console.log(error)
