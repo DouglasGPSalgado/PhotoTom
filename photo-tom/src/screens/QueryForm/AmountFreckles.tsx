@@ -73,7 +73,10 @@ export function AmountFreckles() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={42} />
+        {
+          (select === null) ? <FormProgress index={39} />
+            : <FormProgress index={52} />
+        }
 
         <NextPage
           onPress={() => {

@@ -13,7 +13,7 @@ import { Alert } from 'react-native'
 export function BronzeIntensity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { bronzeIntensity, setBronzeIntensity} = useContext(DataDeliveryContext)
+  const { bronzeIntensity, setBronzeIntensity } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
@@ -71,7 +71,10 @@ export function BronzeIntensity() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={70} />
+        {
+          (select === null) ? <FormProgress index={65} />
+            : <FormProgress index={78} />
+        }
 
         <NextPage
           onPress={() => {

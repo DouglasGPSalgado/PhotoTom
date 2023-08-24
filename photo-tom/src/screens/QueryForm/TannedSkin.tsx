@@ -15,7 +15,7 @@ export function TannedSkin() {
 
   const { tannedSkin, setTannedSkin } =
     useContext(DataDeliveryContext)
-    const [select, setSelect] = useState(null)
+  const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
     if (select === null) {
@@ -74,7 +74,10 @@ export function TannedSkin() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={56} />
+        {
+          (select === null) ? <FormProgress index={52} />
+            : <FormProgress index={65} />
+        }
 
         <NextPage
           onPress={() => {

@@ -18,21 +18,14 @@ export function FacialSunSensitivity() {
   const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
-  // console.log(DataDeliveryContext)
+  console.log(DataDeliveryContext)
 
-  async function validationForNextPage() {
-    try {
-      setIsLoading(true)
-
-      if (select === null) {
-        Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-        return
-      }
-
-      await postResults()
-    } catch (error) {
-      console.log(error)
+  function validationForNextPage() {
+    if (select === null) {
+      Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
+      return
     }
+    postResults()
   }
 
   return (
@@ -84,8 +77,8 @@ export function FacialSunSensitivity() {
         />
 
         {
-          (select === null) ? <FormProgress index={95} />
-          :  <FormProgress index={100} />
+          (select === null) ? <FormProgress index={91} />
+            : <FormProgress index={100} />
         }
 
         <NextPage

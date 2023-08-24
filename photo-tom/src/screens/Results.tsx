@@ -171,7 +171,7 @@ export function Results() {
             <Modal.CloseButton />
             <Modal.Header>
               <Text fontSize="20" fontFamily="heading" color="brown.500">
-                Fototipo
+                Feedback
               </Text>
             </Modal.Header>
             <Modal.Body>
@@ -196,18 +196,21 @@ export function Results() {
                   >
                     Utilizamos esses dados para melhorar nosso método de análise
                   </Text>
+
                   <FormButton
                     text="Acima do esperado"
                     onPress={() => setSelect(2)}
                     borderWidth={select === 2 ? 2 : 0}
                     textColor={select === 2 ? 'brown.400' : 'black'}
                   />
+
                   <FormButton
                     text="Correto"
                     onPress={() => setSelect(1)}
                     borderWidth={select === 1 ? 2 : 0}
                     textColor={select === 1 ? 'brown.400' : 'black'}
                   />
+
                   <FormButton
                     text="Abaixo do esperado"
                     onPress={() => setSelect(0)}

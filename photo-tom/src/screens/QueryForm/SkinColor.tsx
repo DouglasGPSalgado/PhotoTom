@@ -21,6 +21,7 @@ export function SkinColor() {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
+    
     navigate('hairColor')
   }
 
@@ -72,10 +73,13 @@ export function SkinColor() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={0} />
+        {
+          (select === null) ? <FormProgress index={0} />
+            : <FormProgress index={13} />
+        }
 
         <NextPage
-          onPress={() => {
+          onPress={ () => {
             setSkinColor(select)
             validationForNextPage()
           }}

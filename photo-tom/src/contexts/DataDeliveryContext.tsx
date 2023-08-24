@@ -22,7 +22,7 @@ type DataDeliveryContextProps = {
   setSunReaction: (value: number) => void
   facialSunSensitivity: number | null
   setFacialSunSensitivity: (value: number) => void
-  initialGuess: number
+  initialGuess: (value: number) => void
   techRating: number
   setInitialGuess: (value: number) => void
   setTechRating: (value: number) => void
@@ -52,10 +52,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [tannedSkin, setTannedSkin] = useState<number | null>(null)
   const [bronzeIntensity, setBronzeIntensity] = useState<number | null>(null)
   const [sunReaction, setSunReaction] = useState<number | null>(null)
-  const [facialSunSensitivity, setFacialSunSensitivity] = useState<
-    number | null
-  >(null)
-  const [initialGuess, setInitialGuess] = useState<number>(1)
+  const [facialSunSensitivity, setFacialSunSensitivity] = useState<number | null>(null)
+  const [initialGuess, setInitialGuess] = useState<number | null>(null)
   const [techRating, setTechRating] = useState<number>(0)
   const [palette, setPalette] = useState<number>(0)
   const [analysis_Id, setAnalysis_Id] = useState<number>(0)
@@ -88,14 +86,15 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         },
       )
       setResults(response.data.results)
-      setAmountFreckles(null)
-      setBronzeIntensity(null)
-      setEyeColor(null)
-      setFacialSunSensitivity(null)
-      setHairColor(null)
-      setSkinColor(null)
-      setSunReaction(null)
-      setTannedSkin(null)
+      // setInitialGuess(null)
+      // setAmountFreckles(null)
+      // setBronzeIntensity(null)
+      // setEyeColor(null)
+      // setFacialSunSensitivity(null)
+      // setHairColor(null)
+      // setSkinColor(null)
+      // setSunReaction(null)
+      // setTannedSkin(null)
       setAnalysis_Id(response.data.id)
       navigate('results')
     } catch (error) {
