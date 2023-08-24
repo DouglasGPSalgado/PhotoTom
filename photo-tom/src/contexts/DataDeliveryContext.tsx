@@ -146,8 +146,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      navigate('home')
       setIsLoading(false)
+      navigate('home')
     } catch (error) {
       setIsLoading(false)
       console.log(error)

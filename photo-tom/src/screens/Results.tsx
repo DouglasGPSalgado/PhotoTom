@@ -33,10 +33,9 @@ export function Results() {
   function validationForNextPage() {
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-      return
+    } else {
+      putResults()
     }
-
-    putResults()
   }
 
   useEffect(() => {
