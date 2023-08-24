@@ -73,7 +73,10 @@ export function HairColor() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={14} />
+        {
+          (select === null) ? <FormProgress index={13} />
+            : <FormProgress index={26} />
+        }
 
         <NextPage
           onPress={() => {

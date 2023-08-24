@@ -73,7 +73,10 @@ export function EyeColor() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={28} />
+        {
+          (select === null) ? <FormProgress index={26} />
+            : <FormProgress index={39} />
+        }
 
         <NextPage
           onPress={() => {

@@ -26,7 +26,7 @@ export type DataDeliveryContextProps = {
   setSunReaction: (value: number) => void
   facialSunSensitivity: number | null
   setFacialSunSensitivity: (value: number) => void
-  initialGuess: number
+  initialGuess: number | null
   techRating: number
   setInitialGuess: (value: number) => void
   setTechRating: (value: number) => void
@@ -61,8 +61,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [facialSunSensitivity, setFacialSunSensitivity] = useState<
     number | null
   >(null)
-  const navigation = useNavigation()
-  const [initialGuess, setInitialGuess] = useState<number>(1)
+  const [initialGuess, setInitialGuess] = useState<number | null>(null)
   const [techRating, setTechRating] = useState<number>(0)
   const [palette, setPalette] = useState<number>(0)
   const [analysis_Id, setAnalysis_Id] = useState<number>(0)
@@ -75,7 +74,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         image,
       })
 
-      navigation.navigate('Palette')
+      navigate('Palette')
     }
   }
 
@@ -114,6 +113,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         },
       })
       setResults(response.data.results)
+      setInitialGuess(null)
       setAmountFreckles(null)
       setBronzeIntensity(null)
       setEyeColor(null)

@@ -40,7 +40,7 @@ export function SunReaction() {
       <Box mt={6}>
         <FormButton
           text="Sempre queima, forma bolhas e descama"
-          onPress={() => 0}
+          onPress={() => setSelect(0)}
           borderWidth={select === 0 ? 2 : 0}
           textColor={select === 0 ? 'brown.400' : 'black'}
         />
@@ -73,7 +73,11 @@ export function SunReaction() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        <FormProgress index={84} />
+        {select === null ? (
+          <FormProgress index={78} />
+        ) : (
+          <FormProgress index={91} />
+        )}
 
         <NextPage
           onPress={() => {
