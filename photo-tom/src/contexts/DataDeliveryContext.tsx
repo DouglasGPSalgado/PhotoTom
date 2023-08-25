@@ -85,6 +85,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
+      console.log(response)
       setResults(response.data.results)
       setAnalysis_Id(response.data.id)
       navigate('results')
