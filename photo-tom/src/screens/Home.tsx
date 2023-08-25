@@ -115,7 +115,7 @@ export function Home() {
             <TestID />
 
             <Card
-              title="Reconhecimento de imagem"
+              title="Reconhecimento de Imagem"
               subtitle="Visão computacional"
               description="Reconhecimento de fototipo visual automática a partir de foto do local do procedimento + Formulário para análise minuciosa"
               action="Continuar"

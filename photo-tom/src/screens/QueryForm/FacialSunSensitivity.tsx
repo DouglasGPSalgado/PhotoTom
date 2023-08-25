@@ -8,11 +8,10 @@ import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box,  VStack } from 'native-base'
 import { useContext, useState } from 'react'
-import { Alert } from 'react-native'
+import { Alert, ActivityIndicator } from 'react-native'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
-  const [isLoading, setIsLoading] = useState(false)
 
   const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
