@@ -14,7 +14,6 @@ import { useContext, useState } from 'react'
 import Card from '@components/Card'
 import { HomeHeader } from '@components/HomeHeader'
 import { type AppNavigatorRoutesProps } from '@routes/app.routes'
-import { useDataDelivery } from '@hooks/useDataDelivery'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { Alert } from 'react-native'
 import TestID from '@components/TestID'
@@ -69,6 +68,7 @@ export function Home() {
       setTannedSkin(null)
     )
   }
+
   return (
     <VStack flex={1} bg="white">
       <ScrollView>
@@ -167,35 +167,35 @@ export function Home() {
 
                     <FormButton
                       text="Fototipo I"
-                      onPress={(select) => setSelect(0)}
+                      onPress={() => setSelect(0)}
                       borderWidth={select === 0 ? 2 : 0}
                       textColor={select === 0 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo II"
-                      onPress={(select) => setSelect(1)}
+                      onPress={() => setSelect(1)}
                       borderWidth={select === 1 ? 2 : 0}
                       textColor={select === 1 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo III"
-                      onPress={(select) => setSelect(2)}
+                      onPress={() => setSelect(2)}
                       borderWidth={select === 2 ? 2 : 0}
                       textColor={select === 2 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo IV"
-                      onPress={(select) => setSelect(3)}
+                      onPress={() => setSelect(3)}
                       borderWidth={select === 3 ? 2 : 0}
                       textColor={select === 3 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo V"
-                      onPress={(select) => setSelect(4)}
+                      onPress={() => setSelect(4)}
                       borderWidth={select === 4 ? 2 : 0}
                       textColor={select === 4 ? 'brown.400' : 'black'}
                     />
