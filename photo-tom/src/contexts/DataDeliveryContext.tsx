@@ -22,9 +22,9 @@ type DataDeliveryContextProps = {
   setSunReaction: (value: number) => void
   facialSunSensitivity: number | null
   setFacialSunSensitivity: (value: number) => void
-  initialGuess: (value: number) => void
-  techRating: number
+  initialGuess: number | null
   setInitialGuess: (value: number) => void
+  techRating: number
   setTechRating: (value: number) => void
   results: number[][]
   setResults: (value: number[][]) => void
@@ -86,17 +86,9 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         },
       )
       setResults(response.data.results)
-      // setInitialGuess(null)
-      // setAmountFreckles(null)
-      // setBronzeIntensity(null)
-      // setEyeColor(null)
-      // setFacialSunSensitivity(null)
-      // setHairColor(null)
-      // setSkinColor(null)
-      // setSunReaction(null)
-      // setTannedSkin(null)
       setAnalysis_Id(response.data.id)
       navigate('results')
+
     } catch (error) {
       console.log(error)
     }

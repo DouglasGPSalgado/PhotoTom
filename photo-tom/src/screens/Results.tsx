@@ -34,7 +34,6 @@ export function Results() {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
-
     putResults()
   }
 
@@ -224,7 +223,6 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  setFinalGuess(select)
                   validationForNextPage()
                   setShowModal(false)
                 }}

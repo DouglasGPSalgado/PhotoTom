@@ -3,13 +3,12 @@ import FormProgress from '@components/FormProgress'
 import { NextPage } from '@components/NextPage'
 import TestID from '@components/TestID'
 import { Title } from '@components/Title'
-import { useAuth } from '@contexts/auth'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import { Box, HStack, Spinner, VStack, ScrollView } from 'native-base'
+import { Box,  VStack } from 'native-base'
 import { useContext, useState } from 'react'
-import { Alert, BackHandler } from 'react-native'
+import { Alert } from 'react-native'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
@@ -25,6 +24,7 @@ export function FacialSunSensitivity() {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
+    setFacialSunSensitivity(select)
     postResults()
   }
 
@@ -83,7 +83,6 @@ export function FacialSunSensitivity() {
 
         <NextPage
           onPress={() => {
-            setFacialSunSensitivity(select)
             validationForNextPage()
           }}
           action="Resultados"

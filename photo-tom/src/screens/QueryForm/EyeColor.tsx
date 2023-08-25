@@ -6,7 +6,7 @@ import { Title } from '@components/Title'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import { Box, VStack, ScrollView } from 'native-base'
+import { Box, VStack } from 'native-base'
 import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
@@ -21,7 +21,7 @@ export function EyeColor() {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
-
+    setEyeColor(select)
     navigate('amountFreckles')
   }
 
@@ -80,7 +80,6 @@ export function EyeColor() {
 
         <NextPage
           onPress={() => {
-            setEyeColor(select)
             validationForNextPage()
           }}
           action="Continuar"

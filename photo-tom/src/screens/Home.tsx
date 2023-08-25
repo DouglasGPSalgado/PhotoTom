@@ -9,13 +9,13 @@ import {
   VStack,
   ScrollView,
 } from 'native-base'
-import React, { useState } from 'react'
-import NumericInput from 'react-native-numeric-input'
+import { useContext, useState } from 'react'
 
 import Card from '@components/Card'
 import { HomeHeader } from '@components/HomeHeader'
 import { type AppNavigatorRoutesProps } from '@routes/app.routes'
 import { useDataDelivery } from '@hooks/useDataDelivery'
+import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { Alert } from 'react-native'
 import TestID from '@components/TestID'
 import { FormButton } from '@components/FormButton'
@@ -23,7 +23,26 @@ import { FormButton } from '@components/FormButton'
 export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { initialGuess, setInitialGuess } = useDataDelivery()
+  const {
+    initialGuess,
+    setInitialGuess,
+    skinColor,
+    setSkinColor,
+    hairColor,
+    setHairColor,
+    eyeColor,
+    setEyeColor,
+    amountFreckles,
+    setAmountFreckles,
+    tannedSkin,
+    setTannedSkin,
+    bronzeIntensity,
+    setBronzeIntensity,
+    sunReaction,
+    setSunReaction,
+    facialSunSensitivity,
+    setFacialSunSensitivity
+  } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
   const [showModal, setShowModal] = useState(false)
@@ -32,10 +51,24 @@ export function Home() {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
-
+    setInitialGuess(select)
     navigate('photo')
   }
 
+  function resetData() {
+    return (
+      setSelect(null),
+      setInitialGuess(null),
+      setAmountFreckles(null),
+      setBronzeIntensity(null),
+      setEyeColor(null),
+      setFacialSunSensitivity(null),
+      setHairColor(null),
+      setSkinColor(null),
+      setSunReaction(null),
+      setTannedSkin(null)
+    )
+  }
   return (
     <VStack flex={1} bg="white">
       <ScrollView>
@@ -74,10 +107,13 @@ export function Home() {
               description="Análise simples onde o técnico tira uma foto do cliente e compara visualmente com uma paleta de cores + Formulário para análise minuciosa"
               action="Continuar"
               onPress={() => {
+                resetData()
                 setShowModal(true)
               }}
             />
+
             <TestID />
+
             <Card
               title="Reconhecimento de imagem"
               subtitle="Visão computacional"
@@ -128,58 +164,38 @@ export function Home() {
                       Utilizamos esses dados para melhorar nosso método de
                       análise.
                     </Text>
-                    {/* <Box py="8">
-                      <NumericInput
-                        type="plus-minus"
-                        editable={false}
-                        totalHeight={48}
-                        totalWidth={180}
-                        minValue={1}
-                        maxValue={6}
-                        borderColor="transparent"
-                        rounded
-                        rightButtonBackgroundColor="#EAD1B2"
-                        leftButtonBackgroundColor="#EAD1B2"
-                        containerStyle={{
-                          borderRadius: 50,
-                        }}
-                        value={}
-                        onChange={() => {
-                          set()
-                        }}
-                      />
-                    </Box> */}
+
                     <FormButton
                       text="Fototipo I"
-                      onPress={() => setSelect(0)}
+                      onPress={(select) => setSelect(0)}
                       borderWidth={select === 0 ? 2 : 0}
                       textColor={select === 0 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo II"
-                      onPress={() => setSelect(1)}
+                      onPress={(select) => setSelect(1)}
                       borderWidth={select === 1 ? 2 : 0}
                       textColor={select === 1 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo III"
-                      onPress={() => setSelect(2)}
+                      onPress={(select) => setSelect(2)}
                       borderWidth={select === 2 ? 2 : 0}
                       textColor={select === 2 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo IV"
-                      onPress={() => setSelect(3)}
+                      onPress={(select) => setSelect(3)}
                       borderWidth={select === 3 ? 2 : 0}
                       textColor={select === 3 ? 'brown.400' : 'black'}
                     />
 
                     <FormButton
                       text="Fototipo V"
-                      onPress={() => setSelect(4)}
+                      onPress={(select) => setSelect(4)}
                       borderWidth={select === 4 ? 2 : 0}
                       textColor={select === 4 ? 'brown.400' : 'black'}
                     />
@@ -197,7 +213,6 @@ export function Home() {
                 <Pressable
                   flex="1"
                   onPress={() => {
-                    setInitialGuess(select)
                     validationForNextPage()
                     setShowModal(false)
                   }}
