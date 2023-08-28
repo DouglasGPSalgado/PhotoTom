@@ -1,4 +1,4 @@
-import { FormButton } from '@components/FormButton'
+import { FormButtonModal } from '@components/FormButtonModal'
 import { NextPage } from '@components/NextPage'
 import TestID from '@components/TestID'
 import { Title } from '@components/Title'
@@ -196,21 +196,21 @@ export function Results() {
                     Utilizamos esses dados para melhorar nosso método de análise
                   </Text>
 
-                  <FormButton
+                  <FormButtonModal
                     text="Acima do esperado"
                     onPress={() => setSelect(2)}
                     borderWidth={select === 2 ? 2 : 0}
                     textColor={select === 2 ? 'brown.400' : 'black'}
                   />
 
-                  <FormButton
+                  <FormButtonModal
                     text="Correto"
                     onPress={() => setSelect(1)}
                     borderWidth={select === 1 ? 2 : 0}
                     textColor={select === 1 ? 'brown.400' : 'black'}
                   />
 
-                  <FormButton
+                  <FormButtonModal
                     text="Abaixo do esperado"
                     onPress={() => setSelect(0)}
                     borderWidth={select === 0 ? 2 : 0}

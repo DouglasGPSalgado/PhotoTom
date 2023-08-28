@@ -7,7 +7,7 @@ type FormButtonProps = IButtonProps & {
   textColor: string
 }
 
-export function FormButton({
+export function FormButtonModal({
   onPress,
   text,
   textColor,
@@ -16,24 +16,24 @@ export function FormButton({
   return (
     <ButtonNativeBase
       onPress={onPress}
-      my={3}
+      my={2}
       p={0}
-      px={0.5}
       bg="white"
+      alignItems="center"
+      justifyContent="center"
       shadow="5"
       borderColor="brown.300"
       _pressed={{
         bg: 'light.100',
       }}
       width="100%"
-      height="14"
+      height="10"
       rounded="2xl"
-      justifyContent="center"
       {...rest}
     >
       <Text
         color={textColor}
-        fontSize="14"
+        fontSize="12"
         fontFamily="body"
         textAlign="center"
       >

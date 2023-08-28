@@ -17,7 +17,7 @@ import { type AppNavigatorRoutesProps } from '@routes/app.routes'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { Alert } from 'react-native'
 import TestID from '@components/TestID'
-import { FormButton } from '@components/FormButton'
+import { FormButtonModal } from '@components/FormButtonModal'
 
 export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
@@ -165,42 +165,42 @@ export function Home() {
                       análise.
                     </Text>
 
-                    <FormButton
+                    <FormButtonModal
                       text="Fototipo I"
                       onPress={() => setSelect(0)}
                       borderWidth={select === 0 ? 2 : 0}
                       textColor={select === 0 ? 'brown.400' : 'black'}
                     />
 
-                    <FormButton
+                    <FormButtonModal
                       text="Fototipo II"
                       onPress={() => setSelect(1)}
                       borderWidth={select === 1 ? 2 : 0}
                       textColor={select === 1 ? 'brown.400' : 'black'}
                     />
 
-                    <FormButton
+                    <FormButtonModal
                       text="Fototipo III"
                       onPress={() => setSelect(2)}
                       borderWidth={select === 2 ? 2 : 0}
                       textColor={select === 2 ? 'brown.400' : 'black'}
                     />
 
-                    <FormButton
+                    <FormButtonModal
                       text="Fototipo IV"
                       onPress={() => setSelect(3)}
                       borderWidth={select === 3 ? 2 : 0}
                       textColor={select === 3 ? 'brown.400' : 'black'}
                     />
 
-                    <FormButton
+                    <FormButtonModal
                       text="Fototipo V"
                       onPress={() => setSelect(4)}
                       borderWidth={select === 4 ? 2 : 0}
                       textColor={select === 4 ? 'brown.400' : 'black'}
                     />
 
-                    <FormButton
+                    <FormButtonModal
                       text="Fototipo VI"
                       onPress={() => setSelect(5)}
                       borderWidth={select === 5 ? 2 : 0}
