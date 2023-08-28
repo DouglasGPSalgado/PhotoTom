@@ -16,7 +16,6 @@ import {
 import React, { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
-import { ImageContext } from '../contexts/img'
 import TestID from '@components/TestID'
 
 const colorPalette = [
@@ -41,11 +40,10 @@ const colorPalette = [
 ]
 
 export function Palette() {
-  const { img } = useContext(ImageContext)
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const [skinsTone, setSkinsTone] = useState<SkinsToneDTO[]>(colorPalette)
   const [nextPage, setNextPage] = useState<number | null>(null)
-  const { setPalette } = useDataDelivery()
+  const { setPalette, img } = useDataDelivery()
 
   function validationForNextPage() {
     if (nextPage === null) {
@@ -129,7 +127,7 @@ export function Palette() {
               style={{ height: 170, width: 170 }}
               rounded="2xl"
               ml={5}
-              source={{ uri: img.image }}
+              source={{ uri: img.image.uri }}
               alt="Image"
             />
             <TestID />

@@ -75,10 +75,11 @@ export function FacialSunSensitivity() {
           textColor={select === 4 ? 'brown.500' : 'black'}
         />
 
-        {
-          (select === null) ? <FormProgress index={91} />
-            : <FormProgress index={100} />
-        }
+        {select === null ? (
+          <FormProgress index={95} />
+        ) : (
+          <FormProgress index={100} />
+        )}
 
         <NextPage
           onPress={() => {

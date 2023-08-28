@@ -73,10 +73,11 @@ export function SunReaction() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        {
-          (select === null) ? <FormProgress index={78} />
-            : <FormProgress index={91} />
-        }
+        {select === null ? (
+          <FormProgress index={78} />
+        ) : (
+          <FormProgress index={91} />
+        )}
 
         <NextPage
           onPress={() => {

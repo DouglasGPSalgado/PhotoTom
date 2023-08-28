@@ -2,8 +2,9 @@ import { FormButtonModal } from '@components/FormButtonModal'
 import { NextPage } from '@components/NextPage'
 import TestID from '@components/TestID'
 import { Title } from '@components/Title'
+import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useDataDelivery } from '@hooks/useDataDelivery'
-import { useNavigation, useFocusEffect } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import {
@@ -18,23 +19,23 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Alert, BackHandler } from 'react-native'
 
 export function Results() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
   const { results, putResults } = useDataDelivery()
   const [showModal, setShowModal] = useState(false)
-  const [finalGuess, setFinalGuess] = useState(0)
+  const { techRating, setTechRating } = useContext(DataDeliveryContext)
   const phototypeResults = results[0][0]
   const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-      return
+    } else {
+      putResults()
     }
-    putResults()
   }
 
   useEffect(() => {
@@ -223,6 +224,7 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
+                  setTechRating(select)
                   validationForNextPage()
                   setShowModal(false)
                 }}

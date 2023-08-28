@@ -13,8 +13,7 @@ import { Alert } from 'react-native'
 export function TannedSkin() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { tannedSkin, setTannedSkin } =
-    useContext(DataDeliveryContext)
+  const { tannedSkin, setTannedSkin } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
@@ -74,10 +73,11 @@ export function TannedSkin() {
           textColor={select === 4 ? 'brown.400' : 'black'}
         />
 
-        {
-          (select === null) ? <FormProgress index={52} />
-            : <FormProgress index={65} />
-        }
+        {select === null ? (
+          <FormProgress index={52} />
+        ) : (
+          <FormProgress index={65} />
+        )}
 
         <NextPage
           onPress={() => {
