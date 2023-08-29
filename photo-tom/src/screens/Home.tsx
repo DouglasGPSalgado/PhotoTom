@@ -40,7 +40,9 @@ export function Home() {
     sunReaction,
     setSunReaction,
     facialSunSensitivity,
-    setFacialSunSensitivity
+    setFacialSunSensitivity,
+    techRating,
+    setTechRating
   } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
@@ -65,7 +67,8 @@ export function Home() {
       setHairColor(null),
       setSkinColor(null),
       setSunReaction(null),
-      setTannedSkin(null)
+      setTannedSkin(null),
+      setTechRating(null)
     )
   }
 
@@ -124,6 +127,25 @@ export function Home() {
               }}
               mt={4}
             />
+
+            <Box
+              my="8"
+            >
+              <Text
+                color="red.300"
+                fontSize="xs"
+              >
+                É possível que entre erros e falhas no app, reporte ao nosso suporte:
+              </Text>
+              <Text
+                color="red.300"
+                fontSize="xs"
+                fontWeight="bold"
+              >
+                phototom.suporte@gmail.com
+              </Text>
+            </Box>
+
           </Box>
 
           <Modal

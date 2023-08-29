@@ -33,9 +33,11 @@ export function Results() {
   function validationForNextPage() {
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-    } else {
-      putResults()
     }
+
+    setTechRating(select)
+    putResults()
+
   }
 
   useEffect(() => {
@@ -224,7 +226,6 @@ export function Results() {
               <Pressable
                 flex="1"
                 onPress={() => {
-                  setTechRating(select)
                   validationForNextPage()
                   setShowModal(false)
                 }}

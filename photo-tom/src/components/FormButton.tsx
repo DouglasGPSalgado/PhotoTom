@@ -33,7 +33,8 @@ export function FormButton({
     >
       <Text
         color={textColor}
-        fontSize={Platform.OS === 'ios' ? 'md' : 'xs'}
+        fontSize="14"
+        //Não mudar pois os valores estavam em conflito em determinadas tela!!!!!
         fontFamily="body"
         textAlign="center"
       >

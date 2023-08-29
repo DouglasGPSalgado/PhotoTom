@@ -1,17 +1,28 @@
-import React from 'react'
-import { View, Spinner } from 'native-base'
+import { useState } from 'react'
+import { View, Spinner, Modal, VStack, Text } from 'native-base'
 
 const LoadingComponent = () => {
+  const [visible, setVisible] = useState(true)
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    <Modal
+      isOpen={visible}
+      onClose={setVisible}
+      size="full"
+      background="white"
     >
-      <Spinner color="blue" />
-    </View>
+      <VStack>
+        <Spinner
+          color="brown.400"
+          size="lg"
+        />
+        <Text
+          fontSize="lg"
+          color="brown.400"
+        >
+          Carregando
+        </Text>
+      </VStack>
+    </Modal>
   )
 }
 

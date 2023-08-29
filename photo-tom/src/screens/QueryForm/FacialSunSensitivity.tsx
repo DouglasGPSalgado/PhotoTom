@@ -6,17 +6,18 @@ import { Title } from '@components/Title'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import { Box,  VStack } from 'native-base'
+import { Box, VStack, Modal, Center, Text, Spinner } from 'native-base'
 import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
+  const { facialSunSensitivity, setFacialSunSensitivity, postResults, results } =
     useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
-  console.log(DataDeliveryContext)
+  // console.log(DataDeliveryContext)
+  const [showModal, setShowModal] = useState(false)
 
   function validationForNextPage() {
     if (select === null) {
@@ -26,6 +27,8 @@ export function FacialSunSensitivity() {
     setFacialSunSensitivity(select)
     postResults()
   }
+
+
 
   return (
     <VStack flex={1} p={6} bg="white">
@@ -90,6 +93,7 @@ export function FacialSunSensitivity() {
           alignSelf={'center'}
           marginY={2}
         />
+
       </Box>
     </VStack>
   )

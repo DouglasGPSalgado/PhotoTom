@@ -67,6 +67,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [analysis_Id, setAnalysis_Id] = useState<number>(0)
   const [results, setResults] = useState<number[][]>([[]])
   const [isLoading, setIsLoading] = useState(false)
+  const [putLoading, setPutLoading] = useState(false)
 
   async function signIn(image: string) {
     if (image !== null) {
@@ -79,33 +80,35 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   }
 
   async function postResults() {
-    // ImagePicker saves the taken photo to disk and returns a local URI to it
-    const localUri = img.image.uri
-    const filename = localUri.split('/').pop()
-    // Infer the type of the image
-    const match = /.(\w+)$/.exec(filename)
-    const type = match ? `image/${match[1]}` : `image`
-    // Upload the image using the fetch and FormData APIs
-    const formData = new FormData()
-    // Assume "photo" is the name of the form field the server expects
-    formData.append('sample', {
-      uri: localUri,
-      name: filename,
-      type,
-    })
-    formData.append('initial_guess', palette)
-    formData.append('tech_guess', initialGuess)
-    formData.append('skin_c', skinColor)
-    formData.append('hair_c', hairColor)
-    formData.append('eye_c', eyeColor)
-    formData.append('freckles', amountFreckles)
-    formData.append('tan_rate', tannedSkin)
-    formData.append('tan_intensity', bronzeIntensity)
-    formData.append('exp_reaction', sunReaction)
-    formData.append('facial_exp_sensibility', facialSunSensitivity)
 
     try {
       setIsLoading(true)
+      // ImagePicker saves the taken photo to disk and returns a local URI to it
+      const localUri = img.image.uri
+      const filename = localUri.split('/').pop()
+      // Infer the type of the image
+      const match = /.(\w+)$/.exec(filename)
+      const type = match ? `image/${match[1]}` : `image`
+      // Upload the image using the fetch and FormData APIs
+      const formData = new FormData()
+      // Assume "photo" is the name of the form field the server expects
+      formData.append('sample', {
+        uri: localUri,
+        name: filename,
+        type,
+      })
+      formData.append('initial_guess', palette)
+      formData.append('tech_guess', initialGuess)
+      formData.append('skin_c', skinColor)
+      formData.append('hair_c', hairColor)
+      formData.append('eye_c', eyeColor)
+      formData.append('freckles', amountFreckles)
+      formData.append('tan_rate', tannedSkin)
+      formData.append('tan_intensity', bronzeIntensity)
+      formData.append('exp_reaction', sunReaction)
+      formData.append('facial_exp_sensibility', facialSunSensitivity)
+
+      //Inicio da Request
       const token = await AsyncStorage.getItem('@PTAuth:token')
       const response = await api.postForm('analysis/', formData, {
         headers: {
@@ -113,15 +116,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         },
       })
       setResults(response.data.results)
-      setInitialGuess(null)
-      setAmountFreckles(null)
-      setBronzeIntensity(null)
-      setEyeColor(null)
-      setFacialSunSensitivity(null)
-      setHairColor(null)
-      setSkinColor(null)
-      setSunReaction(null)
-      setTannedSkin(null)
       setAnalysis_Id(response.data.id)
       setIsLoading(false)
       navigate('results')
@@ -146,11 +140,11 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      setIsLoading(false)
       navigate('home')
-    } catch (error) {
       setIsLoading(false)
+    } catch (error) {
       console.log(error)
+      setIsLoading(false)
     }
   }
 
@@ -187,7 +181,8 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
         signIn,
       }}
     >
-      {isLoading ? <LoadingComponent /> : children}
+      {children}
+      {(isLoading === true) ? <LoadingComponent /> : <></>}
     </DataDeliveryContext.Provider>
   )
 }
