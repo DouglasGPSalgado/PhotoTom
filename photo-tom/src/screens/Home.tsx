@@ -42,7 +42,10 @@ export function Home() {
     facialSunSensitivity,
     setFacialSunSensitivity,
     techRating,
-    setTechRating
+    setTechRating,
+    img,
+    results,
+    setResults
   } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 

@@ -38,6 +38,8 @@ export type DataDeliveryContextProps = {
   putResults: () => Promise<void>
   img: paletteDTO
   signIn: (image: string) => Promise<void>
+  isLoading: boolean
+  setIsLoading: (value: boolean) => void
 }
 
 type ContextProviderProps = {
@@ -67,7 +69,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   const [analysis_Id, setAnalysis_Id] = useState<number>(0)
   const [results, setResults] = useState<number[][]>([[]])
   const [isLoading, setIsLoading] = useState(false)
-  const [putLoading, setPutLoading] = useState(false)
 
   async function signIn(image: string) {
     if (image !== null) {
@@ -82,7 +83,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   async function postResults() {
 
     try {
-      setIsLoading(true)
       // ImagePicker saves the taken photo to disk and returns a local URI to it
       const localUri = img.image.uri
       const filename = localUri.split('/').pop()
@@ -109,23 +109,26 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       formData.append('facial_exp_sensibility', facialSunSensitivity)
 
       //Inicio da Request
+      setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
       const response = await api.postForm('analysis/', formData, {
         headers: {
+          'Content-Type': 'multipart/form-data',
           Authorization: `Token ${token}`,
         },
       })
+      navigate('results')
       setResults(response.data.results)
       setAnalysis_Id(response.data.id)
       setIsLoading(false)
-      navigate('results')
     } catch (error) {
-      setIsLoading(false)
       console.log(error)
+      setIsLoading(false)
     }
   }
 
   async function putResults() {
+
     try {
       setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
@@ -140,8 +143,10 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           },
         },
       )
-      navigate('home')
       setIsLoading(false)
+      navigate('home')
+
+
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -149,40 +154,44 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   }
 
   return (
-    <DataDeliveryContext.Provider
-      value={{
-        setSkinColor,
-        skinColor,
-        hairColor,
-        setHairColor,
-        eyeColor,
-        setEyeColor,
-        amountFreckles,
-        setAmountFreckles,
-        tannedSkin,
-        setTannedSkin,
-        bronzeIntensity,
-        setBronzeIntensity,
-        sunReaction,
-        setSunReaction,
-        facialSunSensitivity,
-        setFacialSunSensitivity,
-        palette,
-        setPalette,
-        postResults,
-        putResults,
-        initialGuess,
-        setInitialGuess,
-        results,
-        setResults,
-        techRating,
-        setTechRating,
-        img,
-        signIn,
-      }}
-    >
-      {children}
-      {(isLoading === true) ? <LoadingComponent /> : <></>}
-    </DataDeliveryContext.Provider>
+      <DataDeliveryContext.Provider
+        value={{
+          setSkinColor,
+          skinColor,
+          hairColor,
+          setHairColor,
+          eyeColor,
+          setEyeColor,
+          amountFreckles,
+          setAmountFreckles,
+          tannedSkin,
+          setTannedSkin,
+          bronzeIntensity,
+          setBronzeIntensity,
+          sunReaction,
+          setSunReaction,
+          facialSunSensitivity,
+          setFacialSunSensitivity,
+          palette,
+          setPalette,
+          postResults,
+          putResults,
+          initialGuess,
+          setInitialGuess,
+          results,
+          setResults,
+          techRating,
+          setTechRating,
+          img,
+          signIn,
+        }}
+      >
+        {children}
+        {(isLoading === true) ?
+          <LoadingComponent />
+          : <>
+          </>
+        }
+      </DataDeliveryContext.Provider>
   )
 }

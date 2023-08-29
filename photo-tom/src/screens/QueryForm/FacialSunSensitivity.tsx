@@ -9,26 +9,28 @@ import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack, Modal, Center, Text, Spinner } from 'native-base'
 import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
+import LoadingComponent from '@components/LoadingComponent'
+import { set } from 'react-hook-form'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const { facialSunSensitivity, setFacialSunSensitivity, postResults, results } =
+  const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
   // console.log(DataDeliveryContext)
-  const [showModal, setShowModal] = useState(false)
 
   function validationForNextPage() {
+    setFacialSunSensitivity(select)
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
       return
     }
-    setFacialSunSensitivity(select)
-    postResults()
+    if (facialSunSensitivity != null) {
+      postResults()
+      return
+    }
   }
-
-
 
   return (
     <VStack flex={1} p={6} bg="white">

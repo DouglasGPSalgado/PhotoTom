@@ -31,13 +31,15 @@ export function Results() {
   const [select, setSelect] = useState(null)
 
   function validationForNextPage() {
+    setTechRating(select)
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
+      return
     }
-
-    setTechRating(select)
-    putResults()
-
+    if (techRating != null) {
+      putResults()
+      return
+    }
   }
 
   useEffect(() => {
@@ -163,14 +165,10 @@ export function Results() {
         {/* Modal feedback */}
         <Modal
           isOpen={showModal}
-          onClose={() => {
-            setShowModal(false)
-          }}
           size="lg"
           shadow="7"
         >
           <Modal.Content width="80%">
-            <Modal.CloseButton />
             <Modal.Header>
               <Text fontSize="20" fontFamily="heading" color="brown.500">
                 Feedback
@@ -227,7 +225,6 @@ export function Results() {
                 flex="1"
                 onPress={() => {
                   validationForNextPage()
-                  setShowModal(false)
                 }}
                 alignItems="flex-end"
               >
