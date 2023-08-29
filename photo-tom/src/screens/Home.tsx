@@ -22,31 +22,7 @@ import { FormButtonModal } from '@components/FormButtonModal'
 export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const {
-    initialGuess,
-    setInitialGuess,
-    skinColor,
-    setSkinColor,
-    hairColor,
-    setHairColor,
-    eyeColor,
-    setEyeColor,
-    amountFreckles,
-    setAmountFreckles,
-    tannedSkin,
-    setTannedSkin,
-    bronzeIntensity,
-    setBronzeIntensity,
-    sunReaction,
-    setSunReaction,
-    facialSunSensitivity,
-    setFacialSunSensitivity,
-    techRating,
-    setTechRating,
-    img,
-    results,
-    setResults
-  } = useContext(DataDeliveryContext)
+  const { initialGuess, setInitialGuess } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
   const [showModal, setShowModal] = useState(false)
@@ -57,22 +33,6 @@ export function Home() {
     }
     setInitialGuess(select)
     navigate('photo')
-  }
-
-  function resetData() {
-    return (
-      setSelect(null),
-      setInitialGuess(null),
-      setAmountFreckles(null),
-      setBronzeIntensity(null),
-      setEyeColor(null),
-      setFacialSunSensitivity(null),
-      setHairColor(null),
-      setSkinColor(null),
-      setSunReaction(null),
-      setTannedSkin(null),
-      setTechRating(null)
-    )
   }
 
   return (
@@ -113,7 +73,6 @@ export function Home() {
               description="Análise simples onde o técnico tira uma foto do cliente e compara visualmente com uma paleta de cores + Formulário para análise minuciosa"
               action="Continuar"
               onPress={() => {
-                resetData()
                 setShowModal(true)
               }}
             />
@@ -131,24 +90,15 @@ export function Home() {
               mt={4}
             />
 
-            <Box
-              my="8"
-            >
-              <Text
-                color="red.300"
-                fontSize="xs"
-              >
-                É possível que entre erros e falhas no app, reporte ao nosso suporte:
+            <Box my="8">
+              <Text color="red.300" fontSize="xs">
+                É possível que encontre erros ou falhas no app, reporte ao nosso
+                suporte:
               </Text>
-              <Text
-                color="red.300"
-                fontSize="xs"
-                fontWeight="bold"
-              >
+              <Text color="red.300" fontSize="xs" fontWeight="bold">
                 phototom.suporte@gmail.com
               </Text>
             </Box>
-
           </Box>
 
           <Modal

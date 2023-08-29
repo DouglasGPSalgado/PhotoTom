@@ -38,8 +38,6 @@ export type DataDeliveryContextProps = {
   putResults: () => Promise<void>
   img: paletteDTO
   signIn: (image: string) => Promise<void>
-  isLoading: boolean
-  setIsLoading: (value: boolean) => void
 }
 
 type ContextProviderProps = {
@@ -81,7 +79,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   }
 
   async function postResults() {
-
     try {
       // ImagePicker saves the taken photo to disk and returns a local URI to it
       const localUri = img.image.uri
@@ -108,7 +105,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       formData.append('exp_reaction', sunReaction)
       formData.append('facial_exp_sensibility', facialSunSensitivity)
 
-      //Inicio da Request
+      // Inicio da Request
       setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
       const response = await api.postForm('analysis/', formData, {
@@ -117,10 +114,10 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
           Authorization: `Token ${token}`,
         },
       })
-      navigate('results')
       setResults(response.data.results)
       setAnalysis_Id(response.data.id)
       setIsLoading(false)
+      navigate('results')
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -128,7 +125,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   }
 
   async function putResults() {
-
     try {
       setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
@@ -145,8 +141,6 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       )
       setIsLoading(false)
       navigate('home')
-
-
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -154,44 +148,39 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
   }
 
   return (
-      <DataDeliveryContext.Provider
-        value={{
-          setSkinColor,
-          skinColor,
-          hairColor,
-          setHairColor,
-          eyeColor,
-          setEyeColor,
-          amountFreckles,
-          setAmountFreckles,
-          tannedSkin,
-          setTannedSkin,
-          bronzeIntensity,
-          setBronzeIntensity,
-          sunReaction,
-          setSunReaction,
-          facialSunSensitivity,
-          setFacialSunSensitivity,
-          palette,
-          setPalette,
-          postResults,
-          putResults,
-          initialGuess,
-          setInitialGuess,
-          results,
-          setResults,
-          techRating,
-          setTechRating,
-          img,
-          signIn,
-        }}
-      >
-        {children}
-        {(isLoading === true) ?
-          <LoadingComponent />
-          : <>
-          </>
-        }
-      </DataDeliveryContext.Provider>
+    <DataDeliveryContext.Provider
+      value={{
+        setSkinColor,
+        skinColor,
+        hairColor,
+        setHairColor,
+        eyeColor,
+        setEyeColor,
+        amountFreckles,
+        setAmountFreckles,
+        tannedSkin,
+        setTannedSkin,
+        bronzeIntensity,
+        setBronzeIntensity,
+        sunReaction,
+        setSunReaction,
+        facialSunSensitivity,
+        setFacialSunSensitivity,
+        palette,
+        setPalette,
+        postResults,
+        putResults,
+        initialGuess,
+        setInitialGuess,
+        results,
+        setResults,
+        techRating,
+        setTechRating,
+        img,
+        signIn,
+      }}
+    >
+      {isLoading === true ? <LoadingComponent /> : children}
+    </DataDeliveryContext.Provider>
   )
 }

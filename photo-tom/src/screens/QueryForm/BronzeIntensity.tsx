@@ -6,7 +6,7 @@ import { Title } from '@components/Title'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import { Box, VStack} from 'native-base'
+import { Box, VStack } from 'native-base'
 import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
 
@@ -20,10 +20,10 @@ export function BronzeIntensity() {
   function validationForNextPage() {
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-      return
+    } else {
+      setBronzeIntensity(select)
+      navigate('SunReaction')
     }
-    setBronzeIntensity(select)
-    navigate('SunReaction')
   }
 
   return (

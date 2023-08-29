@@ -6,29 +6,26 @@ import { Title } from '@components/Title'
 import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
-import { Box, VStack, Modal, Center, Text, Spinner } from 'native-base'
+import { Box, VStack } from 'native-base'
 import { useContext, useState } from 'react'
 import { Alert } from 'react-native'
-import LoadingComponent from '@components/LoadingComponent'
-import { set } from 'react-hook-form'
 
 export function FacialSunSensitivity() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
   const { facialSunSensitivity, setFacialSunSensitivity, postResults } =
     useContext(DataDeliveryContext)
-  const [select, setSelect] = useState(null)
-  // console.log(DataDeliveryContext)
+  const [select, setSelect] = useState<number | null>(null)
 
   function validationForNextPage() {
-    setFacialSunSensitivity(select)
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-      return
     }
     if (facialSunSensitivity != null) {
       postResults()
-      return
+    } else {
+      setFacialSunSensitivity(select)
+      return validationForNextPage
     }
   }
 
@@ -88,6 +85,7 @@ export function FacialSunSensitivity() {
 
         <NextPage
           onPress={() => {
+            setFacialSunSensitivity(select)
             validationForNextPage()
           }}
           action="Resultados"
@@ -95,7 +93,6 @@ export function FacialSunSensitivity() {
           alignSelf={'center'}
           marginY={2}
         />
-
       </Box>
     </VStack>
   )

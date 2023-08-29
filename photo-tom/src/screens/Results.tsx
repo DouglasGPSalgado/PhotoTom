@@ -38,7 +38,6 @@ export function Results() {
     }
     if (techRating != null) {
       putResults()
-      return
     }
   }
 
@@ -165,6 +164,9 @@ export function Results() {
         {/* Modal feedback */}
         <Modal
           isOpen={showModal}
+          onClose={() => {
+            setShowModal(false)
+          }}
           size="lg"
           shadow="7"
         >

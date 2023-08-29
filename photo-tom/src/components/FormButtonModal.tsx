@@ -1,4 +1,9 @@
-import { Button as ButtonNativeBase, IButtonProps, Center, Text } from 'native-base'
+import {
+  Button as ButtonNativeBase,
+  IButtonProps,
+  Center,
+  Text,
+} from 'native-base'
 import { Platform } from 'react-native'
 
 type FormButtonProps = IButtonProps & {
