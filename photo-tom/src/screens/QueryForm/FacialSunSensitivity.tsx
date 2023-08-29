@@ -7,7 +7,7 @@ import { DataDeliveryContext } from '@contexts/DataDeliveryContext'
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProps } from '@routes/app.routes'
 import { Box, VStack } from 'native-base'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Alert } from 'react-native'
 
 export function FacialSunSensitivity() {
@@ -17,18 +17,19 @@ export function FacialSunSensitivity() {
     useContext(DataDeliveryContext)
   const [select, setSelect] = useState<number | null>(null)
 
+  useEffect(() => {
+    if (select !== null) {
+      setFacialSunSensitivity(select)
+    }
+  }, [select, setFacialSunSensitivity])
+
   function validationForNextPage() {
     if (select === null) {
       Alert.alert('Ops', 'Selecione uma das alternativas para continuar!')
-    }
-    if (facialSunSensitivity != null) {
-      postResults()
     } else {
-      setFacialSunSensitivity(select)
-      return validationForNextPage
+      postResults()
     }
   }
-
   return (
     <VStack flex={1} p={6} bg="white">
       <Title
@@ -85,7 +86,6 @@ export function FacialSunSensitivity() {
 
         <NextPage
           onPress={() => {
-            setFacialSunSensitivity(select)
             validationForNextPage()
           }}
           action="Resultados"
