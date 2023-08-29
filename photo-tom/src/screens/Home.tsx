@@ -22,28 +22,7 @@ import { FormButtonModal } from '@components/FormButtonModal'
 export function Home() {
   const { navigate } = useNavigation<AppNavigatorRoutesProps>()
 
-  const {
-    initialGuess,
-    setInitialGuess,
-    skinColor,
-    setSkinColor,
-    hairColor,
-    setHairColor,
-    eyeColor,
-    setEyeColor,
-    amountFreckles,
-    setAmountFreckles,
-    tannedSkin,
-    setTannedSkin,
-    bronzeIntensity,
-    setBronzeIntensity,
-    sunReaction,
-    setSunReaction,
-    facialSunSensitivity,
-    setFacialSunSensitivity,
-    techRating,
-    setTechRating,
-  } = useContext(DataDeliveryContext)
+  const { setInitialGuess } = useContext(DataDeliveryContext)
   const [select, setSelect] = useState(null)
 
   const [showModal, setShowModal] = useState(false)
@@ -55,21 +34,6 @@ export function Home() {
     }
     setInitialGuess(select)
     navigate('photo')
-  }
-
-  function resetData() {
-    return (
-      setInitialGuess(null),
-      setAmountFreckles(null),
-      setBronzeIntensity(null),
-      setEyeColor(null),
-      setFacialSunSensitivity(null),
-      setHairColor(null),
-      setSkinColor(null),
-      setSunReaction(null),
-      setTannedSkin(null),
-      setTechRating(null)
-    )
   }
 
   return (
@@ -110,7 +74,6 @@ export function Home() {
               description="Análise simples onde o técnico tira uma foto do cliente e compara visualmente com uma paleta de cores + Formulário para análise minuciosa"
               action="Continuar"
               onPress={() => {
-                resetData()
                 setShowModal(true)
               }}
             />
