@@ -28,7 +28,7 @@ export type DataDeliveryContextProps = {
   setFacialSunSensitivity: (value: number) => void
   initialGuess: number | null
   setInitialGuess: (value: number) => void
-  techRating: number
+  techRating: number | null
   setTechRating: (value: number) => void
   results: number[][]
   setResults: (value: number[][]) => void
@@ -78,6 +78,21 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
     }
   }
 
+  function resetData() {
+    return (
+      setInitialGuess(null),
+      setAmountFreckles(null),
+      setBronzeIntensity(null),
+      setEyeColor(null),
+      setFacialSunSensitivity(null),
+      setHairColor(null),
+      setSkinColor(null),
+      setSunReaction(null),
+      setTannedSkin(null),
+      setTechRating(null)
+    )
+  }
+
   async function postResults() {
     try {
       // ImagePicker saves the taken photo to disk and returns a local URI to it
@@ -116,6 +131,7 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
       })
       setResults(response.data.results)
       setAnalysis_Id(response.data.id)
+      resetData()
       setIsLoading(false)
       navigate('results')
     } catch (error) {
@@ -126,19 +142,17 @@ export function DataDeliveryProvider({ children }: ContextProviderProps) {
 
   async function putResults() {
     try {
+      const formData = new FormData()
       setIsLoading(true)
       const token = await AsyncStorage.getItem('@PTAuth:token')
-      await api.put(
-        `analysis/${analysis_Id}/`,
-        {
-          tech_rating: techRating,
+      formData.append('tech_rating', techRating?.toString())
+      await api.put(`analysis/${analysis_Id}/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Token ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        },
-      )
+      })
+      setTechRating(null)
       setIsLoading(false)
       navigate('home')
     } catch (error) {
