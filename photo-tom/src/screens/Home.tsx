@@ -130,8 +130,7 @@ export function Home() {
 
             <Box my="8">
               <Text color="red.300" fontSize="xs">
-                É possível que encontre erros ou falhas no app, reporte ao nosso
-                suporte:
+                É possível que encontre erros ou falhas no app, reporte ao nosso suporte:
               </Text>
               <Text color="red.300" fontSize="xs" fontWeight="bold">
                 phototom.suporte@gmail.com
