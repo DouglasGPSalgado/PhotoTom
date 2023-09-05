@@ -15,3 +15,4 @@ $ npm run start
 # Use um emulador como o Android Studio ou use seu celular com o Expo Go.
 
 ```
+ 
