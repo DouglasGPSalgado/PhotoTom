@@ -8,4 +8,4 @@
 
 4 - Para rodar o App use o comando `expo start` caso queira rodar direto no emulador use o comando `expo start --android` para abrir diretamente no Android Studio.
 
-5 - Para rodar o App no Expo GO, escaneie o QR Code no terminal.
+5 - Para rodar o App no Expo GO, escaneie o QR Code no terminal. 
